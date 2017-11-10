@@ -1,0 +1,67 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einleitung}{2}{chapter.1}
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}IT Security Schutzziele}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Security Information and Event Management}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}SIEM Konzept und Zweck}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}SIM \/ Log Management}{7}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Kollektoren}{9}{subsection.2.2.3}
+\contentsline {subsubsection}{Herausforderungen auf Basis von Log Dateien}{10}{section*.13}
+\contentsline {subsection}{\numberline {2.2.4}Event Verarbeitung}{12}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Security Event Management}{12}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Features \& Gemeinsamkeiten von SIEM-System-Anbietern}{13}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Infrastruktur Office}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Ger\IeC {\"a}te}{13}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Architekturen \& Anforderungen}{14}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Kommunikation}{15}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Bekannte Angriffsvektoren}{16}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}Infrastruktur industrielle Produktionsnetzwerke}{16}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Ger\IeC {\"a}te}{16}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Architektur \& Anforderungen}{17}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Kommunikationstechnologien}{18}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Kommunikationsprotokolle }{19}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.5}Bekannte Angriffsvektoren}{19}{subsection.2.4.5}
+\contentsline {section}{\numberline {2.5}Industrie 4.0 Konzept}{20}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Aktueller Sicherheitsstand von industriellen Produktionsnetzwerken (Schutzziele)}{20}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Aktuelle Forschungsgebiete}{21}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Risiko Management}{21}{section.2.6}
+\contentsline {chapter}{\numberline {3}Analyse der Informationsquellen in einer typischen Unternehmensstruktur}{22}{chapter.3}
+\contentsline {section}{\numberline {3.1}Beschreibung der Unternehmensarchitektur (Beispiel)}{23}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Systeme}{23}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Applikationen}{23}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Interaktionen der Systeme (und Anwender)}{23}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Verwendete Analysemethode}{23}{section.3.2}
+\contentsline {section}{\numberline {3.3}Resultierende Informationstypen \/ -kategorien}{23}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Extraktion und Verarbeitung}{23}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Windows}{23}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Linux}{23}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Beispielapplikation}{23}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}Netzwerk}{23}{subsection.3.3.5}
+\contentsline {section}{\numberline {3.4}Analyse im Bezug auf Angriffsvektoren}{23}{section.3.4}
+\contentsline {chapter}{\numberline {4}Analyse der Informationsquellen in einem industriellen Produktionsnetzwerk}{24}{chapter.4}
+\contentsline {section}{\numberline {4.1}Beschreibung der Unternehmensarchitektur (Beispiel)}{25}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Systeme}{25}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Applikationen}{25}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Interaktionen der Systeme (und Anwender)}{25}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Verwendete Analysemethode}{25}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}(Beschreibung der Kategorisierung und/oder wissenschaftliche Grundlage)}{25}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Resultierende Informationstypen / -kategorien}{25}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Extraktion und Verarbeitung}{25}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Feldbus im Beispiel}{25}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Industrial Ethernet im Beispiel}{25}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Analyse im Bezug auf typische Angriffsvektoren (s. Grundlagen)}{25}{section.4.4}
+\contentsline {chapter}{\numberline {5}Vergleich der Analysen}{26}{chapter.5}
+\contentsline {section}{\numberline {5.1}Vergleichsmetrik}{26}{section.5.1}
+\contentsline {section}{\numberline {5.2}Vergleich}{26}{section.5.2}
+\contentsline {chapter}{\numberline {6}Bewertung der Informationsl\IeC {\"u}cken}{27}{chapter.6}
+\contentsline {section}{\numberline {6.1}Bewertungsschema}{27}{section.6.1}
+\contentsline {section}{\numberline {6.2}Bewertung}{27}{section.6.2}
+\contentsline {section}{\numberline {6.3}Beschreibung existierender wissenschaftlichen L\IeC {\"o}sungsans\IeC {\"a}tze}{27}{section.6.3}
+\contentsline {chapter}{\numberline {7}L\IeC {\"o}sungsansatz zur Schlie\ss ung der fokussierten Informationsl\IeC {\"u}cke}{28}{chapter.7}
+\contentsline {section}{\numberline {7.1}Tiefergehende Beschreibung der Informationsl\IeC {\"u}cke und bestehende Abh\IeC {\"a}ngigkeiten}{28}{section.7.1}
+\contentsline {section}{\numberline {7.2}Beschreibung des L\IeC {\"o}sungsansatz}{28}{section.7.2}
+\contentsline {section}{\numberline {7.3}Beschreibung des Versuchsaufbaus des Beweises}{28}{section.7.3}
+\contentsline {section}{\numberline {7.4}Beschreibung der Ergebnisse}{28}{section.7.4}
+\contentsline {chapter}{\numberline {8}Fazit}{29}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{i}{chapter.8}
+\contentsline {chapter}{Abbildungsverzeichnis}{i}{appendix*.35}

@@ -1,0 +1,144 @@
+\documentclass[a4paper,12pt,headsepline]{report}
+
+%----------------- PDF CONFIG ----------------- %
+\pdfinfo{    
+     /Title (Analyse sicherheitsrelevanter Informationen in industriellen Netzwerken für den Einsatz von SIEM Systemen) 
+     /Subject   (PDF-Thema)    
+     /Author  (Niklas Breuer) 
+     /Keywords   (SIEM, Industrie 4.0, Data Collection)      
+} 
+
+\title{Analyse sicherheitsrelevanter Informationen in industriellen Netzwerken für den Einsatz von SIEM Systemen}
+\author{Niklas Breuer}
+\date{??.??.201?}
+
+
+
+%----------------- PAKETE INKLUDIEREN ----------------- %
+
+\usepackage{geometry} % Packet für Seitenrandabständex und Einstellung für Seitenränder
+\usepackage[ngerman]{babel} % deutsche Silbentrennung
+
+\usepackage{booktabs} %entzerrt die Tabellenzeilen und bietet verschieden dicke Unterteilungslinien
+\usepackage{longtable} % Tabellen können sich nicht über mehrere Seiten 
+\usepackage{graphicx} % kann LaTeX Grafiken einbinden
+\usepackage{tabularx}
+
+\usepackage[utf8]{inputenc} % Umlaute unter Mac werden automatisch gesetzt
+\usepackage[T1]{fontenc} % Zeichenencoding
+\usepackage{lmodern} % typographische Qualität 
+\frenchspacing % Schaltet den zusätzlichen Zwischenraum ab
+\usepackage{fix-cm}
+\usepackage{hyperref} % verwandelt alle Kapitelüberschriften, Verweise aufs Literaturverzeichnis und andere Querverweise in PDF-Hyperlinks
+\usepackage{color}
+\usepackage{url}
+\usepackage{amsmath} %für mathematische Formeln
+\usepackage{amssymb} % ermöglicht die Nutzung verschiedener Sonderzeichen und Symbole
+
+%\usepackage[nottoc]{tocbibind}
+
+% für Listings
+\usepackage{listings}
+\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, stepnumber=4, keywordstyle=\color{black}\bfseries\itshape, stringstyle=\ttfamily,showstringspaces=false,basicstyle=\footnotesize,captionpos=b}
+\lstset{language=java}
+
+%Quellen
+\usepackage{url}
+\usepackage[numbers]{natbib}
+
+%Farben
+\usepackage{color}
+
+%ToDos
+\usepackage[colorinlistoftodos]{todonotes}
+\newcommand{\todoForm}[1]{\todo[color=yellow!50!black!20,bordercolor=yellow!50!black!50, inline]{#1}}
+\newcommand{\todoResearch}[1]{\todo[color=red!50!black!20,bordercolor=red!50!black!50, inline]{#1}}
+\newcommand{\todoImage}[1]{\todo[color=orange!50!black!20,bordercolor=orange!50!black!50, inline]{#1}}
+\newcommand{\todoQuestion}[1]{\todo[color=blue!50!black!20,bordercolor=orange!50!black!50, inline]{#1}}
+
+%----------------- FARBEN DEFINIEREN ----------------- %
+\definecolor{gray}{gray}{0.95} % Listingsbackground
+
+%----------------- LAYOUT SETZEN ----------------- %
+%3, 2, 2.5, 2
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+\linespread {1.25}\selectfont %1.25 da er von Haus aus 1.2 ist und 1,25 * 1,2 = 1,5 isch
+
+
+%-------##-------##-------##------- ANFANG INHALT -------##-------##-------##-------%
+\begin{document}
+
+
+\pagenumbering{Roman} % Seitennummer
+
+%----------------- DECKBLATT -----------------%
+ \include{Deckblatt/h_da_arbeit}
+ 
+%-----------------ERKLAERUNG---------------%
+\include{Erklaerung/Erklaerung}
+ 
+%----------------- ABSTRACT -----------------%
+ \include{Abstract/Abstract}
+ 
+ 
+\listoftodos 
+ 
+%----------------- VERZEICHNISSE -----------------%
+\tableofcontents % Inhaltverzeichnis
+
+\pagestyle{plain} % zurueck setzen von roemische seitenanzahl
+\pagenumbering{arabic}
+
+
+%----------------- KAPITEL : EINFÜHRUNG  ----------------- %
+\include{Kapitel/Einleitung}
+
+%----------------- KAPITEL : GRUNDLAGEN  ----------------- %	
+\include{Kapitel/Grundlagen}	
+
+%------------------KAPITEL : KOMPROMITTIERUNGSANSATZ ------%
+%\include{Kapitel/Kompromittierungsansatz}
+\include{Kapitel/Analyse_Unternehmensnetzwerk}
+
+%------------------KAPITEL : EVALUATION ----------------- %
+\include{Kapitel/Analyse_Industrienetzwerk}
+
+%------------------KAPITEL : ERGEBNIS ----------------%
+\include{Kapitel/Vergleich}
+
+\include{Kapitel/Bewertung}
+
+\include{Kapitel/Loesungsansatz}
+%----------------- KAPITEL : FAZIT  ----------------- %	
+
+\include{Kapitel/Fazit}
+
+%----------------- KAPITEL : BEISPIELE  ----------------- %	
+	
+\pagenumbering{roman}	
+
+% ----- Referenzen ----- %
+%\begin{thebibliography}{6}
+
+%\end{thebibliography}
+
+%\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\appendix
+
+ \bibliographystyle{plainnat}          % Style einstellen
+    \bibliography{MeineQuellen}             % eine .bib Datei (Textdatei)
+ \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+ 
+%Literaturverzeichnis
+% ----- Abbildungen ----- %
+%\addcontentsline{toc}{section}{Abbildungsverzeichnis} % falls in Inhalsverzeichnis
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+	
+
+% ----- Tabellen----- %
+% \addcontentsline{toc}{section}{Tabellenverzeichnis}  % falls in Inhalsverzeichnis
+% \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
+%\listoftables
+	
+\end{document}
