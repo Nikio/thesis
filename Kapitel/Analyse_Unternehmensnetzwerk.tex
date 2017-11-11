@@ -13,22 +13,42 @@
 %Architekturidee:
 %Router <--> Firewall <--> DMZ (Webserver mit Webservice) <--> Firewall <--> Intranet (User PC) <--> Firewall <--> Restricted Zone (Database Server & SIEM)
 
-/Das Ziel noch mehr herausstellen, was ist der Grundlegende Gedanke hinter der Erstellung des Models? 
-//Einbinden, dass das Model auf der Basis von Netzwerkarchitekturen erstellt wurde
-„Der Aufbau des Netzwerkes orientiert sich an typischen Elementen, die in einem Unternehmensnetzwerk zu finden sind. Dabei besteht die Notwendigkeit das Model in seiner Größe und Komplexität einzugrenzen um eine Analyse in sinnvollem Maße zu ermöglichen. Die Architektur und Einteilung in verschiedene Netzwerkzonen ist dabei von üblichen Sicherheitszonen abgeleitet. Während die Positionierung der Elemente keine besondere Rolle spielt im Bezug auf die ermittelbaren Informationen pro Element ist jedoch anzumerken, dass auch diese Informationen, z.B. in Form der Auswertung von Netzwerkadressen, einem SIEM-System nützliche Informationen zur Verfügung stellen können. Die Architektur des Models beginnt an seinem „Rand“, dem Zugang zum WAN (Internet) über einen Gateway-Router. Dieser Router ermöglicht die Weiterleitung von Netzwerkpaketen in und aus der angrenzenden Netzwerkzone, der de-militarisierten Zone (DMZ). In der DMZ sind für diese Model ein Apache Webserver auf der Basis des Betriebssystems „CentOS“ und ein E-Mail Server, bestehend aus dem Windows Webserver „Internet Information Service“ (IIS) und dem darüber liegenden E-Mail Server „Microsoft Exchange“. Diese Netzwerkelemente bieten die Möglichkeit Datenverkehr über die Protokolle HTTP und die Microsoft Schnittstelle MAPI (bestehend aus RPC & HTTP Datenverkehr) zu untersuchen, sowie Informationen aus Log-Dateien sowohl von einem Linux-basierten Server als auch von einem Windows-basierten Server zu analysieren. Alle Elemente werden durch „Managed Switches“ miteinander verbunden.
-//Remote Access Server in Form von VPN, Protokolle? Traffic? Sinnvoll?
+\todoForm{Das Ziel noch mehr herausstellen,Grundlegende Gedanke hinter der Erstellung des Models}
+\todoForm{Einbinden, dass das Model auf der Basis von Netzwerkarchitekturen erstellt wurde} 
+Der Aufbau des Netzwerkes orientiert sich an typischen Elementen, die in einem Unternehmensnetzwerk zu finden sind. Dabei besteht die Notwendigkeit das Model in seiner Größe und Komplexität einzugrenzen um eine Analyse in sinnvollem Maße zu ermöglichen. 
+Die Architektur und Einteilung in verschiedene Netzwerkzonen ist dabei von üblichen Sicherheitszonen abgeleitet. Während die Positionierung der Elemente keine besondere Rolle spielt im Bezug auf die ermittelbaren Informationen pro Element ist jedoch anzumerken, dass auch diese Informationen, z.B. in Form der Auswertung von Netzwerkadressen, einem SIEM-System nützliche Informationen zur Verfügung stellen können. Die Architektur des Models beginnt an seinem \glqq Rand\grqq, dem Zugang zum WAN (Internet) über einen Gateway-Router. Dieser Router ermöglicht die Weiterleitung von Netzwerkpaketen in und aus der angrenzenden Netzwerkzone, der de-militarisierten Zone (DMZ). 
+In der DMZ sind für diese Model ein Apache Webserver auf der Basis des Betriebssystems \glqq CentOS\grqq und ein E-Mail Server, bestehend aus dem Windows Webserver \glqq Internet Information Service\grqq (IIS) und dem darüber liegenden E-Mail Server \glqq Microsoft Exchange\grqq. Diese Netzwerkelemente bieten die Möglichkeit Datenverkehr über die Protokolle HTTP und die Microsoft Schnittstelle MAPI (bestehend aus RPC \& HTTP Datenverkehr) zu untersuchen, sowie Informationen aus Log-Dateien sowohl von einem Linux-basierten Server als auch von einem Windows-basierten Server zu analysieren. Alle Elemente werden durch \glqq Managed Switches\grqq miteinander verbunden.
+\todoQuestion{Remote Access Server in Form von VPN, Protokolle? Traffic? Sinnvoll?}
 
 Die DMZ wird von der nächsten Zone, dem Extranet, durch eine Firewall überwacht, die eingehenden initiale Kommunikation blockiert. Firewalls gehören zu den Grundlagen der Sicherheit von Unternehmen und werden häufig platziert um Datenverkehr in und aus bestimmten Netzwerkzonen zu überwachen. Innerhalb der Netzwerkzone werden zwei Benutzer-PCs eingesetzt. Diese werden platziert um Abweichungen und andere Benutzerinteraktionen in die erhaltbare Informationsmenge zu integrieren. Die beiden Computer unterscheiden sich wie auch die Server der DMZ im Betriebssystem, sodass ein PC auf Basis von Windows und damit verbundener Benutzerverwaltung durch Active Directory enthalten ist, sowie ein PC mit einem Linux-basierten Betriebssystem. Zudem wird ein Netzwerkdrucker integriert.
-//Gehören Printserver hier rein? Welche Zusatzinformationen bringt ein Printserver?
+\todoQuestion{Gehören Printserver hier rein? Welche Zusatzinformationen bringt ein Printserver?}
 
-Als dritte Netzwerkzone wird als „Restricted Area“ bezeichnet. Innerhalb dieser Netzwerkzone werden verschiedene Windows-basierte Server eingesetzt um die Funktionalitäten eines Unternehmensnetzwerk zu simulieren. Die verschiedenen Servertypen wurden ausgewählt um erhaltbare Informationen aus unterschiedlichen, typisch genutzten Netzwerkprotokollen aufzuzeigen. Dazu gehören: 
-\begin[itemize]
+Als dritte Netzwerkzone wird als \glqq Restricted Area\grqq bezeichnet. Innerhalb dieser Netzwerkzone werden verschiedene Windows-basierte Server eingesetzt um die Funktionalitäten eines Unternehmensnetzwerk zu simulieren. Die verschiedenen Servertypen wurden ausgewählt um erhaltbare Informationen aus unterschiedlichen, typisch genutzten Netzwerkprotokollen aufzuzeigen. Dazu gehören: 
+\begin{itemize}
 \item ein Microsoft SQL Datenbankserver 
 \item ein Active Directory Domain Controller 
 \item ein FTP-Server
-\end[itemize]
+\end{itemize}
 
-Zusätzlich ist in dieser Zone als Ergänzung auch der SIEM-Server gesetzt.“
+Zusätzlich ist in dieser Zone als Ergänzung auch der SIEM-Server gesetzt.
+
+Zwischen den verschiedenen Elementen des Netzwerkes werden Informationen ausgetauscht z.B. für die Abfrage einer Ressource, Herstellung einer Kommunikation oder Übermittlung von Authentifizierungsinformationen. Dieser Austausch wird durch verschiedene Protokolle gesteuert. Der Inhalt der gesendeten Datenpakete (Payload) wird mit verschiedenen Header-Informationen gekapselt. Neben den grundlegenden Header-Daten der Protokolle auf niedrigeren Ebenen (Ethernet, IP, TCP/UDP) sollen in diesem auch verschiedene Protokolle der Ebene 7 betrachtet werden. Die zugehörigen Header-Information sind spezifisch für das entsprechende Protokoll und können z.B. Informationen über den Status der Kommunikation beinhalten. Diese Informationen sind bei der Analyse von Netzwerkdaten nützlich um den Kontext der ausgetauschten Daten zu verstehen und einen Ablauf der Kommunikation nachzuvollziehen.
+In dem verwendeten Model werden verschiedene Protokolle bei der Kommunikation zwischen den verschiedenen Komponenten betrachtet. Die Wahl des Protokolls hängt von der spezifischen Schnittstelle ab. Eine Auflistung der Schnittstellen für das Ansprechen der entsprechenden Komponente werden in der folgenden Tabelle aufgelistet:
+
+\todoForm{Tabelle der Kommunikationsschnittstellen einfügen, Name, Protokoll, Kurzbeschreibung}
+Kommunikationsschnittstellen:
+\begin{itemize}
+\item Windowsserver: RDP
+\item Linuxserver: SSH
+\item Microsoft SQL Datenbank: SQL
+\item Active Directory: LDAP
+\item FTP-Server: FTP
+\item Firewall: SSH / HTTP
+\item WebServer: HTTP
+\item Exchange: MAPI (RPC + HTTP)
+\end{itemize}
+
+Die Betrachtung der Informationen von den Netzwerkelementen und der Kommunikation zwischen den Elementen ergibt das Gesamtbild der ermittelbaren Informationsmenge in diesem Model. Die folgenden Schritte betrachten beide Teile für die jeweils zu untersuchenden Elemente.
 
 \subsection{Systeme}
 
