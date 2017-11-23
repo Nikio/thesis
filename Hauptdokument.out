@@ -24,11 +24,11 @@
 \BOOKMARK [2][-]{subsection.2.5.2}{Aktuelle Forschungsgebiete}{section.2.5}% 24
 \BOOKMARK [1][-]{section.2.6}{Risiko Management}{chapter.2}% 25
 \BOOKMARK [0][-]{chapter.3}{Analyse der Informationsquellen in einer typischen Unternehmensstruktur}{}% 26
-\BOOKMARK [1][-]{section.3.1}{Beschreibung der Unternehmensarchitektur \(Beispiel\)}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.1.1}{Systeme}{section.3.1}% 28
-\BOOKMARK [2][-]{subsection.3.1.2}{Applikationen}{section.3.1}% 29
-\BOOKMARK [2][-]{subsection.3.1.3}{Interaktionen der Systeme \(und Anwender\)}{section.3.1}% 30
-\BOOKMARK [1][-]{section.3.2}{Verwendete Analysemethode}{chapter.3}% 31
+\BOOKMARK [1][-]{section.3.1}{Verwendete Analysemethode}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.2}{Beschreibung der Unternehmensarchitektur \(Model\)}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.2.1}{Systeme}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.2}{Applikationen}{section.3.2}% 30
+\BOOKMARK [2][-]{subsection.3.2.3}{Interaktionen der Systeme \(und Anwender\)}{section.3.2}% 31
 \BOOKMARK [1][-]{section.3.3}{Resultierende Informationstypen \040-kategorien}{chapter.3}% 32
 \BOOKMARK [2][-]{subsection.3.3.1}{Extraktion und Verarbeitung}{section.3.3}% 33
 \BOOKMARK [2][-]{subsection.3.3.2}{Windows}{section.3.3}% 34
@@ -62,4 +62,4 @@
 \BOOKMARK [1][-]{section.7.4}{Beschreibung der Ergebnisse}{chapter.7}% 62
 \BOOKMARK [0][-]{chapter.8}{Fazit}{}% 63
 \BOOKMARK [0][-]{chapter.8}{Literaturverzeichnis}{}% 64
-\BOOKMARK [0][-]{appendix*.40}{Abbildungsverzeichnis}{}% 65
+\BOOKMARK [0][-]{appendix*.41}{Abbildungsverzeichnis}{}% 65

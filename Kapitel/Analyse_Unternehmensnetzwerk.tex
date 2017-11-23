@@ -1,9 +1,27 @@
 \chapter{Analyse der Informationsquellen in einer typischen Unternehmensstruktur}
 \label{cha:Analyse der Informationsquellen in einer typischen Unternehmensstruktur}
 
-% Netzwerk so gut es geht nachbauen =)
+SIEM Systeme sind, vorallem in großen Unternehmensnetzwerken (siehe SANS Paper Proactive), zu einem Standard geworden um Informationen aus Logs verschiedener Systeme und anderen Kontextdaten zu gewinnen und diese in Szenarios einzuordnen. Um das Zwischenziel einer Bewertung der aktuellen Informationsmenge eines industriellen Netzwerkes zu erhalten bietet es sich durch diesen Zustand an, einen Abgleiches zwischen dem, im Bezug auf SIEM Technologie, etablierten Informationstand in Unternehmensnetzwerken und industriellen Netzwerken auszuführen. In diesem Kapitel soll es deshalb um eine akkurate Beschreibung der Informationsmenge eines typischen Unternehmensnetzwerkes gehen, die aus einer Analyse der gängigen Informationstypen und -kategorien erfolgt. Dazu wird im folgenden zunächst der Analyseansatz geschildert, der das Vorgehen schildert und die Analyse nachvollziehbar gestalten soll.
 
-\section{Beschreibung der Unternehmensarchitektur (Beispiel)}
+\section{Verwendete Analysemethode}
+
+% Schritt 1: Recherchiere welche Log Dateien existieren
+% Schritt 2: Jede Log Datei auf einem System ansehen und Eventformate heraussuchen
+% Schritt 3: Events nach Typ kategorisieren
+% Schritt 4: 
+Die erste Frage für die Wahl des Analyseansatzes stellt sich sowohl in der gewählten Tiefe als auch in einer zielgerichteten Methodik. Das Ziel der Analyse ist es die sicherheitsrelevanten Infortmationsmenge zu erfassen. Der Begriff \glqq Sicherheitsrelevanz\grqq wird dazu für diese Thesis wie folgt definiert: Sicherheitsrelevante Informationen sind Informationen, die als \glqq Indicator of Compromise\grqq (IoC) dienen können. 
+Ein IoC ist eine Information, die auf ein anomales Verhalten oder einen anomalen Zustand eines Netzwerkelementes schließen lässt. Um dieses Verhalten zu erkennen ergeben sich prinzipiell zwei Bereiche der Analyse: 1) Das Verhalten des Netzwerkelementes in sich, also der Zustand des Elements und Änderungen dieses Zustandes sowie 2) die Interaktion mit anderen Netzwerkelementen in Form des Austauschen von Nachrichten über die Netzwerkverbindung (vgl. Kaspersky Paper).
+Diese Beobachtung wird durch das Vorgehen in Unternehmen durch den „Incident Response Process“ gestützt. Dieser Prozess dient als Durchführungsplan eines Teams, das für die Aufklärung und Behebung von Indikatoren und Brüchen des Sicherheitszustandes eines Netzwerkes  
+zuständig ist. Der initiale Zustand dieses Plans ist die Überwachung der Netzwerkelemente und ihrer Kommunikation mit Hilfe von Detektions- und Analysesoftware (z.B. SIEM Systeme) und -hardware (z.B. \glqq Intrusion Detection Systems\grqq). Durch die Überwachung werden eine Vielzahl an Alarmen oder Sicherheitsereignissen produziert, die auf Fehler oder Anomalien im Netzwerk hinweisen. Werden die Informationen aus diesen Ereignissen als potentiell kritisch eingestuft, wird ein IoC an das Team ausgegeben, dass basierend auf Risiko und potentieller Schadensgröße weitere Untersuchungen einleitet. Bei diesen Untersuchungen wird der oder die IoC(s) als Ansatz genutzt. Ein IoC kann dabei auf Informationen im Payload oder Headern von Netzwerkpaketen als auch aus Logging Informationen eines Betriebssystems oder einer Überwachungssoftware auf einem Netzwerkelement beruhen. Basierend auf dem Ansatzpunkt können Informationen sowohl aus der Kommunikation als auch der Netzwerkelemente weitere Hinweise liefern um den potentiellen Sicherheitseinbruch einzugrenzen und schließlich zu identifizieren.
+Aus diesem Grund ist es wichtig, beide Domänen zu untersuchen. Der Analyseansatz lehnt sich dabei an den Incident Response Prozess an. Zunächst wird der Zustand des Netzwerkes beschrieben und alle Netzwerkelemente sowie die potentiellen Kommunikationsschnittstellen erfasst. Darauf folgt die Untersuchung der Netzwerkelemente und ihrer Kommunikation in einer iterativen Vorgehensweise. Diese Vorgehensweise ermöglicht die schrittweise Vertiefung der Analyse  und soll als Ergebnis eine Übersicht pro Iterationsebene für beide Domänen erzielen. 
+Die Analyse der Netzwerkelemente beginnt daher zunächst mit der Einteilung der Elemente in verschiedene Typen. Dabei wird unterschieden zwischen Servern mit verschiedenen Betriebssystemtypen sowie Netzwerkgeräte (Switches, Router) und Sicherheitselemente (Firewalls, Intrusion Detection Systeme). Um die Informationsmenge zu kategorisieren wird jeder Elementtyp auf die Existenz von Logdateien untersucht und die Struktur der Ereignisse in den Logdateien beschrieben. Eine Sammlung der typischen Quellen wird hinzugefügt um einen Überblick über den Ursprung typischer Ereignisse zu erreichen.
+Für die Betrachtung der Kommunikation werden die verschiedenen Schnittstellen basierend auf den verwendeten Netzwerkprotokollen untersucht. Für die Klassifizierung wird basierend auf der Anwendung des OSI-Modells durchgeführt, welches als repräsentatives Kategorisierungsmodell verwendet wird. Diese Klassifizierung zeigt den allgemeinen Rahmen der erwarteten Informationsmenge pro Layer auf (vgl. TCP/IP Stack) und stellt eine Basis für die Analyse der verwendeten Felder der Protokollheader dar. 
+
+Daraus folgt die weitere Struktur des Kapitels: Zunächst wird das definierte Model beschrieben, woraufhin zunächst die Netzwerkelemente und daraufhin die Netzwerkprotokolle betrachtet werden.
+
+\todoQuestion{Sollen Angriffsvektoren /-szenarien hier mit eingepflegt werden oder im Vergleich integriert werden?}
+
+\section{Beschreibung der Unternehmensarchitektur (Model)}
 
 %Kommentar: Vielleicht macht es Sinn erst die Elemente und dann die Architektur zu beschreiben...
 
@@ -97,12 +115,7 @@ Die Betrachtung der Informationen von den Netzwerkelementen und der Kommunikatio
 % Wo überwacht das NIDS (inline?)?
 % Was und wie extrahiert das SIEM?
 
-\section{Verwendete Analysemethode}
 
-% Schritt 1: Recherchiere welche Log Dateien existieren
-% Schritt 2: Jede Log Datei auf einem System ansehen und Eventformate heraussuchen
-% Schritt 3: Events nach Typ kategorisieren
-% Schritt 4: 
 
 \section{Resultierende Informationstypen \/ -kategorien}
 \subsection{Extraktion und Verarbeitung}
