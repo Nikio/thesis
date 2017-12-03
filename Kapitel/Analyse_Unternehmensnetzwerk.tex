@@ -82,16 +82,16 @@ Die Betrachtung der Informationen von den Netzwerkelementen und der Kommunikatio
 
 %Frage: Brauche ich Remote-Access?
 
-\begin{itemize}
-\item Router, Rolle: Zugang zum WAN
-\item Switch, Rolle: Verbindungen zwischen den Elementen herstellen (Router <-> Switch <-> Firewall...)
-\item Firewall, Rolle: Untersuchung des Netzwerkdatenverkehrs 
-\item Webserver (Apache), Rolle: Plattform für den Webservice (Shop)
-\item Endbenutzer PC, Rolle: Element über das Benutzerzugriffe auf verschiedene Systeme ausgeführt werden
-\item Datenbankserver (MSSQL), Rolle: Enthält Businesslogik und kritische Daten
-\item IDS (NIDS)?, Rolle (potentiell): Sicherheitssystem mit Event-Daten für das SIEM
-\item SIEM, Rolle: Zentrale Log-Verwaltung und Korrelation 
-\end{itemize}
+%\begin{itemize}
+%\item Router, Rolle: Zugang zum WAN
+%\item Switch, Rolle: Verbindungen zwischen den Elementen herstellen (Router <-> Switch <-> Firewall...)
+%\item Firewall, Rolle: Untersuchung des Netzwerkdatenverkehrs 
+%\item Webserver (Apache), Rolle: Plattform für den Webservice (Shop)
+%\item Endbenutzer PC, Rolle: Element über das Benutzerzugriffe auf verschiedene Systeme ausgeführt werden
+%\item Datenbankserver (MSSQL), Rolle: Enthält Businesslogik und kritische Daten
+%\item IDS (NIDS)?, Rolle (potentiell): Sicherheitssystem mit Event-Daten für das SIEM
+%\item SIEM, Rolle: Zentrale Log-Verwaltung und Korrelation 
+%\end{itemize}
 \subsection{Applikationen}
 
 %Die Frage ist, welche Applikationen brauche ich?
@@ -120,6 +120,82 @@ Die Betrachtung der Informationen von den Netzwerkelementen und der Kommunikatio
 \section{Resultierende Informationstypen \/ -kategorien}
 \subsection{Extraktion und Verarbeitung}
 \subsection{Windows}
+Das Windows Betriebssystem von Microsoft ist das am Weitesten verbreitete Betriebssystem in der Industrie. Wollen wir die Informationsmenge eines Windowssystems beschreiben können wir auf verschiedene Punkte zurückgreifen. Im Bezug auf Angriffsanalysen und forensischen Analyseverfahren (Quelle?) werden zu diesem Zweck drei grundlegende Teile betrachtet: Logdateien des Betriebssystems sowie installierter Software, die Windows Registry und ausgeführte Prozesse. Die Überwachung und Dokumentation dieser Bereiche ermöglicht es ein Bild über den aktuellen Zustand des Systems zu erhalten. 
+Für die Ausführung von Prozessen und Änderungen der Registry kann eine installierte Überwachungssoftware in Form einer lokalen, systemfokussierten Lösung genutzt werden. Mit Hilfe einer solchen Lösung ist es möglich die Ausführung von ausführbaren Dateien oder das Laden dynamischer Bibliotheken zu überwachen und Sicherheitsereignisse zu generieren im Falle der Ausführung/des Ladens aus ungewöhnlichen oder für diesen Zweck gesperrten Verzeichnissen des Dateisystems. Selbiges gilt für Änderungen von Schlüsseln innerhalb der Registry. 
+\todoQuestion{Vertiefung möglich, kann ich die Kategorien weiter auftrennen ohne spezifischen Anwendungsfall?}
+\todoResearch{EventIDs von Cylance/Sophos/Avira finden? Welche unterschiedlichen Endpoint Protection Solutions gibt es?}
+
+Der dritte Teil besteht aus den Logdateien des Betriebssystems. 
+%Beschreibung des Aufbaus der Logdateien
+Die Logdateien sind in einem spezifischen Format geschrieben, sodass eine Anzahl an Feldern vorgegeben ist, die durch den bereitstellenden Service bzw. den bereitstellenden Prozess gefüllt werden können (Quelle?). \todoQuestion{Gibt es Vorgaben welche Felder gefüllt werden müssen? Microsoft Dokumentation nochmal checken!}. Die Logdateien werden im EVT (alt) bzw. EVTX (neu) Format dargestellt. In der, vom Betriebssystem bereitgestellten, Ereignisanzeige können die Daten sowohl in benutzerfreundlicher Formatierung als auch in einer XML-basierten Form dargestellt werden. Die folgenden Felder werden für diese Logs bereitgestellt:
+\begin{itemize}
+\item Quelle
+\item Ereignis-ID
+\item Ebene
+\item Benutzer
+\item Vorgangscode
+\item Protokoll
+\item Aufgabenkategorie
+\item Schlüsselwörter
+\item Computer
+\item Datum und Uhrzeit
+\item Zusätzliche Felder: Prozess-ID, Thread-ID, Prozessor-ID, Sitzungs-ID, Kernelzeit, Benutzerzeit, Prozessorzeit, Korrelations-ID und relative Korrelations-ID
+\end{itemize}
+%Quelle: https://technet.microsoft.com/de-de/library/cc765981(v=ws.11).aspx
+Diese Felder können durch die jeweilige Quelle und das Betriebssystem mit verfügbaren Daten versehen werden. Die Quelle gibt die Software(-komponente) oder die Komponente des Betriebssystem an, die das Ereignis protokolliert hat. Die zugehörige Ereignis-ID gibt den Ereignistypen an, der z.B. das erfolgreiche Starten eines spezifischen Dienstes darstellt. Weitere Identifikatoren geben spezifischere Informationen über den auslösenden Prozess und zugehörige Elemente an. 
+Jedes Ereignis wird zu einer bestimmten Kategorie zugeordnet, der Ebene. Die Ebene eines Ereignisses gibt den zugeordneten Schweregrad des Ereignisses an. Für alle Protokolldateien werden dafür die folgenden Ebenen zur Verfügung gestellt: Informationen, Warnung, Fehler und Kritisch. Ereignisse der Ebene \glqq Informationen\grqq enthalten Daten über Änderungen an Anwendungen oder Komponenten. Der erfolgreiche Start bzw. die erfolgreiche Beendigung eines Dienstes, sofern dieser nicht die Systemfunktionalität o.ä. gefährdet, seien hier als Beispiel genannt. Die Ebenen \glqq Warnung\grqq und \glqq Fehler\grqq enthalten Ereignisse, die das Auftreten eines Problems signalisieren. Der Ebene Warnung werden Ereignisse zugeordnet, die das Auftreten eines Problems anzeigen durch das ggf. ein Fehler ausgelöst oder ein Dienst beeinträchtigt werden könnte. Ein Beispiel ist die Verzögerung der Ausführung des Herunterfahrens des Betriebssystems durch einen Prozess, dessen Beendigung verzögert oder nicht durchgeführt werden kann. Der Ebene Fehler werden Ereignisse zugeordnet, die potentiell die Funktionalität außerhalb der protokollierenden Quelle beeinträchtigen können. Damit werden Ereignisse dieser Ebene als schwerer eingeordnet als Ereignisse der Ebene Warnung. Die letzte Ebene \glqq Kritisch\grqq umfasst Ereignisse, die Fehler signalisieren, jedoch nicht automatisch von dem Betriebssystem behoben werden können. 
+In Protokolldatei \glqq Sicherheit\grqq treten dazu noch zwei weitere Ebenen auf: \glqq Erfolgsüberwachung\grqq und \glqq Fehlerüberwachung\grqq . Diese Ebenen umfassen Ereignisse, die mit der Anwendung der Rechte des ausführenden Benutzers zusammenhängen. Ereignisse der Ebene Erfolgsüberwachung beinhalten die Dokumentation der erfolgreichen Anwendung der Rechte, Ereignisse der Ebene Fehlerüberwachung beinhalten Fehlermeldungen, die bei der Anwendung aufgetreten sind.
+
+%Quelle: https://support.microsoft.com/en-us/help/942910/-error--warning--or-critical-events-are-logged-in-the-diagnostic-perfo
+Ereignisse der gleichen Quelle und der gleichen Event-ID können abhängig vom Schweregrad in den verschiedenen Ebenen eingeordnet werden.
+
+%Beschreibung der grundlegenden Logdateien
+%Quelle: https://technet.microsoft.com/de-de/library/cc722404(v=ws.11).aspx
+Das Windowsbetriebssystem beinhaltet zwei Kategorien für Protokolldateien: Windows Protokolle und Dienst- und Anwendungsprotokolle. 
+Die Windowsprotokolle beinhalten Ereignisse, die durch das Betriebssystem protokolliert werden. Diese werden einer von fünf Logdateien zugeordnet: Anwendung, Sicherheit, Installation, System und Weitergeleitete Ereignisse.
+Das Anwendungsprotokoll beinhaltet Ereignisse, die von installierten Anwendungen protokolliert werden und etwa Fehler mit Bezug auf das Dateisystem signalisieren. Welche Ereignisse konkret protokolliert werden wird von den Entwicklern der Anwendung bestimmt. 
+Das Sicherheitsprotokoll beinhaltet Ereignisse bzgl. sicherheitsrelevanter Elemente wie z.B. Fehlern bei der Anmeldung eines Benutzers oder bzgl. der Ressourcenverwendung bei der Erstellung, Öffnung und Löschung von Objekten. Die Administratoren des Betriebssystems entscheiden, welche Ereignisse dieser Kategorie protokolliert werden. 
+Das Systemprotokoll enthält Ereignisse, die von Systemkomponenten des Betriebssystems protokolliert werden und das Setupprotokoll sichert Ereignisse, die bei der Installation von Anwendungen auftreten können.
+
+Die zweite Kategorie, Anwendungs- und Dienstprotokolle, beinhaltet Protokolle, deren Ereignisse im Kontext von einzelnen Programmen auftreten und keine systemweiten Auswirkungen haben. Diese Kategorie wird in vier Unterkategorien unterteilt: Verwaltung, Betrieb, Analyse und Debug. Verwaltungsprotokolle enthalten Ereignisse mit Problemen und vordefinierten Lösungspfaden für Administratoren. Betriebsprotokolle enthalten Ereignisse, deren Daten für die Analyse und Diagnose von auftretenden Problemen sowie für das Auslösen von installierten Werkzeugen oder Programmen genutzt werden können. Die Analyse- und Debugprotokolle sind standardmäßig deaktiviert und müssen zunächst aktiviert werden für die Verwendung. Dabei enthält das Analyseprotokoll Ereignisse zu Programmoperationen und Problemen, die nicht vom Benutzer behoben werden können, während das Debugprotokoll weitere Daten für Entwickler beinhaltet.
+
+%Beschreibung der Sicherheitslogdatei im Detail
+%Quelle: https://support.microsoft.com/en-us/help/977519/description-of-security-events-in-windows-7-and-in-windows-server-2008
+In der Logdatei "Sicherheit" konnten bei einer Untersuchung eines in der Produktion eingesetzten Windowsserver die mit Abstand größte Zahl an Ereignissen festgestellt werden. Im Sicherheitsprotokoll werden Ereignisse festgehalten, die verschiedene Komponenten bzgl. der Sicherung des lokalen Servers oder Computers als auch Zugriffe auf geteilte Resourcen innerhalb einer Windowsdomäne oder mehrere Domänen betreffen. Im Detail können diese Kategorien einen guten Einblick über die Merkmale der überwachten Elemente durch das Betriebssystems geben:
+\begin{itemize}
+- Account Logon
+- Account Management
+- Detailed Tracking
+- DS (Directory Service) Access
+- Logon/Logoff
+- Object Access
+- Policy Change
+- Privilege Use
+- System
+\end{itemize}
+%Beschreibe jede Kategorie
+Grundsätzlich lassen sich die Unterkategorien bzw. Ereignisse in zwei Bereiche unterteilen: Domänen- bzw. Directory Service basierte Ereignisse und lokale Ereignisse. Erstere Ereignistypen beziehen sich auf den Zugang zu Domänen und allgemeine Zugriffs- und Rechteverwaltung sowie auf die technisch darunterliegenden Protokolle und Services. Lokale Ereignistypen beziehen sich auf lokale Ereignisse bzgl. des Zugangs zu dem Betriebsystem und die Benutzung von Privilegien und die damit verbundenen Sicherheitsrichtlinien.
+
+%DS
+Die Kategorie \glqq Account Logon\grqq bezieht sich nicht auf die Authentisierung eines Benutzers an einem Windowsbetriebssystem, sondern auf die Funktionalität des Kerberosservices. Kerberos ist ein verteilter Authentifizierungsdienst, der für die Anmeldung an einer Windowsdomäne verwendet wird.  Daher beziehen sich Ereignisse aus dieser Kategorie auf Operationen bzw. Eigenschaften des Kerberosprotokolls. Die verwandte Kategorie \glqq Account Management\grqq bezieht sich auf die Verwaltung von Distribution Groups (Verteilungsgruppen für E-Mail Services) und Security Groups (Zuordnung von Benutzerrechten und Zugriffsrechten auf geteilte Resourcen). Desweiteren enthält diese Kategorie auch Informationen zu der Erstellung von Accounts sowie Zugriffsversuchen auf Passworthashs und Anfragen an die Passwortrichtlinienschnittstelle. 
+Eine technische Kategorie des Verzeichnisdienstes wird durch \glqq DS Access\grqq gebildet. Diese Kategorie enthält Ereignisse bzgl. Änderungen, Zugriffen und Replikationen des Verzeichnisdienstes bzw. der im Verzeichnisdienst enthaltenen Daten.
+
+%Lokal
+\glqq Detailed Tracking\grqq weißt auf Ereignisse bzgl. der Erstellung und Vernichtung von Prozessen hin sowie Aktiviten bzgl. der Data Protection Schnittstelle \glqq DPAPI\grqq und Anfragen auf die RPC (Remote Procedure Call)-Schnittstelle.
+Die Kategorie \glqq Logon/Logoff\grqq kann als äquivalente lokale Kategorie gesehen werden, da diese Ereignisse bzgl. der Anmeldung/Abmeldung als lokaler Benutzer an einem Betriebssystem gesehen werden kann. Allerdings enthält diese Kategorie auch Ereignisse bzgl. der Nutzung des IPSec Protokolls und die Interaktion eines Benutzers mit einem Network Policy Server. 
+Die Kategorie \glqq Object Access\grqq beinhaltet Ereignisse bzgl. des Zugriffes und der Änderung auf systemrelevante Objekte dar. So sind Ereignisse bzgl. der Verbindung zur Windows Filtering Plattform, darunter Ereignisse der Windows Firewall. Die Windows Filtering Platform ist eine Sammlung aus Schnittstellen und Systemdiensten, die für die Erstellung von Programmen zur FIlterung und Modifikation von Netzwerkdatenverkehr genutzt werden kann. Die Windows Firewall basiert auf dieser Sammlung.
+%Quelle: https://msdn.microsoft.com/de-de/library/windows/desktop/aa366510(v=vs.85).aspx
+Desweiteren werden dieser Kategorie Ereignisse zugeordnet bzgl. Änderungen der Windows Registry Keys, des Component Object Models (COM+), Zugriffe auf das Dateisystem und geteilte Verzeichnisse sowie die Manipulation von Zugriffsoptionen auf Systemressourcen und Änderungen am Certification Service.
+Die Kategorie \glqq Policy Change\grqq beinhaltet Ereignisse, die mit der Änderungen von Richtlinien zusammenhängen. Die entsprechenden Richtlinien gehören zu den Bereichen Authentisierung, Authorisierung, Überwachung, Windows Filtering Platform sowie des MPSSVC (Teil der Windows Firewall, welcher vor nicht-autorisiertem Zugriff von Benutzern aus dem Internet oder einem Netzwerk schützt) und anderer Richtlinien (z.B. im Bezug auf kryptografische Operationen). %Quelle: https://technet.microsoft.com/de-de/library/cc722146(v=ws.10).aspx
+Die Kategorie \glqq Privilege Use\grqq beinhaltet Ereignisse zu der (nicht-)sensiblen Benutzung von Privilegien im Kontext des Betriebssystems. 
+Schlussendlich zeigen Ereignisse aus der Kategorie \glqq System\grqq Änderungen am (Sicherheits-)Zustand des Systems sowie der Sicherheitssubsysteme (Local Security Authority und Security Account Manager).
+
+%Kategorisierung der Quellen der Beispiellogs von produktiven Servern
+
+%Beispiele für andere Anwendungen
+Neben den fundamentalen Logdateien können weitere Logdateien von Applikation erstellt werden. Neben Microsoft-Produkten wie dem Webserver IIS, Microsoft Office oder der Benutzerverwaltung Active Directory können auch Logs von Microsoft-fernen Produkten wie z.B. einer Anti-Virensoftware oder proprietäre Netzwerkdienste durch die Applikationen zur Verfügung gestellt werden.
+\todoResearch{Loggt das Betriebssystem Elemente aus diesem Bereich? Wie funktioniert die Anbindung der Logdateien an das Betriebssystem?}
+
 \subsection{Linux}
 \subsection{Beispielapplikation}
 \subsection{Netzwerk}
