@@ -9,10 +9,10 @@ SIEM Systeme sind, vorallem in großen Unternehmensnetzwerken (siehe SANS Paper 
 % Schritt 2: Jede Log Datei auf einem System ansehen und Eventformate heraussuchen
 % Schritt 3: Events nach Typ kategorisieren
 % Schritt 4: 
-Die erste Frage für die Wahl des Analyseansatzes stellt sich sowohl in der gewählten Tiefe als auch in einer zielgerichteten Methodik. Das Ziel der Analyse ist es die sicherheitsrelevanten Infortmationsmenge zu erfassen. Der Begriff \glqq Sicherheitsrelevanz\grqq wird dazu für diese Thesis wie folgt definiert: Sicherheitsrelevante Informationen sind Informationen, die als \glqq Indicator of Compromise\grqq (IoC) dienen können. 
+Die erste Frage für die Wahl des Analyseansatzes stellt sich sowohl in der gewählten Tiefe als auch in einer zielgerichteten Methodik. Das Ziel der Analyse ist es die sicherheitsrelevanten Infortmationsmenge zu erfassen. Der Begriff \glqq Sicherheitsrelevanz\grqq  wird dazu für diese Thesis wie folgt definiert: Sicherheitsrelevante Informationen sind Informationen, die als \glqq Indicator of Compromise\grqq  (IoC) dienen können. 
 Ein IoC ist eine Information, die auf ein anomales Verhalten oder einen anomalen Zustand eines Netzwerkelementes schließen lässt. Um dieses Verhalten zu erkennen ergeben sich prinzipiell zwei Bereiche der Analyse: 1) Das Verhalten des Netzwerkelementes in sich, also der Zustand des Elements und Änderungen dieses Zustandes sowie 2) die Interaktion mit anderen Netzwerkelementen in Form des Austauschen von Nachrichten über die Netzwerkverbindung (vgl. Kaspersky Paper).
 Diese Beobachtung wird durch das Vorgehen in Unternehmen durch den „Incident Response Process“ gestützt. Dieser Prozess dient als Durchführungsplan eines Teams, das für die Aufklärung und Behebung von Indikatoren und Brüchen des Sicherheitszustandes eines Netzwerkes  
-zuständig ist. Der initiale Zustand dieses Plans ist die Überwachung der Netzwerkelemente und ihrer Kommunikation mit Hilfe von Detektions- und Analysesoftware (z.B. SIEM Systeme) und -hardware (z.B. \glqq Intrusion Detection Systems\grqq). Durch die Überwachung werden eine Vielzahl an Alarmen oder Sicherheitsereignissen produziert, die auf Fehler oder Anomalien im Netzwerk hinweisen. Werden die Informationen aus diesen Ereignissen als potentiell kritisch eingestuft, wird ein IoC an das Team ausgegeben, dass basierend auf Risiko und potentieller Schadensgröße weitere Untersuchungen einleitet. Bei diesen Untersuchungen wird der oder die IoC(s) als Ansatz genutzt. Ein IoC kann dabei auf Informationen im Payload oder Headern von Netzwerkpaketen als auch aus Logging Informationen eines Betriebssystems oder einer Überwachungssoftware auf einem Netzwerkelement beruhen. Basierend auf dem Ansatzpunkt können Informationen sowohl aus der Kommunikation als auch der Netzwerkelemente weitere Hinweise liefern um den potentiellen Sicherheitseinbruch einzugrenzen und schließlich zu identifizieren.
+zuständig ist. Der initiale Zustand dieses Plans ist die Überwachung der Netzwerkelemente und ihrer Kommunikation mit Hilfe von Detektions- und Analysesoftware (z.B. SIEM Systeme) und -hardware (z.B. \glqq Intrusion Detection Systems\grqq ). Durch die Überwachung werden eine Vielzahl an Alarmen oder Sicherheitsereignissen produziert, die auf Fehler oder Anomalien im Netzwerk hinweisen. Werden die Informationen aus diesen Ereignissen als potentiell kritisch eingestuft, wird ein IoC an das Team ausgegeben, dass basierend auf Risiko und potentieller Schadensgröße weitere Untersuchungen einleitet. Bei diesen Untersuchungen wird der oder die IoC(s) als Ansatz genutzt. Ein IoC kann dabei auf Informationen im Payload oder Headern von Netzwerkpaketen als auch aus Logging Informationen eines Betriebssystems oder einer Überwachungssoftware auf einem Netzwerkelement beruhen. Basierend auf dem Ansatzpunkt können Informationen sowohl aus der Kommunikation als auch der Netzwerkelemente weitere Hinweise liefern um den potentiellen Sicherheitseinbruch einzugrenzen und schließlich zu identifizieren.
 Aus diesem Grund ist es wichtig, beide Domänen zu untersuchen. Der Analyseansatz lehnt sich dabei an den Incident Response Prozess an. Zunächst wird der Zustand des Netzwerkes beschrieben und alle Netzwerkelemente sowie die potentiellen Kommunikationsschnittstellen erfasst. Darauf folgt die Untersuchung der Netzwerkelemente und ihrer Kommunikation in einer iterativen Vorgehensweise. Diese Vorgehensweise ermöglicht die schrittweise Vertiefung der Analyse  und soll als Ergebnis eine Übersicht pro Iterationsebene für beide Domänen erzielen. 
 Die Analyse der Netzwerkelemente beginnt daher zunächst mit der Einteilung der Elemente in verschiedene Typen. Dabei wird unterschieden zwischen Servern mit verschiedenen Betriebssystemtypen sowie Netzwerkgeräte (Switches, Router) und Sicherheitselemente (Firewalls, Intrusion Detection Systeme). Um die Informationsmenge zu kategorisieren wird jeder Elementtyp auf die Existenz von Logdateien untersucht und die Struktur der Ereignisse in den Logdateien beschrieben. Eine Sammlung der typischen Quellen wird hinzugefügt um einen Überblick über den Ursprung typischer Ereignisse zu erreichen.
 Für die Betrachtung der Kommunikation werden die verschiedenen Schnittstellen basierend auf den verwendeten Netzwerkprotokollen untersucht. Für die Klassifizierung wird basierend auf der Anwendung des OSI-Modells durchgeführt, welches als repräsentatives Kategorisierungsmodell verwendet wird. Diese Klassifizierung zeigt den allgemeinen Rahmen der erwarteten Informationsmenge pro Layer auf (vgl. TCP/IP Stack) und stellt eine Basis für die Analyse der verwendeten Felder der Protokollheader dar. 
@@ -34,14 +34,14 @@ Daraus folgt die weitere Struktur des Kapitels: Zunächst wird das definierte Mo
 \todoForm{Das Ziel noch mehr herausstellen,Grundlegende Gedanke hinter der Erstellung des Models}
 \todoForm{Einbinden, dass das Model auf der Basis von Netzwerkarchitekturen erstellt wurde} 
 Der Aufbau des Netzwerkes orientiert sich an typischen Elementen, die in einem Unternehmensnetzwerk zu finden sind. Dabei besteht die Notwendigkeit das Model in seiner Größe und Komplexität einzugrenzen um eine Analyse in sinnvollem Maße zu ermöglichen. 
-Die Architektur und Einteilung in verschiedene Netzwerkzonen ist dabei von üblichen Sicherheitszonen abgeleitet. Während die Positionierung der Elemente keine besondere Rolle spielt im Bezug auf die ermittelbaren Informationen pro Element ist jedoch anzumerken, dass auch diese Informationen, z.B. in Form der Auswertung von Netzwerkadressen, einem SIEM-System nützliche Informationen zur Verfügung stellen können. Die Architektur des Models beginnt an seinem \glqq Rand\grqq, dem Zugang zum WAN (Internet) über einen Gateway-Router. Dieser Router ermöglicht die Weiterleitung von Netzwerkpaketen in und aus der angrenzenden Netzwerkzone, der de-militarisierten Zone (DMZ). 
-In der DMZ sind für diese Model ein Apache Webserver auf der Basis des Betriebssystems \glqq CentOS\grqq und ein E-Mail Server, bestehend aus dem Windows Webserver \glqq Internet Information Service\grqq (IIS) und dem darüber liegenden E-Mail Server \glqq Microsoft Exchange\grqq. Diese Netzwerkelemente bieten die Möglichkeit Datenverkehr über die Protokolle HTTP und die Microsoft Schnittstelle MAPI (bestehend aus RPC \& HTTP Datenverkehr) zu untersuchen, sowie Informationen aus Log-Dateien sowohl von einem Linux-basierten Server als auch von einem Windows-basierten Server zu analysieren. Alle Elemente werden durch \glqq Managed Switches\grqq miteinander verbunden.
+Die Architektur und Einteilung in verschiedene Netzwerkzonen ist dabei von üblichen Sicherheitszonen abgeleitet. Während die Positionierung der Elemente keine besondere Rolle spielt im Bezug auf die ermittelbaren Informationen pro Element ist jedoch anzumerken, dass auch diese Informationen, z.B. in Form der Auswertung von Netzwerkadressen, einem SIEM-System nützliche Informationen zur Verfügung stellen können. Die Architektur des Models beginnt an seinem \glqq Rand\grqq , dem Zugang zum WAN (Internet) über einen Gateway-Router. Dieser Router ermöglicht die Weiterleitung von Netzwerkpaketen in und aus der angrenzenden Netzwerkzone, der de-militarisierten Zone (DMZ). 
+In der DMZ sind für diese Model ein Apache Webserver auf der Basis des Betriebssystems \glqq CentOS\grqq  und ein E-Mail Server, bestehend aus dem Windows Webserver \glqq Internet Information Service\grqq  (IIS) und dem darüber liegenden E-Mail Server \glqq Microsoft Exchange\grqq . Diese Netzwerkelemente bieten die Möglichkeit Datenverkehr über die Protokolle HTTP und die Microsoft Schnittstelle MAPI (bestehend aus RPC \& HTTP Datenverkehr) zu untersuchen, sowie Informationen aus Log-Dateien sowohl von einem Linux-basierten Server als auch von einem Windows-basierten Server zu analysieren. Alle Elemente werden durch \glqq Managed Switches\grqq  miteinander verbunden.
 \todoQuestion{Remote Access Server in Form von VPN, Protokolle? Traffic? Sinnvoll?}
 
 Die DMZ wird von der nächsten Zone, dem Extranet, durch eine Firewall überwacht, die eingehenden initiale Kommunikation blockiert. Firewalls gehören zu den Grundlagen der Sicherheit von Unternehmen und werden häufig platziert um Datenverkehr in und aus bestimmten Netzwerkzonen zu überwachen. Innerhalb der Netzwerkzone werden zwei Benutzer-PCs eingesetzt. Diese werden platziert um Abweichungen und andere Benutzerinteraktionen in die erhaltbare Informationsmenge zu integrieren. Die beiden Computer unterscheiden sich wie auch die Server der DMZ im Betriebssystem, sodass ein PC auf Basis von Windows und damit verbundener Benutzerverwaltung durch Active Directory enthalten ist, sowie ein PC mit einem Linux-basierten Betriebssystem. Zudem wird ein Netzwerkdrucker integriert.
 \todoQuestion{Gehören Printserver hier rein? Welche Zusatzinformationen bringt ein Printserver?}
 
-Als dritte Netzwerkzone wird als \glqq Restricted Area\grqq bezeichnet. Innerhalb dieser Netzwerkzone werden verschiedene Windows-basierte Server eingesetzt um die Funktionalitäten eines Unternehmensnetzwerk zu simulieren. Die verschiedenen Servertypen wurden ausgewählt um erhaltbare Informationen aus unterschiedlichen, typisch genutzten Netzwerkprotokollen aufzuzeigen. Dazu gehören: 
+Als dritte Netzwerkzone wird als \glqq Restricted Area\grqq  bezeichnet. Innerhalb dieser Netzwerkzone werden verschiedene Windows-basierte Server eingesetzt um die Funktionalitäten eines Unternehmensnetzwerk zu simulieren. Die verschiedenen Servertypen wurden ausgewählt um erhaltbare Informationen aus unterschiedlichen, typisch genutzten Netzwerkprotokollen aufzuzeigen. Dazu gehören: 
 \begin{itemize}
 \item ein Microsoft SQL Datenbankserver 
 \item ein Active Directory Domain Controller 
@@ -144,8 +144,8 @@ Die Logdateien sind in einem spezifischen Format geschrieben, sodass eine Anzahl
 \todoImage{Bild für Windowslog Eventfelder einfügen zur Verdeutlichung}
 %Quelle: https://technet.microsoft.com/de-de/library/cc765981(v=ws.11).aspx
 Diese Felder können durch die jeweilige Quelle und das Betriebssystem mit verfügbaren Daten versehen werden. Die Quelle gibt die Software(-komponente) oder die Komponente des Betriebssystem an, die das Ereignis protokolliert hat. Die zugehörige Ereignis-ID gibt den Ereignistypen an, der z.B. das erfolgreiche Starten eines spezifischen Dienstes darstellt. Weitere Identifikatoren geben spezifischere Informationen über den auslösenden Prozess und zugehörige Elemente an. 
-Jedes Ereignis wird zu einer bestimmten Kategorie zugeordnet, der Ebene. Die Ebene eines Ereignisses gibt den zugeordneten Schweregrad des Ereignisses an. Für alle Protokolldateien werden dafür die folgenden Ebenen zur Verfügung gestellt: Informationen, Warnung, Fehler und Kritisch. Ereignisse der Ebene \glqq Informationen\grqq enthalten Daten über Änderungen an Anwendungen oder Komponenten. Der erfolgreiche Start bzw. die erfolgreiche Beendigung eines Dienstes, sofern dieser nicht die Systemfunktionalität o.ä. gefährdet, seien hier als Beispiel genannt. Die Ebenen \glqq Warnung\grqq und \glqq Fehler\grqq enthalten Ereignisse, die das Auftreten eines Problems signalisieren. Der Ebene Warnung werden Ereignisse zugeordnet, die das Auftreten eines Problems anzeigen durch das ggf. ein Fehler ausgelöst oder ein Dienst beeinträchtigt werden könnte. Ein Beispiel ist die Verzögerung der Ausführung des Herunterfahrens des Betriebssystems durch einen Prozess, dessen Beendigung verzögert oder nicht durchgeführt werden kann. Der Ebene Fehler werden Ereignisse zugeordnet, die potentiell die Funktionalität außerhalb der protokollierenden Quelle beeinträchtigen können. Damit werden Ereignisse dieser Ebene als schwerer eingeordnet als Ereignisse der Ebene Warnung. Die letzte Ebene \glqq Kritisch\grqq umfasst Ereignisse, die Fehler signalisieren, jedoch nicht automatisch von dem Betriebssystem behoben werden können. 
-In Protokolldatei \glqq Sicherheit\grqq treten dazu noch zwei weitere Ebenen auf: \glqq Erfolgsüberwachung\grqq und \glqq Fehlerüberwachung\grqq . Diese Ebenen umfassen Ereignisse, die mit der Anwendung der Rechte des ausführenden Benutzers zusammenhängen. Ereignisse der Ebene Erfolgsüberwachung beinhalten die Dokumentation der erfolgreichen Anwendung der Rechte, Ereignisse der Ebene Fehlerüberwachung beinhalten Fehlermeldungen, die bei der Anwendung aufgetreten sind.
+Jedes Ereignis wird zu einer bestimmten Kategorie zugeordnet, der Ebene. Die Ebene eines Ereignisses gibt den zugeordneten Schweregrad des Ereignisses an. Für alle Protokolldateien werden dafür die folgenden Ebenen zur Verfügung gestellt: Informationen, Warnung, Fehler und Kritisch. Ereignisse der Ebene \glqq Informationen\grqq  enthalten Daten über Änderungen an Anwendungen oder Komponenten. Der erfolgreiche Start bzw. die erfolgreiche Beendigung eines Dienstes, sofern dieser nicht die Systemfunktionalität o.ä. gefährdet, seien hier als Beispiel genannt. Die Ebenen \glqq Warnung\grqq  und \glqq Fehler\grqq  enthalten Ereignisse, die das Auftreten eines Problems signalisieren. Der Ebene Warnung werden Ereignisse zugeordnet, die das Auftreten eines Problems anzeigen durch das ggf. ein Fehler ausgelöst oder ein Dienst beeinträchtigt werden könnte. Ein Beispiel ist die Verzögerung der Ausführung des Herunterfahrens des Betriebssystems durch einen Prozess, dessen Beendigung verzögert oder nicht durchgeführt werden kann. Der Ebene Fehler werden Ereignisse zugeordnet, die potentiell die Funktionalität außerhalb der protokollierenden Quelle beeinträchtigen können. Damit werden Ereignisse dieser Ebene als schwerer eingeordnet als Ereignisse der Ebene Warnung. Die letzte Ebene \glqq Kritisch\grqq   umfasst Ereignisse, die Fehler signalisieren, jedoch nicht automatisch von dem Betriebssystem behoben werden können. 
+In Protokolldatei \glqq Sicherheit\grqq  treten dazu noch zwei weitere Ebenen auf: \glqq Erfolgsüberwachung\grqq  und \glqq Fehlerüberwachung\grqq . Diese Ebenen umfassen Ereignisse, die mit der Anwendung der Rechte des ausführenden Benutzers zusammenhängen. Ereignisse der Ebene Erfolgsüberwachung beinhalten die Dokumentation der erfolgreichen Anwendung der Rechte, Ereignisse der Ebene Fehlerüberwachung beinhalten Fehlermeldungen, die bei der Anwendung aufgetreten sind.
 
 %Quelle: https://support.microsoft.com/en-us/help/942910/-error--warning--or-critical-events-are-logged-in-the-diagnostic-perfo
 Ereignisse der gleichen Quelle und der gleichen Event-ID können abhängig vom Schweregrad in den verschiedenen Ebenen eingeordnet werden.
@@ -164,32 +164,32 @@ Die zweite Kategorie, Anwendungs- und Dienstprotokolle, beinhaltet Protokolle, d
 %Quelle: https://support.microsoft.com/en-us/help/977519/description-of-security-events-in-windows-7-and-in-windows-server-2008
 In der Logdatei "Sicherheit" konnten bei einer Untersuchung eines in der Produktion eingesetzten Windowsserver die mit Abstand größte Zahl an Ereignissen festgestellt werden. Im Sicherheitsprotokoll werden Ereignisse festgehalten, die verschiedene Komponenten bzgl. der Sicherung des lokalen Servers oder Computers als auch Zugriffe auf geteilte Resourcen innerhalb einer Windowsdomäne oder mehrere Domänen betreffen. Im Detail können diese Kategorien einen guten Einblick über die Merkmale der überwachten Elemente durch das Betriebssystems geben:
 \begin{itemize}
-- Account Logon
-- Account Management
-- Detailed Tracking
-- DS (Directory Service) Access
-- Logon/Logoff
-- Object Access
-- Policy Change
-- Privilege Use
-- System
+\item Account Logon
+\item Account Management
+\item Detailed Tracking
+\item DS (Directory Service) Access
+\item Logon/Logoff
+\item Object Access
+\item Policy Change
+\item Privilege Use
+\item System
 \end{itemize}
 %Beschreibe jede Kategorie
 Grundsätzlich lassen sich die Unterkategorien bzw. Ereignisse in zwei Bereiche unterteilen: Domänen- bzw. Directory Service basierte Ereignisse und lokale Ereignisse. Erstere Ereignistypen beziehen sich auf den Zugang zu Domänen und allgemeine Zugriffs- und Rechteverwaltung sowie auf die technisch darunterliegenden Protokolle und Services. Lokale Ereignistypen beziehen sich auf lokale Ereignisse bzgl. des Zugangs zu dem Betriebsystem und die Benutzung von Privilegien und die damit verbundenen Sicherheitsrichtlinien.
 
 %DS
-Die Kategorie \glqq Account Logon\grqq bezieht sich nicht auf die Authentisierung eines Benutzers an einem Windowsbetriebssystem, sondern auf die Funktionalität des Kerberosservices. Kerberos ist ein verteilter Authentifizierungsdienst, der für die Anmeldung an einer Windowsdomäne verwendet wird.  Daher beziehen sich Ereignisse aus dieser Kategorie auf Operationen bzw. Eigenschaften des Kerberosprotokolls. Die verwandte Kategorie \glqq Account Management\grqq bezieht sich auf die Verwaltung von Distribution Groups (Verteilungsgruppen für E-Mail Services) und Security Groups (Zuordnung von Benutzerrechten und Zugriffsrechten auf geteilte Resourcen). Desweiteren enthält diese Kategorie auch Informationen zu der Erstellung von Accounts sowie Zugriffsversuchen auf Passworthashs und Anfragen an die Passwortrichtlinienschnittstelle. 
-Eine technische Kategorie des Verzeichnisdienstes wird durch \glqq DS Access\grqq gebildet. Diese Kategorie enthält Ereignisse bzgl. Änderungen, Zugriffen und Replikationen des Verzeichnisdienstes bzw. der im Verzeichnisdienst enthaltenen Daten.
+Die Kategorie \glqq Account Logon\grqq  bezieht sich nicht auf die Authentisierung eines Benutzers an einem Windowsbetriebssystem, sondern auf die Funktionalität des Kerberosservices. Kerberos ist ein verteilter Authentifizierungsdienst, der für die Anmeldung an einer Windowsdomäne verwendet wird.  Daher beziehen sich Ereignisse aus dieser Kategorie auf Operationen bzw. Eigenschaften des Kerberosprotokolls. Die verwandte Kategorie \glqq Account Management\grqq  bezieht sich auf die Verwaltung von Distribution Groups (Verteilungsgruppen für E-Mail Services) und Security Groups (Zuordnung von Benutzerrechten und Zugriffsrechten auf geteilte Resourcen). Desweiteren enthält diese Kategorie auch Informationen zu der Erstellung von Accounts sowie Zugriffsversuchen auf Passworthashs und Anfragen an die Passwortrichtlinienschnittstelle. 
+Eine technische Kategorie des Verzeichnisdienstes wird durch \glqq DS Access\grqq   gebildet. Diese Kategorie enthält Ereignisse bzgl. Änderungen, Zugriffen und Replikationen des Verzeichnisdienstes bzw. der im Verzeichnisdienst enthaltenen Daten.
 
 %Lokal
-\glqq Detailed Tracking\grqq weißt auf Ereignisse bzgl. der Erstellung und Vernichtung von Prozessen hin sowie Aktiviten bzgl. der Data Protection Schnittstelle \glqq DPAPI\grqq und Anfragen auf die RPC (Remote Procedure Call)-Schnittstelle.
-Die Kategorie \glqq Logon/Logoff\grqq kann als äquivalente lokale Kategorie gesehen werden, da diese Ereignisse bzgl. der Anmeldung/Abmeldung als lokaler Benutzer an einem Betriebssystem gesehen werden kann. Allerdings enthält diese Kategorie auch Ereignisse bzgl. der Nutzung des IPSec Protokolls und die Interaktion eines Benutzers mit einem Network Policy Server. 
-Die Kategorie \glqq Object Access\grqq beinhaltet Ereignisse bzgl. des Zugriffes und der Änderung auf systemrelevante Objekte dar. So sind Ereignisse bzgl. der Verbindung zur Windows Filtering Plattform, darunter Ereignisse der Windows Firewall. Die Windows Filtering Platform ist eine Sammlung aus Schnittstellen und Systemdiensten, die für die Erstellung von Programmen zur FIlterung und Modifikation von Netzwerkdatenverkehr genutzt werden kann. Die Windows Firewall basiert auf dieser Sammlung.
+\glqq Detailed Tracking\grqq  weißt auf Ereignisse bzgl. der Erstellung und Vernichtung von Prozessen hin sowie Aktiviten bzgl. der Data Protection Schnittstelle \glqq DPAPI\grqq  und Anfragen auf die RPC (Remote Procedure Call)-Schnittstelle.
+Die Kategorie \glqq Logon/Logoff\grqq  kann als äquivalente lokale Kategorie gesehen werden, da diese Ereignisse bzgl. der Anmeldung/Abmeldung als lokaler Benutzer an einem Betriebssystem gesehen werden kann. Allerdings enthält diese Kategorie auch Ereignisse bzgl. der Nutzung des IPSec Protokolls und die Interaktion eines Benutzers mit einem Network Policy Server. 
+Die Kategorie \glqq Object Access\grqq  beinhaltet Ereignisse bzgl. des Zugriffes und der Änderung auf systemrelevante Objekte dar. So sind Ereignisse bzgl. der Verbindung zur Windows Filtering Plattform, darunter Ereignisse der Windows Firewall. Die Windows Filtering Platform ist eine Sammlung aus Schnittstellen und Systemdiensten, die für die Erstellung von Programmen zur FIlterung und Modifikation von Netzwerkdatenverkehr genutzt werden kann. Die Windows Firewall basiert auf dieser Sammlung.
 %Quelle: https://msdn.microsoft.com/de-de/library/windows/desktop/aa366510(v=vs.85).aspx
 Desweiteren werden dieser Kategorie Ereignisse zugeordnet bzgl. Änderungen der Windows Registry Keys, des Component Object Models (COM+), Zugriffe auf das Dateisystem und geteilte Verzeichnisse sowie die Manipulation von Zugriffsoptionen auf Systemressourcen und Änderungen am Certification Service.
-Die Kategorie \glqq Policy Change\grqq beinhaltet Ereignisse, die mit der Änderungen von Richtlinien zusammenhängen. Die entsprechenden Richtlinien gehören zu den Bereichen Authentisierung, Authorisierung, Überwachung, Windows Filtering Platform sowie des MPSSVC (Teil der Windows Firewall, welcher vor nicht-autorisiertem Zugriff von Benutzern aus dem Internet oder einem Netzwerk schützt) und anderer Richtlinien (z.B. im Bezug auf kryptografische Operationen). %Quelle: https://technet.microsoft.com/de-de/library/cc722146(v=ws.10).aspx
-Die Kategorie \glqq Privilege Use\grqq beinhaltet Ereignisse zu der (nicht-)sensiblen Benutzung von Privilegien im Kontext des Betriebssystems. 
-Schlussendlich zeigen Ereignisse aus der Kategorie \glqq System\grqq Änderungen am (Sicherheits-)Zustand des Systems sowie der Sicherheitssubsysteme (Local Security Authority und Security Account Manager).
+Die Kategorie \glqq Policy Change\grqq  beinhaltet Ereignisse, die mit der Änderungen von Richtlinien zusammenhängen. Die entsprechenden Richtlinien gehören zu den Bereichen Authentisierung, Authorisierung, Überwachung, Windows Filtering Platform sowie des MPSSVC (Teil der Windows Firewall, welcher vor nicht-autorisiertem Zugriff von Benutzern aus dem Internet oder einem Netzwerk schützt) und anderer Richtlinien (z.B. im Bezug auf kryptografische Operationen). %Quelle: https://technet.microsoft.com/de-de/library/cc722146(v=ws.10).aspx
+Die Kategorie \glqq Privilege Use\grqq  beinhaltet Ereignisse zu der (nicht-)sensiblen Benutzung von Privilegien im Kontext des Betriebssystems. 
+Schlussendlich zeigen Ereignisse aus der Kategorie \glqq System\grqq  Änderungen am (Sicherheits-)Zustand des Systems sowie der Sicherheitssubsysteme (Local Security Authority und Security Account Manager).
 
 %Kategorisierung der Quellen der Beispiellogs von produktiven Servern
 Ereignisse der genannten Quellen können auch, abhängig von der ID, also dem Ereignistypen, in anderen Protokollen wie etwa dem Anwendungsprotokoll oder dem Systemprotokoll aufgeführt werden.
@@ -200,6 +200,73 @@ Neben den fundamentalen Logdateien können weitere Logdateien von Applikation er
 \todoResearch{Loggt das Betriebssystem Elemente aus diesem Bereich? Wie funktioniert die Anbindung der Logdateien an das Betriebssystem?}
 
 \subsection{Linux}
+Für die Extraktion der Informationsmenge aus einem Linuxsystem wird die gleiche analytische Basis wie für das Windowsbetriebssystem vorausgesetzt. Die Betriebssysteme unterscheiden sich von ihrem Aufbau und ihren Mechanismen teilweise deutlich, jedoch lässt sich der Grundsatz ähnlich ableiten. Das Ziel ist es alle verfügbaren Informationen zu erhalten, die bei der Ausführung des Systems entstehen. Dies schließt die Analyse von Protokollen ein, sowie die Überwachung der Ausführung von Diensten (Services) und die Ausführung von (System-)Prozessen.
+Im Bezug auf Linux sollen daher die vorhanden Protokollen untersucht werden sowie die grundlegenden Elemente wie zugehörige Informationen zu Services und Informationen über die Ausführung von Befehlen, speziell mit erweiterten Rechten (sudo), untersucht werden.
+
+%Logfiles
+Bei Linux Betriebssystemen wird zwischen verschiedenen Distributionen unterschieden. Im Bezug auf Log-Dateien wird in der Literatur bzgl. der Namensgebung zwischen Debian-basierten Distributionen wie etwa Ubuntu und CentOS/RedHat unterschieden. 
+%Quelle https://www.eurovps.com/blog/important-linux-log-files-you-must-be-monitoring/
+In Linux existieren vier typische Kategorien für Log-Dateien:
+\begin{itemize}
+\item Application Logs
+\item Event Logs
+\item Service Logs
+\item System Logs
+\end{itemize}
+
+%Syslogd
+%Quelle1: https://www.thegeekdiary.com/centos-redhat-beginners-guide-to-log-file-administration/
+%Quelle2: http://www.linux-community.de/Community/Fragen/HOWTO-linux-logfiles
+Unter Linux existiert wird das Protokollieren von Systemmeldungen durch \glqq syslogd\grqq  übernommen, den system' logging daemon (mittlerweile auf manchen Distributionden durch \glqq rsyslogd\grqq  ersetzt), sowie durch \glqq klogd\grqq  für Kernelmeldungen. Diese beiden Dienste schreiben Meldungen in Log-Dateien, die sich in dem Unterverzeichnis \glqq syslog\grqq  (Debian-basiert / Ubuntu) bzw. \glqq messages\grqq  (CentOS / RedHat) des Standardverzeichnis für Log-Dateien befinden (/var/log/). Dabei werden die Meldungen als Ereignisse durch Regeln den verschiedenen Log-Dateien zugeordnet, abhängig von ihrer \glqq Facility\grqq  sowie ihrer Priorität. 
+
+Für rsyslogd bestehen die folgenden Facilities:
+\begin{itemize}
+\item auth/authpriv: Security/authorization messages (private)
+\item cron: Clock daemon (crond \& atd)
+\item Daemon Messages from system daemons
+\item kern: Kernel messages
+\item local0-local7: Reserved for local use
+\item lpr: line printer subsystem
+\item mail: Messages from mail daemons
+\item news: USENET news subsystem
+\item syslog: Messages generated internally by system log daemon
+\item User: Generic user-level messages
+\item UUCP: UUCP subsystem
+\end{itemize}
+
+Für jedes Ereignis werden, ähnlich der Ebene für Windowslogs, Prioritäten vergeben:
+\begin{itemize}
+\item emerg: System is unusable
+\item Alert: Action must be taken immediately
+\item crit: critical conditions
+\item err: error conditions
+\item warning: Warning conditions
+\item notice: normal but significant importance
+\item info: informational messages
+\item debug: debugging messages
+\end{itemize}
+
+Basierend auf diesen Parametern werden die Ereignisse in die Log-Dateien geschrieben, deren Namen auf diesen Parametern basieren (z.B. \glqq mail.info\grqq ).
+
+%Logfiles
+\todoResearch{Beschreibe die unterschiedlichen Logformate}
+%Quelle: https://www.loggly.com/ultimate-guide/linux-logging-basics/
+Neben den Log-Dateien des syslog Verzeichnisses gibt es noch weitere wichtige Log-Dateien. So beinhaltet die Log-Datei \glqq auth.log\grqq  (Debian) bzw. \glqq secure\grqq  (CentOS / RedHat) Ereignisse über erfolgreiche oder fehlerhafte Logins und die verwendeten Authentifizierungsmethoden. Die Log-Datei \glqq kern\grqq  enthält Meldungen über Fehler sowie Warnungen, die vom Kernel gemeldet wurden. In der Datei \glqq cron\grqq  werden Ereignisse gespeichert, die durch die Cron-Komponente des Linuxbetriebssystem protokolliert werden.
+
+Abhängig von der Distribution existieren noch weitere Log-Dateien. 
+\todoForm{Fasse die Liste zusammen bzgl. der Log-Files die man auf jeden Fall überwachen sollte (minimum)}
+%Quelle: https://www.eurovps.com/blog/important-linux-log-files-you-must-be-monitoring/
+
+\todoForm{Beschreibe Ubuntu und CentOS}
+%Siehe dazu Quellen:
+%Ubuntu:  https://wiki.ubuntuusers.de/Logdateien/
+%CentOS?: https://kerneltalks.com/troubleshooting/11-log-files-you-should-see-on-your-linux-system/
+
+%Linux Auditing Framework als Beispiel um die Erweiterung der Logging Fähigkeiten zu zeigen
+%Quelle 1: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/security_guide/chap-system_auditing
+%Quelle 2: https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-auditing-system-on-centos-7
+\todoForm{Beschreibe das Linux Auditing Framework um einen Überblick zu geben, wie Linux Auditing funktioniert und was überwacht wird}
+
 \subsection{Beispielapplikation}
 \subsection{Netzwerk}
 \section{Analyse im Bezug auf Angriffsvektoren}
