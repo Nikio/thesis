@@ -9,17 +9,31 @@ SIEM Systeme sind, vorallem in großen Unternehmensnetzwerken (siehe SANS Paper 
 % Schritt 2: Jede Log Datei auf einem System ansehen und Eventformate heraussuchen
 % Schritt 3: Events nach Typ kategorisieren
 % Schritt 4: 
-Die erste Frage für die Wahl des Analyseansatzes stellt sich sowohl in der gewählten Tiefe als auch in einer zielgerichteten Methodik. Das Ziel der Analyse ist es die sicherheitsrelevanten Infortmationsmenge zu erfassen. Der Begriff \glqq Sicherheitsrelevanz\grqq  wird dazu für diese Thesis wie folgt definiert: Sicherheitsrelevante Informationen sind Informationen, die als \glqq Indicator of Compromise\grqq  (IoC) dienen können. 
-Ein IoC ist eine Information, die auf ein anomales Verhalten oder einen anomalen Zustand eines Netzwerkelementes schließen lässt. Um dieses Verhalten zu erkennen ergeben sich prinzipiell zwei Bereiche der Analyse: 1) Das Verhalten des Netzwerkelementes in sich, also der Zustand des Elements und Änderungen dieses Zustandes sowie 2) die Interaktion mit anderen Netzwerkelementen in Form des Austauschen von Nachrichten über die Netzwerkverbindung (vgl. Kaspersky Paper).
-Diese Beobachtung wird durch das Vorgehen in Unternehmen durch den „Incident Response Process“ gestützt. Dieser Prozess dient als Durchführungsplan eines Teams, das für die Aufklärung und Behebung von Indikatoren und Brüchen des Sicherheitszustandes eines Netzwerkes  
-zuständig ist. Der initiale Zustand dieses Plans ist die Überwachung der Netzwerkelemente und ihrer Kommunikation mit Hilfe von Detektions- und Analysesoftware (z.B. SIEM Systeme) und -hardware (z.B. \glqq Intrusion Detection Systems\grqq ). Durch die Überwachung werden eine Vielzahl an Alarmen oder Sicherheitsereignissen produziert, die auf Fehler oder Anomalien im Netzwerk hinweisen. Werden die Informationen aus diesen Ereignissen als potentiell kritisch eingestuft, wird ein IoC an das Team ausgegeben, dass basierend auf Risiko und potentieller Schadensgröße weitere Untersuchungen einleitet. Bei diesen Untersuchungen wird der oder die IoC(s) als Ansatz genutzt. Ein IoC kann dabei auf Informationen im Payload oder Headern von Netzwerkpaketen als auch aus Logging Informationen eines Betriebssystems oder einer Überwachungssoftware auf einem Netzwerkelement beruhen. Basierend auf dem Ansatzpunkt können Informationen sowohl aus der Kommunikation als auch der Netzwerkelemente weitere Hinweise liefern um den potentiellen Sicherheitseinbruch einzugrenzen und schließlich zu identifizieren.
+
+%Ziel der Analyse
+Die erste Frage für die Wahl des Analyseansatzes stellt sich sowohl in der gewählten Tiefe als auch in einer zielgerichteten Methodik. Das Ziel der Analyse ist es die sicherheitsrelevanten Infortmationsmenge zu erfassen. Informationen werden als sicherheitsrelevant betrachtet, wenn diese Informationen genutzt werden können um die Nutzung eines bestimmten Angriffsvektors erkennen zu können. Da Angriffsvektoren sehr zahlreich und spezifisch für ein bestimmtes System oder eine Applikation sein können, ist eine allumfassende Analyse aller Angriffsvektoren nicht möglich. Deshalb werden in dieser Analyse vereinfachte, repräsentative Beispiele verwendet um eine Einschätzung der möglichen Informationsmenge zu ermöglichen. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=175mm]{Zeichnungen/Analyseansatz.png}
+\caption{Analysestruktur (Placeholder)}
+\label{fig:Analysestruktur (Placeholder)}
+\end{figure}
+
+%Definition "IoC"
+Bei der Erkennung von Angriffsszenarien spielen erste Anzeichen, die potentiell auf einen Angriff hindeuten eine tragende Rolle. Informationen, die zu solchen Anzeichen ausgewertet werden, werden als \glqq Indicator of Compromise\grqq  (IoC) bezeichnet. Ein IoC ist eine Information, die auf ein anomales Verhalten oder einen anomalen Zustand eines Netzwerkelementes schließen lässt. Um dieses Verhalten zu erkennen ergeben sich prinzipiell zwei Bereiche der Analyse: 1) Das Verhalten des Netzwerkelementes in sich, also der Zustand des Elements und Änderungen dieses Zustandes sowie 2) die Interaktion mit anderen Netzwerkelementen in Form des Austauschen von Nachrichten über die Netzwerkverbindung (vgl. Kaspersky Paper). 
+Diese Beobachtung wird durch das Vorgehen in Unternehmen durch den „Incident Response Process“ gestützt. Dieser Prozess dient als Durchführungsplan eines Teams, das für die Aufklärung und Behebung von Indikatoren und Brüchen des Sicherheitszustandes eines Netzwerkes zuständig ist. 
+
+%Beschreibung von Incident Response
+Der initiale Zustand dieses Plans ist die Überwachung der Netzwerkelemente und ihrer Kommunikation mit Hilfe von Detektions- und Analysesoftware (z.B. SIEM Systeme) und -hardware (z.B. \glqq Intrusion Detection Systems\grqq ). Durch die Überwachung werden eine Vielzahl an Alarmen oder Sicherheitsereignissen produziert, die auf Fehler oder Anomalien im Netzwerk hinweisen. Werden diese Informationen aus diesen Ereignissen als potentiell kritisch eingestuft, wird ein IoC an das Team ausgegeben, dass basierend auf Risiko und potentieller Schadensgröße weitere Untersuchungen einleitet. Bei diesen Untersuchungen wird der oder die IoC(s) als Ansatz genutzt. Ein IoC kann dabei auf Informationen im Payload oder Headern von Netzwerkpaketen als auch aus Logging Informationen eines Betriebssystems oder einer Überwachungssoftware auf einem Netzwerkelement beruhen. Basierend auf dem Ansatzpunkt können Informationen sowohl aus der Kommunikation als auch der Netzwerkelemente weitere Hinweise liefern um den potentiellen Sicherheitseinbruch einzugrenzen und schließlich zu identifizieren.
 Aus diesem Grund ist es wichtig, beide Domänen zu untersuchen. Der Analyseansatz lehnt sich dabei an den Incident Response Prozess an. Zunächst wird der Zustand des Netzwerkes beschrieben und alle Netzwerkelemente sowie die potentiellen Kommunikationsschnittstellen erfasst. Darauf folgt die Untersuchung der Netzwerkelemente und ihrer Kommunikation in einer iterativen Vorgehensweise. Diese Vorgehensweise ermöglicht die schrittweise Vertiefung der Analyse  und soll als Ergebnis eine Übersicht pro Iterationsebene für beide Domänen erzielen. 
 Die Analyse der Netzwerkelemente beginnt daher zunächst mit der Einteilung der Elemente in verschiedene Typen. Dabei wird unterschieden zwischen Servern mit verschiedenen Betriebssystemtypen sowie Netzwerkgeräte (Switches, Router) und Sicherheitselemente (Firewalls, Intrusion Detection Systeme). Um die Informationsmenge zu kategorisieren wird jeder Elementtyp auf die Existenz von Logdateien untersucht und die Struktur der Ereignisse in den Logdateien beschrieben. Eine Sammlung der typischen Quellen wird hinzugefügt um einen Überblick über den Ursprung typischer Ereignisse zu erreichen.
 Für die Betrachtung der Kommunikation werden die verschiedenen Schnittstellen basierend auf den verwendeten Netzwerkprotokollen untersucht. Für die Klassifizierung wird basierend auf der Anwendung des OSI-Modells durchgeführt, welches als repräsentatives Kategorisierungsmodell verwendet wird. Diese Klassifizierung zeigt den allgemeinen Rahmen der erwarteten Informationsmenge pro Layer auf (vgl. TCP/IP Stack) und stellt eine Basis für die Analyse der verwendeten Felder der Protokollheader dar. 
 
-Daraus folgt die weitere Struktur des Kapitels: Zunächst wird das definierte Model beschrieben, woraufhin zunächst die Netzwerkelemente und daraufhin die Netzwerkprotokolle betrachtet werden.
+%Beschreibung der eigenen Durchführung
+Basierend auf diesen Praktiken ergibt sich die Durchführung der Analyse: Zunächst wird das benutzte Model und dessen Komponenten beschrieben. Das Ziel der Beschreibung der Komponenten ist eine grobe Klassifizierung der verfügbaren Informationsquellen der Komponente. Darauf folgend werden die betrachteten Angriffsszenarien beschrieben und die Informationsquellen der Komponenten für das jeweilige Angriffsszenario bewertet. Zu diesem Zweck wird beschrieben, welche Informationen pro Schritt des Angriffsszenarios als potentielle Indikatoren dienen könnten und ein Abgleich mit der kategorischen Verfügbarkeit der Daten, aus denen diese Informationen gewonnen werden können.
 
-\todoQuestion{Sollen Angriffsvektoren /-szenarien hier mit eingepflegt werden oder im Vergleich integriert werden?}
+
 
 \section{Beschreibung der Unternehmensarchitektur (Model)}
 
@@ -31,15 +45,12 @@ Daraus folgt die weitere Struktur des Kapitels: Zunächst wird das definierte Mo
 %Architekturidee:
 %Router <--> Firewall <--> DMZ (Webserver mit Webservice) <--> Firewall <--> Intranet (User PC) <--> Firewall <--> Restricted Zone (Database Server & SIEM)
 
-\todoForm{Das Ziel noch mehr herausstellen,Grundlegende Gedanke hinter der Erstellung des Models}
-\todoForm{Einbinden, dass das Model auf der Basis von Netzwerkarchitekturen erstellt wurde} 
-Der Aufbau des Netzwerkes orientiert sich an typischen Elementen, die in einem Unternehmensnetzwerk zu finden sind. Dabei besteht die Notwendigkeit das Model in seiner Größe und Komplexität einzugrenzen um eine Analyse in sinnvollem Maße zu ermöglichen. 
+Das Ziel des Modelles ist es eine repräsentative, vereinfachte Darstellung eines Unternehmensnetzwerkes mit typischen Komponenten für den Betrieb darzustellen. Der Aufbau des Netzwerkes orientiert sich an typischen Elementen, die in einem Unternehmensnetzwerk zu finden sind. Dabei besteht die Notwendigkeit das Model in seiner Größe und Komplexität einzugrenzen um eine Analyse in sinnvollem Maße zu ermöglichen, gleichzeitig aber ein möglichst vollständiges Bild erhalten zu können.
+
 Die Architektur und Einteilung in verschiedene Netzwerkzonen ist dabei von üblichen Sicherheitszonen abgeleitet. Während die Positionierung der Elemente keine besondere Rolle spielt im Bezug auf die ermittelbaren Informationen pro Element ist jedoch anzumerken, dass auch diese Informationen, z.B. in Form der Auswertung von Netzwerkadressen, einem SIEM-System nützliche Informationen zur Verfügung stellen können. Die Architektur des Models beginnt an seinem \glqq Rand\grqq , dem Zugang zum WAN (Internet) über einen Gateway-Router. Dieser Router ermöglicht die Weiterleitung von Netzwerkpaketen in und aus der angrenzenden Netzwerkzone, der de-militarisierten Zone (DMZ). 
 In der DMZ sind für diese Model ein Apache Webserver auf der Basis des Betriebssystems \glqq CentOS\grqq  und ein E-Mail Server, bestehend aus dem Windows Webserver \glqq Internet Information Service\grqq  (IIS) und dem darüber liegenden E-Mail Server \glqq Microsoft Exchange\grqq . Diese Netzwerkelemente bieten die Möglichkeit Datenverkehr über die Protokolle HTTP und die Microsoft Schnittstelle MAPI (bestehend aus RPC \& HTTP Datenverkehr) zu untersuchen, sowie Informationen aus Log-Dateien sowohl von einem Linux-basierten Server als auch von einem Windows-basierten Server zu analysieren. Alle Elemente werden durch \glqq Managed Switches\grqq  miteinander verbunden.
-\todoQuestion{Remote Access Server in Form von VPN, Protokolle? Traffic? Sinnvoll?}
 
 Die DMZ wird von der nächsten Zone, dem Extranet, durch eine Firewall überwacht, die eingehenden initiale Kommunikation blockiert. Firewalls gehören zu den Grundlagen der Sicherheit von Unternehmen und werden häufig platziert um Datenverkehr in und aus bestimmten Netzwerkzonen zu überwachen. Innerhalb der Netzwerkzone werden zwei Benutzer-PCs eingesetzt. Diese werden platziert um Abweichungen und andere Benutzerinteraktionen in die erhaltbare Informationsmenge zu integrieren. Die beiden Computer unterscheiden sich wie auch die Server der DMZ im Betriebssystem, sodass ein PC auf Basis von Windows und damit verbundener Benutzerverwaltung durch Active Directory enthalten ist, sowie ein PC mit einem Linux-basierten Betriebssystem. Zudem wird ein Netzwerkdrucker integriert.
-\todoQuestion{Gehören Printserver hier rein? Welche Zusatzinformationen bringt ein Printserver?}
 
 Als dritte Netzwerkzone wird als \glqq Restricted Area\grqq  bezeichnet. Innerhalb dieser Netzwerkzone werden verschiedene Windows-basierte Server eingesetzt um die Funktionalitäten eines Unternehmensnetzwerk zu simulieren. Die verschiedenen Servertypen wurden ausgewählt um erhaltbare Informationen aus unterschiedlichen, typisch genutzten Netzwerkprotokollen aufzuzeigen. Dazu gehören: 
 \begin{itemize}
@@ -68,62 +79,10 @@ Kommunikationsschnittstellen:
 
 Die Betrachtung der Informationen von den Netzwerkelementen und der Kommunikation zwischen den Elementen ergibt das Gesamtbild der ermittelbaren Informationsmenge in diesem Model. Die folgenden Schritte betrachten beide Teile für die jeweils zu untersuchenden Elemente.
 
-\subsection{Systeme}
-
-%Frage: Warum lasse ich Elemente wie z.B. eine zentrale Benutzerverwaltung raus? Ist das nicht eigentlich relevant?
-%Antwort: Die zentrale Frage hier ist: Welche Daten bekomme ich, im Bezug auf den normalen PC, aus einer Benutzerverwaltung wie z.B. einem Active Directory, die ich nicht aus einem Windowssystem bekomme?
-%Um diese Frage zu beantworten müsste ich wissen nach welchen Informationen ich suche im Bezug auf die Benutzerverwaltung?
-%Brainstorming: Login/Logoff von Benutzern (beide), Berechtigungen des Benutzers (beide), Zertifizierung? (nur AD), 
-%Zentrale Frage des IAMs: Wer (Login) hat was (Lokale Prozessevents, Netzwerkdaten) wann (Timestamps, generell) wo (Kombination der Elemente) wie (Kombination der Elemente) gemacht?
-%Spezifizierte Frage: Welche Kontextinformationen bekomme ich von einer zentralen Benutzerverwaltung, die ich nicht von einem lokalen System bekomme?
-%Ansatz: Erstmal Windows anschauen, dann ggf. nach AD suchen
-%Temporäres Resultat: AD erstmal weglassen, später einbauen
-
-
-%Frage: Brauche ich Remote-Access?
-
-%\begin{itemize}
-%\item Router, Rolle: Zugang zum WAN
-%\item Switch, Rolle: Verbindungen zwischen den Elementen herstellen (Router <-> Switch <-> Firewall...)
-%\item Firewall, Rolle: Untersuchung des Netzwerkdatenverkehrs 
-%\item Webserver (Apache), Rolle: Plattform für den Webservice (Shop)
-%\item Endbenutzer PC, Rolle: Element über das Benutzerzugriffe auf verschiedene Systeme ausgeführt werden
-%\item Datenbankserver (MSSQL), Rolle: Enthält Businesslogik und kritische Daten
-%\item IDS (NIDS)?, Rolle (potentiell): Sicherheitssystem mit Event-Daten für das SIEM
-%\item SIEM, Rolle: Zentrale Log-Verwaltung und Korrelation 
-%\end{itemize}
-\subsection{Applikationen}
-
-%Die Frage ist, welche Applikationen brauche ich?
-%#1 Eine Applikation, die auf das Dateisystem eines Elementes zugreift (WebServer)
-%#2 Eine Applikation, die über das Netzwerk kommuniziert
-%#3 Eine Applikation die Log-Daten erzeugt
-
-%//Nicht zu komplex machen
-
-\subsection{Interaktionen der Systeme (und Anwender)}
-
-% Grobe Übersicht, erster Ansatz
-% Anwender <--> Webserver
-% WebService <--> Webserver
-% Router(GW) <--> Webserver
-% Webserver <--> Datenbank Server
-% Endbenutzer <--> Datenbank Server
-% Endbenutzer <--> Webserver
-% Endbenutzer <--> Router(GW)
-
-% Wo überwacht das NIDS (inline?)?
-% Was und wie extrahiert das SIEM?
-
-
-
-\section{Resultierende Informationstypen \/ -kategorien}
-\subsection{Extraktion und Verarbeitung}
+\section{Beschreibung der Systeme}
 \subsection{Windows}
 Das Windows Betriebssystem von Microsoft ist das am Weitesten verbreitete Betriebssystem in der Industrie. Wollen wir die Informationsmenge eines Windowssystems beschreiben können wir auf verschiedene Punkte zurückgreifen. Im Bezug auf Angriffsanalysen und forensischen Analyseverfahren (Quelle?) werden zu diesem Zweck drei grundlegende Teile betrachtet: Logdateien des Betriebssystems sowie installierter Software, die Windows Registry und ausgeführte Prozesse. Die Überwachung und Dokumentation dieser Bereiche ermöglicht es ein Bild über den aktuellen Zustand des Systems zu erhalten. 
 Für die Ausführung von Prozessen und Änderungen der Registry kann eine installierte Überwachungssoftware in Form einer lokalen, systemfokussierten Lösung genutzt werden. Mit Hilfe einer solchen Lösung ist es möglich die Ausführung von ausführbaren Dateien oder das Laden dynamischer Bibliotheken zu überwachen und Sicherheitsereignisse zu generieren im Falle der Ausführung/des Ladens aus ungewöhnlichen oder für diesen Zweck gesperrten Verzeichnissen des Dateisystems. Selbiges gilt für Änderungen von Schlüsseln innerhalb der Registry. 
-\todoQuestion{Vertiefung möglich, kann ich die Kategorien weiter auftrennen ohne spezifischen Anwendungsfall?}
-\todoResearch{EventIDs von Cylance/Sophos/Avira finden? Welche unterschiedlichen Endpoint Protection Solutions gibt es?}
 
 Der dritte Teil besteht aus den Logdateien des Betriebssystems. 
 %Beschreibung des Aufbaus der Logdateien
@@ -145,10 +104,10 @@ Die Logdateien sind in einem spezifischen Format geschrieben, sodass eine Anzahl
 %Quelle: https://technet.microsoft.com/de-de/library/cc765981(v=ws.11).aspx
 Diese Felder können durch die jeweilige Quelle und das Betriebssystem mit verfügbaren Daten versehen werden. Die Quelle gibt die Software(-komponente) oder die Komponente des Betriebssystem an, die das Ereignis protokolliert hat. Die zugehörige Ereignis-ID gibt den Ereignistypen an, der z.B. das erfolgreiche Starten eines spezifischen Dienstes darstellt. Weitere Identifikatoren geben spezifischere Informationen über den auslösenden Prozess und zugehörige Elemente an. 
 Jedes Ereignis wird zu einer bestimmten Kategorie zugeordnet, der Ebene. Die Ebene eines Ereignisses gibt den zugeordneten Schweregrad des Ereignisses an. Für alle Protokolldateien werden dafür die folgenden Ebenen zur Verfügung gestellt: Informationen, Warnung, Fehler und Kritisch. Ereignisse der Ebene \glqq Informationen\grqq  enthalten Daten über Änderungen an Anwendungen oder Komponenten. Der erfolgreiche Start bzw. die erfolgreiche Beendigung eines Dienstes, sofern dieser nicht die Systemfunktionalität o.ä. gefährdet, seien hier als Beispiel genannt. Die Ebenen \glqq Warnung\grqq  und \glqq Fehler\grqq  enthalten Ereignisse, die das Auftreten eines Problems signalisieren. Der Ebene Warnung werden Ereignisse zugeordnet, die das Auftreten eines Problems anzeigen durch das ggf. ein Fehler ausgelöst oder ein Dienst beeinträchtigt werden könnte. Ein Beispiel ist die Verzögerung der Ausführung des Herunterfahrens des Betriebssystems durch einen Prozess, dessen Beendigung verzögert oder nicht durchgeführt werden kann. Der Ebene Fehler werden Ereignisse zugeordnet, die potentiell die Funktionalität außerhalb der protokollierenden Quelle beeinträchtigen können. Damit werden Ereignisse dieser Ebene als schwerer eingeordnet als Ereignisse der Ebene Warnung. Die letzte Ebene \glqq Kritisch\grqq   umfasst Ereignisse, die Fehler signalisieren, jedoch nicht automatisch von dem Betriebssystem behoben werden können. 
-In Protokolldatei \glqq Sicherheit\grqq  treten dazu noch zwei weitere Ebenen auf: \glqq Erfolgsüberwachung\grqq  und \glqq Fehlerüberwachung\grqq . Diese Ebenen umfassen Ereignisse, die mit der Anwendung der Rechte des ausführenden Benutzers zusammenhängen. Ereignisse der Ebene Erfolgsüberwachung beinhalten die Dokumentation der erfolgreichen Anwendung der Rechte, Ereignisse der Ebene Fehlerüberwachung beinhalten Fehlermeldungen, die bei der Anwendung aufgetreten sind.
+In Protokolldatei \glqq Sicherheit\grqq  treten dazu noch zwei weitere Ebenen auf: \glqq Erfolgsüberwachung\grqq  und \glqq Fehlerüberwachung\grqq . Diese Ebenen umfassen Ereignisse, die mit der Anwendung der Rechte des ausführenden Benutzers zusammenhängen. Ereignisse der Ebene Erfolgsüberwachung beinhalten die Dokumentation der erfolgreichen Anwendung der Rechte, Ereignisse der Ebene Fehlerüberwachung beinhalten Fehlermeldungen, die bei der Anwendung aufgetreten sind \citep{MS1}.
 
 %Quelle: https://support.microsoft.com/en-us/help/942910/-error--warning--or-critical-events-are-logged-in-the-diagnostic-perfo
-Ereignisse der gleichen Quelle und der gleichen Event-ID können abhängig vom Schweregrad in den verschiedenen Ebenen eingeordnet werden.
+Ereignisse der gleichen Quelle und der gleichen Event-ID können abhängig vom Schweregrad in den verschiedenen Ebenen eingeordnet werden.\\
 
 %Beschreibung der grundlegenden Logdateien
 %Quelle: https://technet.microsoft.com/de-de/library/cc722404(v=ws.11).aspx
@@ -156,7 +115,7 @@ Das Windowsbetriebssystem beinhaltet zwei Kategorien für Protokolldateien: Wind
 Die Windowsprotokolle beinhalten Ereignisse, die durch das Betriebssystem protokolliert werden. Diese werden einer von fünf Logdateien zugeordnet: Anwendung, Sicherheit, Installation, System und Weitergeleitete Ereignisse.
 Das Anwendungsprotokoll beinhaltet Ereignisse, die von installierten Anwendungen protokolliert werden und etwa Fehler mit Bezug auf das Dateisystem signalisieren. Welche Ereignisse konkret protokolliert werden wird von den Entwicklern der Anwendung bestimmt. 
 Das Sicherheitsprotokoll beinhaltet Ereignisse bzgl. sicherheitsrelevanter Elemente wie z.B. Fehlern bei der Anmeldung eines Benutzers oder bzgl. der Ressourcenverwendung bei der Erstellung, Öffnung und Löschung von Objekten. Die Administratoren des Betriebssystems entscheiden, welche Ereignisse dieser Kategorie protokolliert werden. 
-Das Systemprotokoll enthält Ereignisse, die von Systemkomponenten des Betriebssystems protokolliert werden und das Setupprotokoll sichert Ereignisse, die bei der Installation von Anwendungen auftreten können.
+Das Systemprotokoll enthält Ereignisse, die von Systemkomponenten des Betriebssystems protokolliert werden und das Setupprotokoll sichert Ereignisse, die bei der Installation von Anwendungen auftreten können \citep{MS2}.\\
 
 Die zweite Kategorie, Anwendungs- und Dienstprotokolle, beinhaltet Protokolle, deren Ereignisse im Kontext von einzelnen Programmen auftreten und keine systemweiten Auswirkungen haben. Diese Kategorie wird in vier Unterkategorien unterteilt: Verwaltung, Betrieb, Analyse und Debug. Verwaltungsprotokolle enthalten Ereignisse mit Problemen und vordefinierten Lösungspfaden für Administratoren. Betriebsprotokolle enthalten Ereignisse, deren Daten für die Analyse und Diagnose von auftretenden Problemen sowie für das Auslösen von installierten Werkzeugen oder Programmen genutzt werden können. Die Analyse- und Debugprotokolle sind standardmäßig deaktiviert und müssen zunächst aktiviert werden für die Verwendung. Dabei enthält das Analyseprotokoll Ereignisse zu Programmoperationen und Problemen, die nicht vom Benutzer behoben werden können, während das Debugprotokoll weitere Daten für Entwickler beinhaltet.
 
@@ -175,21 +134,23 @@ In der Logdatei "Sicherheit" konnten bei einer Untersuchung eines in der Produkt
 \item System
 \end{itemize}
 %Beschreibe jede Kategorie
-Grundsätzlich lassen sich die Unterkategorien bzw. Ereignisse in zwei Bereiche unterteilen: Domänen- bzw. Directory Service basierte Ereignisse und lokale Ereignisse. Erstere Ereignistypen beziehen sich auf den Zugang zu Domänen und allgemeine Zugriffs- und Rechteverwaltung sowie auf die technisch darunterliegenden Protokolle und Services. Lokale Ereignistypen beziehen sich auf lokale Ereignisse bzgl. des Zugangs zu dem Betriebsystem und die Benutzung von Privilegien und die damit verbundenen Sicherheitsrichtlinien.
+Grundsätzlich lassen sich die Unterkategorien bzw. Ereignisse in zwei Bereiche unterteilen: Domänen- bzw. Directory Service basierte Ereignisse und lokale Ereignisse. Erstere Ereignistypen beziehen sich auf den Zugang zu Domänen und allgemeine Zugriffs- und Rechteverwaltung sowie auf die technisch darunterliegenden Protokolle und Services. Lokale Ereignistypen beziehen sich auf lokale Ereignisse bzgl. des Zugangs zu dem Betriebsystem und die Benutzung von Privilegien und die damit verbundenen Sicherheitsrichtlinien\citep{MS3}. \\
 
 %DS
 Die Kategorie \glqq Account Logon\grqq  bezieht sich nicht auf die Authentisierung eines Benutzers an einem Windowsbetriebssystem, sondern auf die Funktionalität des Kerberosservices. Kerberos ist ein verteilter Authentifizierungsdienst, der für die Anmeldung an einer Windowsdomäne verwendet wird.  Daher beziehen sich Ereignisse aus dieser Kategorie auf Operationen bzw. Eigenschaften des Kerberosprotokolls. Die verwandte Kategorie \glqq Account Management\grqq  bezieht sich auf die Verwaltung von Distribution Groups (Verteilungsgruppen für E-Mail Services) und Security Groups (Zuordnung von Benutzerrechten und Zugriffsrechten auf geteilte Resourcen). Desweiteren enthält diese Kategorie auch Informationen zu der Erstellung von Accounts sowie Zugriffsversuchen auf Passworthashs und Anfragen an die Passwortrichtlinienschnittstelle. 
-Eine technische Kategorie des Verzeichnisdienstes wird durch \glqq DS Access\grqq   gebildet. Diese Kategorie enthält Ereignisse bzgl. Änderungen, Zugriffen und Replikationen des Verzeichnisdienstes bzw. der im Verzeichnisdienst enthaltenen Daten.
+Eine technische Kategorie des Verzeichnisdienstes wird durch \glqq DS Access\grqq   gebildet. Diese Kategorie enthält Ereignisse bzgl. Änderungen, Zugriffen und Replikationen des Verzeichnisdienstes bzw. der im Verzeichnisdienst enthaltenen Daten \citep{MS3}. \\
 
 %Lokal
 \glqq Detailed Tracking\grqq  weißt auf Ereignisse bzgl. der Erstellung und Vernichtung von Prozessen hin sowie Aktiviten bzgl. der Data Protection Schnittstelle \glqq DPAPI\grqq  und Anfragen auf die RPC (Remote Procedure Call)-Schnittstelle.
 Die Kategorie \glqq Logon/Logoff\grqq  kann als äquivalente lokale Kategorie gesehen werden, da diese Ereignisse bzgl. der Anmeldung/Abmeldung als lokaler Benutzer an einem Betriebssystem gesehen werden kann. Allerdings enthält diese Kategorie auch Ereignisse bzgl. der Nutzung des IPSec Protokolls und die Interaktion eines Benutzers mit einem Network Policy Server. 
-Die Kategorie \glqq Object Access\grqq  beinhaltet Ereignisse bzgl. des Zugriffes und der Änderung auf systemrelevante Objekte dar. So sind Ereignisse bzgl. der Verbindung zur Windows Filtering Plattform, darunter Ereignisse der Windows Firewall. Die Windows Filtering Platform ist eine Sammlung aus Schnittstellen und Systemdiensten, die für die Erstellung von Programmen zur FIlterung und Modifikation von Netzwerkdatenverkehr genutzt werden kann. Die Windows Firewall basiert auf dieser Sammlung.
+
+Die Kategorie \glqq Object Access\grqq  beinhaltet Ereignisse bzgl. des Zugriffes und der Änderung auf systemrelevante Objekte dar. So sind Ereignisse bzgl. der Verbindung zur Windows Filtering Plattform, darunter Ereignisse der Windows Firewall. Die Windows Filtering Platform ist eine Sammlung aus Schnittstellen und Systemdiensten, die für die Erstellung von Programmen zur FIlterung und Modifikation von Netzwerkdatenverkehr genutzt werden kann. Die Windows Firewall basiert auf dieser Sammlung \citep{MS4}. 
 %Quelle: https://msdn.microsoft.com/de-de/library/windows/desktop/aa366510(v=vs.85).aspx
-Desweiteren werden dieser Kategorie Ereignisse zugeordnet bzgl. Änderungen der Windows Registry Keys, des Component Object Models (COM+), Zugriffe auf das Dateisystem und geteilte Verzeichnisse sowie die Manipulation von Zugriffsoptionen auf Systemressourcen und Änderungen am Certification Service.
-Die Kategorie \glqq Policy Change\grqq  beinhaltet Ereignisse, die mit der Änderungen von Richtlinien zusammenhängen. Die entsprechenden Richtlinien gehören zu den Bereichen Authentisierung, Authorisierung, Überwachung, Windows Filtering Platform sowie des MPSSVC (Teil der Windows Firewall, welcher vor nicht-autorisiertem Zugriff von Benutzern aus dem Internet oder einem Netzwerk schützt) und anderer Richtlinien (z.B. im Bezug auf kryptografische Operationen). %Quelle: https://technet.microsoft.com/de-de/library/cc722146(v=ws.10).aspx
-Die Kategorie \glqq Privilege Use\grqq  beinhaltet Ereignisse zu der (nicht-)sensiblen Benutzung von Privilegien im Kontext des Betriebssystems. 
-Schlussendlich zeigen Ereignisse aus der Kategorie \glqq System\grqq  Änderungen am (Sicherheits-)Zustand des Systems sowie der Sicherheitssubsysteme (Local Security Authority und Security Account Manager).
+Desweiteren werden dieser Kategorie Ereignisse zugeordnet bzgl. Änderungen der Windows Registry Keys, des Component Object Models (COM+), Zugriffe auf das Dateisystem und geteilte Verzeichnisse sowie die Manipulation von Zugriffsoptionen auf Systemressourcen und Änderungen am Certification Service \citep{MS3}. 
+
+Die Kategorie \glqq Policy Change\grqq  beinhaltet Ereignisse, die mit der Änderungen von Richtlinien zusammenhängen. Die entsprechenden Richtlinien gehören zu den Bereichen Authentisierung, Authorisierung, Überwachung, Windows Filtering Platform sowie des MPSSVC (Teil der Windows Firewall, welcher vor nicht-autorisiertem Zugriff von Benutzern aus dem Internet oder einem Netzwerk schützt) und anderer Richtlinien (z.B. im Bezug auf kryptografische Operationen) \citep{MS5}. %Quelle: https://technet.microsoft.com/de-de/library/cc722146(v=ws.10).aspx
+Die Kategorie \glqq Privilege Use\grqq  beinhaltet Ereignisse zu der (nicht-)sensiblen Benutzung von Privilegien im Kontext des Betriebssystems \citep{MS3}. 
+Schlussendlich zeigen Ereignisse aus der Kategorie \glqq System\grqq  Änderungen am (Sicherheits-)Zustand des Systems sowie der Sicherheitssubsysteme (Local Security Authority und Security Account Manager) \citep{MS3}.
 
 %Kategorisierung der Quellen der Beispiellogs von produktiven Servern
 Ereignisse der genannten Quellen können auch, abhängig von der ID, also dem Ereignistypen, in anderen Protokollen wie etwa dem Anwendungsprotokoll oder dem Systemprotokoll aufgeführt werden.
@@ -198,6 +159,14 @@ Ereignisse der genannten Quellen können auch, abhängig von der ID, also dem Er
 %Beispiele für andere Anwendungen
 Neben den fundamentalen Logdateien können weitere Logdateien von Applikation erstellt werden. Neben Microsoft-Produkten wie dem Webserver IIS, Microsoft Office oder der Benutzerverwaltung Active Directory können auch Logs von Microsoft-fernen Produkten wie z.B. einer Anti-Virensoftware oder proprietäre Netzwerkdienste durch die Applikationen zur Verfügung gestellt werden.
 \todoResearch{Loggt das Betriebssystem Elemente aus diesem Bereich? Wie funktioniert die Anbindung der Logdateien an das Betriebssystem?}
+%Frage: Warum lasse ich Elemente wie z.B. eine zentrale Benutzerverwaltung raus? Ist das nicht eigentlich relevant?
+%Antwort: Die zentrale Frage hier ist: Welche Daten bekomme ich, im Bezug auf den normalen PC, aus einer Benutzerverwaltung wie z.B. einem Active Directory, die ich nicht aus einem Windowssystem bekomme?
+%Um diese Frage zu beantworten müsste ich wissen nach welchen Informationen ich suche im Bezug auf die Benutzerverwaltung?
+%Brainstorming: Login/Logoff von Benutzern (beide), Berechtigungen des Benutzers (beide), Zertifizierung? (nur AD), 
+%Zentrale Frage des IAMs: Wer (Login) hat was (Lokale Prozessevents, Netzwerkdaten) wann (Timestamps, generell) wo (Kombination der Elemente) wie (Kombination der Elemente) gemacht?
+%Spezifizierte Frage: Welche Kontextinformationen bekomme ich von einer zentralen Benutzerverwaltung, die ich nicht von einem lokalen System bekomme?
+%Ansatz: Erstmal Windows anschauen, dann ggf. nach AD suchen
+%Temporäres Resultat: AD erstmal weglassen, später einbauen
 
 \subsection{Linux}
 Für die Extraktion der Informationsmenge aus einem Linuxsystem wird die gleiche analytische Basis wie für das Windowsbetriebssystem vorausgesetzt. Die Betriebssysteme unterscheiden sich von ihrem Aufbau und ihren Mechanismen teilweise deutlich, jedoch lässt sich der Grundsatz ähnlich ableiten. Das Ziel ist es alle verfügbaren Informationen zu erhalten, die bei der Ausführung des Systems entstehen. Dies schließt die Analyse von Protokollen ein, sowie die Überwachung der Ausführung von Diensten (Services) und die Ausführung von (System-)Prozessen.
@@ -213,6 +182,7 @@ In Linux existieren vier typische Kategorien für Log-Dateien:
 \item Service Logs
 \item System Logs
 \end{itemize}
+\citep{Linux1}
 
 %Syslogd
 %Quelle1: https://www.thegeekdiary.com/centos-redhat-beginners-guide-to-log-file-administration/
@@ -246,27 +216,336 @@ Für jedes Ereignis werden, ähnlich der Ebene für Windowslogs, Prioritäten ve
 \item debug: debugging messages
 \end{itemize}
 
-Basierend auf diesen Parametern werden die Ereignisse in die Log-Dateien geschrieben, deren Namen auf diesen Parametern basieren (z.B. \glqq mail.info\grqq ).
+Basierend auf diesen Parametern werden die Ereignisse in die Log-Dateien geschrieben, deren Namen auf diesen Parametern basieren (z.B. \glqq mail.info\grqq ) \citep{Linux2,Linux3}.
 
 %Logfiles
-\todoResearch{Beschreibe die unterschiedlichen Logformate}
 %Quelle: https://www.loggly.com/ultimate-guide/linux-logging-basics/
-Neben den Log-Dateien des syslog Verzeichnisses gibt es noch weitere wichtige Log-Dateien. So beinhaltet die Log-Datei \glqq auth.log\grqq  (Debian) bzw. \glqq secure\grqq  (CentOS / RedHat) Ereignisse über erfolgreiche oder fehlerhafte Logins und die verwendeten Authentifizierungsmethoden. Die Log-Datei \glqq kern\grqq  enthält Meldungen über Fehler sowie Warnungen, die vom Kernel gemeldet wurden. In der Datei \glqq cron\grqq  werden Ereignisse gespeichert, die durch die Cron-Komponente des Linuxbetriebssystem protokolliert werden.
-
-Abhängig von der Distribution existieren noch weitere Log-Dateien. 
-\todoForm{Fasse die Liste zusammen bzgl. der Log-Files die man auf jeden Fall überwachen sollte (minimum)}
 %Quelle: https://www.eurovps.com/blog/important-linux-log-files-you-must-be-monitoring/
-
-\todoForm{Beschreibe Ubuntu und CentOS}
-%Siehe dazu Quellen:
 %Ubuntu:  https://wiki.ubuntuusers.de/Logdateien/
 %CentOS?: https://kerneltalks.com/troubleshooting/11-log-files-you-should-see-on-your-linux-system/
+Neben den Log-Dateien des syslog Verzeichnisses gibt es noch weitere wichtige Log-Dateien im Verzeichnis \glqq /var/log/ \grqq  die für die Erhebung weiterer Informationen nützlich sein können. Zu den wichtigstens Log-Dateien bzw. -verzeichnissen zählen:
+\begin{itemize}
+\item auth.log (Debian) / secure (CentOS): Ereignisse bzgl. der Authentifizierung von Benutzern
+\item boot.log: Ereignisse während des Boot-Vorgangs
+\item dmesg: Nachrichten bzgl. Hardware und Hardwaretreibern
+\item kern.log: Ereignisnachrichten des Betriebssystemkerns
+\item faillog: Dokumentation von gescheiterten Login-Versuchen
+\item cron: Dokumentation der Ausführung und ggf. Fehlermeldungen von Cronjobs
+\end{itemize}
+
+Abhängig von der Verwendung des Servers stehen auch standardmäßig Log-Dateien zu den jeweiligen Servertypen (etwa E-Mailserver, Webserver (typischerweise Apache) oder Datenbankserver (etwa MySQL) zur Verfügung \citep{Linux1,Linux4,Linux5,Linux6}.
+
 
 %Linux Auditing Framework als Beispiel um die Erweiterung der Logging Fähigkeiten zu zeigen
 %Quelle 1: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/security_guide/chap-system_auditing
 %Quelle 2: https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-auditing-system-on-centos-7
 \todoForm{Beschreibe das Linux Auditing Framework um einen Überblick zu geben, wie Linux Auditing funktioniert und was überwacht wird}
 
-\subsection{Beispielapplikation}
-\subsection{Netzwerk}
-\section{Analyse im Bezug auf Angriffsvektoren}
+
+
+%Frage: Brauche ich Remote-Access?
+
+%\begin{itemize}
+%\item Router, Rolle: Zugang zum WAN
+%\item Switch, Rolle: Verbindungen zwischen den Elementen herstellen (Router <-> Switch <-> Firewall...)
+%\item Firewall, Rolle: Untersuchung des Netzwerkdatenverkehrs 
+%\item Webserver (Apache), Rolle: Plattform für den Webservice (Shop)
+%\item Endbenutzer PC, Rolle: Element über das Benutzerzugriffe auf verschiedene Systeme ausgeführt werden
+%\item Datenbankserver (MSSQL), Rolle: Enthält Businesslogik und kritische Daten
+%\item IDS (NIDS)?, Rolle (potentiell): Sicherheitssystem mit Event-Daten für das SIEM
+%\item SIEM, Rolle: Zentrale Log-Verwaltung und Korrelation 
+%\end{itemize}
+\subsection{Applikationen}
+
+%Die Frage ist, welche Applikationen brauche ich?
+%#1 Eine Applikation, die auf das Dateisystem eines Elementes zugreift (WebServer)
+%#2 Eine Applikation, die über das Netzwerk kommuniziert
+%#3 Eine Applikation die Log-Daten erzeugt
+
+\subsubsection{Apache Webserver}
+Der Apache Webserver ist eine freie Software als Teil der Apache Lizenz. Es werden viele Betriebssysteme unterstützt und mithilfe der APR (Apache Portable Runtime) Bibliothek wird eine Verallgemeinerungsschicht zwischen den Webserver und die Systemaufrufe gesetzt um die individuellen Stärken des Betriebssystems besser nutzen zu können.
+Der Webserver ist modular aufgebaut und kann um viele Funktionalitäten erweitert werden, u.a. zusätzlich zu der Unterstützung der serverseitigen Skriptsprachen PHP, Perl und Ruby kann ein Modul für Python, Lua, Tcl und .NET geladen werden. Weitere Modulfunktionalitäten sind etwa Verschlüsselungen, Authentifzierung, Proxyfunktionalitäten, WebDAV-Unterstützung oder HTTP-Rewrite. Diese Module können jederzeit aktiviert und deaktiviert werden. Als Ansprechschnittstelle dient die CGI Schnittstelle.
+
+Ein Fehler in der Webserverkonfiguration oder auf dem Webserver aufbauenden Webanwendungen kann potentiell von einem Angreifer provoziert und ausgenutzt werden. Aus diesen Gründen wird von Apache eine Liste an Sicherheitselementen bereit gestellt, die als Anhaltspunkte für die Härtung und Sicherung der Webserver-Installation dienen sollen. Neben Sicherungshinweisen bzgl. der Aktualisierung des Servers und Abwehrmaßnahmen gegen DDoS Angriffe werden auch u.a. die folgenden Elemente genannt:
+\begin{itemize}
+\item Rechte bzgl. des ServerRoot Directories (Wurzelverzeichnis)
+\item Server Side Includes
+\item Hinweise zum Umgang mit der CGI Schnittstelle (Generell, Non-Script Aliases, Script Aliases)
+\item Umgang mit anderen Quellen für dynamische Webinhalte
+\item Schutz der Systemeinstellungen
+\item Standardschutz der Serverdateien 
+\item Überwachung der Protokolldateien (Logs)
+\end{itemize}
+
+Im Zuge dieser Sicherheitsbedenken stellt der Webserver verschiedene Protokolldateien -und Funktionalitäten zur Verfügung. Da verschiedene Module unterschiedlich kritische Auswirkungen auf den Webserver haben können, existieren Protokolldateien pro Modul, die individuell anpassbar sind. 
+Neben dem Error-Log und den Modul-Logs ist das Access-Log als eine der wichtigste Protokolldateien ausgewiesen, welche Zugriffe auf den Webserver bzw. das Webserververzeichnis protokolliert.
+Das Verzeichnis und der Zugriff auf das Access-Log werden von der \glqq Custom Log Directive\grqq  verwaltet. Das übliche Logformat ist dabei wie folgt strukturiert:
+\glqq IP-Adresse, Request Teil (falls vorhanden), Zeitstempel, HTTP Kommando, HTTPStatusCode, Größe der Antwort\grqq
+
+Es ist zudem möglich mehrere Access-Logs zu führen sowie \glqq Conditional Logs\grqq  (Protokolldateien in denen vorkonfiguriert bestimmte Event-Typen nicht protokolliert werden). 
+Innerhalb des Apache Webserver existieren verschiedene Log-Level, die die Ausführlichkeit der Eventdokumentation in einer Protokolldatei wiederspiegeln. Die Log-Level unterscheiden sich in:
+"
+\begin{itemize}
+\item emerg: Notfall - das System ist unbenutzbar
+\item alert: Maßnahmen müssen unverzüglich ergriffen werden
+\item crit: Kritischer Zustand
+\item error: Fehlerbedingung
+\item warn: Warnung
+\item notice: Normaler, aber signifikanter Zustand
+\item info: Information
+\item debug: Debug-Level-Nachrichten
+\end{itemize}
+...
+Es wird empfohlen, mindestens den Level crit zu verwenden \citep{Apache2}.
+" (Zitat, Quelle angeben!) %Quelle: https://httpd.apache.org/docs/2.4/mod/core.html#loglevel
+
+
+Neben den genannten Protokolldateien gibt es noch ein paar weitere, potentiell signifikante Elemente:
+\begin{itemize}
+\item \glqq mod\_ log\_ forensic\grqq : ein Modul das forensischen Protokollierungsfunktionalität von Client-Anfragen bietet, mit zwei Einträgen pro Anfrage (davor und danach)
+\item \glqq PID file\grqq : Speichert die ParentID des Webserverdaemons / -services
+\item \glqq Script Log\grqq : Protokolliert Ein- und Ausgabe von CGI Skripten
+\end{itemize}
+
+\subsubsection{Microsoft SQL Server}
+%Beschreibung: 
+%https://www.youtube.com/watch?v=bXbm0qGwgAw
+Der Kern eines Unternehmens sind Daten über das Unternehmensgeschäft. Die Aufbewahrung, Sicherung und der Zugriff zu diesen Daten ist daher von essentieller Bedeutung. Daher werden diese Daten in Datenbanken abgelegt, die die strukturierte Darstellung und Sicherung von Daten ermöglichen. Der Microsoft SQL Server ist ein relationales Datenbankverwaltungssystem (Relational Database Management System (RDBMS)). Es ermöglicht die Verwaltung mehrerer Datenbanken und steuert den parallelen Zugriff auf eine Datenbank, d.h. das parallele Abrufen und Editiern von Daten durch mehrere Personen. Zu der Verwaltung der Datenbanken werden weitere Funktionalitäten hinzugefügt, die die Analyse der Daten, Integration anderer Dienste und Anwendungen, Reporting und Sicherheit der Datenbanken und des Servers. Zudem existiert eine Client-Anwendung, das Microsoft SQL Management Studio, für den verwaltenden Zugriff auf den SQL Server.
+
+%https://www.microsoftpressstore.com/articles/article.aspx?p=2201648
+Die Komponenten des Servers werden in zwei Kategorien eingeteilt. Die erste Kategorie umfasst Komponenten für \glqq Business Intelligence\grqq  Zwecke, also Komponenten, die bei der Entscheidungsfindung für das Unternehmensgeschäft helfen können. Die zweite Kategorie, \glqq Database Engine\grqq , umfasst Dienste, die für die Operation des Servers notwendig sind, etwa für die Verbindung und den Austausch von Daten über Transact-SQL (T-SQL) Statements \citep{MSSQL2}.
+
+%https://www.microsoftpressstore.com/articles/article.aspx?p=2201648&seqNum=2
+In der Kategorie Database Engine gehören neben der primären Komponente, der Storage Engine, die folgenden Komponenten:
+\begin{itemize}
+\item T-SQL programming interface
+\item Replication Services
+\item SQL Server Agent
+\item High Availability and disaster recovery tools
+\item SQL Server Integration Services
+\item SQL Server Management Tools
+\item Security Subsystem
+\end{itemize}
+\citep{MSSQL3}
+
+%"Security" Daten (Status, Logs, anderes)
+%Security subsystem: https://www.microsoftpressstore.com/articles/article.aspx?p=2201648&seqNum=4
+Das Security Subsystem wird verwendet um den kontrollierten Zugriff zum SQL Server, den verwaltenden Datenbanken, anderen Serverobjekten und Datenbanktabelleneinträgen. Zudem ermöglicht es die Verschlüsselung von Datenbankobjekten und fügt Werkzeuge für das Server Auditing \citep{MSSQL4}.
+
+%Server Audit: https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-2017
+Die Server Audit Komponente erlaubt das Verfolgen und Protokollieren von Ereignissen innerhalb der Database Engine. Für den Zweck der Protokollierung werden Objekte (Audit Objects) angelegt. Dies kann sowohl auf der Serverebene als auch auf der Datenbankebene durchgeführt werden. Die protokollierten Ereignisse können entweder in eigens dafür angelegte Dateien, in ei Windows Application Event Log oder das Windows Security Event Log geschrieben werden. Für die Protokollierung wird unter anderem \glqq Extended Events\grqq verwendet, ein Überwachungswerkzeug für die Serverperformanz, welches Konzepte des Windows Event Tracing nutzt. Dies erlaubt u.a. die Korrelation von Ereignisdaten innerhalb des SQL Servers. Unter bestimmten Bedingungen ist es zudem möglich Ereignisdaten des Servers mit weiteren Daten von Anwendungen und dem Betriebssystem zu korrelieren \citep{MSSQL5}. 
+
+%Audit Action Group (Eventgruppen bzgl. bestimmter Ereignistypen): https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions?view=sql-server-2017
+Die Server Audit Komponente unterteilt die zu protokollierenden Ereignisse in \glqq SQL Server Audit Action Groups and Action\grqq . 
+
+Diese enthalten, zusammengefasst, die folgenden Elemente:
+\begin{itemize}
+\item Änderungen (Erstellung, Löschung, Veränderung) von
+\begin{itemize}
+\item Objekten des Servers (z.B. Schemata) oder der Datenbank
+\item Zugriffsrechten und Inhaberrechten
+\item Zugriffsoperationen
+\item Ausführung von T-SQL Statements
+\end{itemize}
+\item SQL-Aktionen (SELECT, UPDATE, INSERT, DELETE, EXECUTE, RECEIVE, REFERENCE)
+\item Audit-Aktionen CREATE, ALTER und DROP von Audit Objekten (Server Audit, Server Audit Specification, Database Audit Specification)
+\end{itemize}
+\citep{MSSQL6}
+
+%Zusatzquellen ggf. für später:
+%Error Event IDs: https://social.technet.microsoft.com/wiki/contents/articles/1193.analysis-services-event-id-and-event-descriptions.aspx
+%Accesschecklist: https://social.technet.microsoft.com/wiki/contents/articles/1259.database-engine-security-checklist-limit-access-to-data.aspx
+%Login Event Classes: https://docs.microsoft.com/en-us/sql/relational-databases/event-classes/audit-login-event-class?view=sql-server-2017
+%Login Failed Event Classes: https://docs.microsoft.com/en-us/sql/relational-databases/event-classes/audit-login-failed-event-class?view=sql-server-2017
+
+
+
+\subsection{Interaktionen der Systeme (und Anwender)}
+
+\todoForm{Dieser Abschnitt soll die Interaktion der Netzwerkteilnehmer beschreiben, gehört ggf. in den Architekturteil mit Bild}
+% Grobe Übersicht, erster Ansatz
+% Anwender <--> Webserver
+% WebService <--> Webserver
+% Router(GW) <--> Webserver
+% Webserver <--> Datenbank Server
+% Endbenutzer <--> Datenbank Server
+% Endbenutzer <--> Webserver
+% Endbenutzer <--> Router(GW)
+
+% Wo überwacht das NIDS (inline?)?
+% Was und wie extrahiert das SIEM?
+
+\subsection{Netzwerkprotokolle}
+
+\subsubsection{HTTP (Hypertext Transfer Protocol)}
+Das Hypertext Transfer Protocol (HTTP) ist ein zustandsloses Protokoll, dass zur Übertragung von Daten, meist für das Laden von Webinhalten aus dem Internet genutzt wird. Der Begriff "zustandlos" bezeichnet die Eigenschaft, dass durch das Protokoll keine Informationen vorheriger Nachrichten gespeichert werden. Daher ist HTTP u.a. auf ein Transportprotokoll wie TCP auf der Transportebene angewiesen, HTTP selbst wird zur Anwendungsebene zugeordnet. Die Kommunikation zwischen Client und Server wird in Form eines Nachrichtenaustausches vollzogen, der aus zwei Elementen besteht: Anfrage (Request) und Antwort (Response). 
+
+
+Die Nachrichtenpakete werden in Kopf (Header) und Rumpf (Body) unterteilt. Der Header enthält Informationen über das gesendete Nachrichtenpaket. Eine typische Anfrage ist wie folgt strukturiert:
+
+<Methode> <URL> <Protokollversion>
+
+<Host>
+
+<Payload>
+\todoForm{Dummypräsentation, Bilder von HTTP Request und Response müssen später eingefügt werden}
+
+
+Die Methode stellt die Art der Anfrage dar. Üblicherweise werden entweder die Methoden \glqq GET\grqq  (Anforderung einer Resource per URI (Uniform Resource Identifier)) oder \glqq POST\grqq  (Senden von Daten an den Server zur Verarbeitung). Weitere Methoden sind HEAD, PUT, PATCH, DELETE, TRACE, OPTIONS und CONNECT.
+Die URL gibt den Server an, an den die Anfrage gesendet wird. Das Host-Feld wird genutzt um mehrere DNS-Namen, die unter der gleichen IP-Adresse erreichbar sind, zu unterscheiden. Der Payload enthält Informationen zu der angeforderten Resource.
+
+Die Antwortnachricht wird in folgendem Format gesendet:
+
+<Protokollversion> <HTTPStatusCode> <Beschreibung>
+
+Server: <Webserverversion> <PHP Version>
+
+Content-Length: <Größe der Resource in Byte>
+
+Content-Language: <Sprachkürzel> (z.B. \glqq de\grqq )
+
+Connection: <Verbindungsstatus>
+
+Content-Type: <Resourcentyp> (z.B. HTML)
+
+<Payload>
+
+
+Die Antwortnachricht enthält Informationen bzgl. der angefragten Resource sowie Informationen über den liefernden Webserver. Der HTTPStatusCode repräsentiert einen dreistelligen Code, der die erfolgreiche Bearbeitung der Anfrage repräsentiert oder einen Fehlercode anzeigt. Die Codes werden wie folgt kategorisiert:
+\begin{itemize}
+\item 1xx: Informationen
+\item 2xx: Erfolgreiche Bearbeitung
+\item 3xx: Umleitung der Anfrage (wenn bspw. eine Resource verschoben wurde)
+\item 4xx: Clientseitiger Fehler
+\item 5xx:  Serverseitiger Fehler
+\end{itemize}
+
+\subsubsection{Secure Shell (SSH)}
+Secure Shell (SSH) ist ein Netzwerkprotokoll bzw. ein System, welches für die sichere Kommunikation zwischen zwei Computern verwendet wird. Ein SSH-Server erlaubt SSH-Clients Anfragen zu senden um sich etwa über das Netzwerk auf dem Server zu anzumelden, Daten zu senden oder Kommandos auszuführen. Dabei sollen grundsätzliche die Ziele der Vertraulichkeit der Kommunikation, der Integrität der Nachrichten und sicheren Authentisierung der Kommunikationsteilnehmer sowie der authorisierte Zugriff sicher durchgeführt werden. SSH kann zudem genutzt werden um weiteren Datenverkehr auf der Basis von TCP/IP zu \glqq tunneln\grqq , d.h. die Nachrichten zu verschlüsseln und verschlüsselt über die vorhandene Sitzung weiterzuleiten. Es existieren verschiedene Versionen dieses Protokolls. Die folgende Beschreibung beschränkt sich auf die Version SSH-2, die als sicherere Variante im Vergleich zu SSH-1, gilt \citep{SSH1}. \\ %Quelle: https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch03_05.htm
+
+Für die Kommunikation zwischen dem Client und dem Server verschiedene Verschlüsselungsschlüssel benutzt, sowohl für die Herstellung der Kommunikation als auch für die Dauer der Verbindung (Sitzung (Session)). Die Herstellung der Kommunikation erfolgt über das Public-Key-Verschlüsselungsverfahren, welches die privaten und öffentlichen Schlüssel des Clients und des Servers nutzt um eine Verschlüsselungsmethode sowie einen Sitzungsschlüssel für die Verschlüsselung auszuhandeln. Durch diese Methode wird gleichzeitig die Authentisierung des Benutzers sowie des Servers gegenseitig gesichert \citep{SSH1}. %Quelle: https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch03_05.htm
+
+
+Grundsätzlich gehören zu den Paketfeldern die Gesamtlänge des Paketes, ein gewisser Padding-Bereich, der Payload, ein weiterer zufälliger Paddingbereich und der Message Authentication Code (MAC). 
+
+Das SSH-2-Protokoll wird in verschiedene Layer unterteilt:
+\begin{itemize}
+\item SSH Transport Layer Protocol
+\item SSH Authentication Layer Protocol
+\item SSH Connection Layer Protocol
+\end{itemize}
+
+Das SSH Transport Layer Protocol dient als Basis. Mithilfe dieses Layers wird die intiale Verbindung aufgebaut (Prüfung der Server Authentizität, Aushandlung der zu verwendenden Verschlüsselungsmethode, Intialisierung der Sitzung) und somit grundlegende Funktionalität für die Verschlüsselung der Pakete und die Sicherung der Nachrichtenintegrität mithilfe von kryptografischen Hash-Funktionen \citep{SSH1}. \\%Quelle: https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch03_05.htm
+
+Im Speziellen wird die Kommunikation mit der Nachricht \glqq SSH\_ MSG\_ KEXINIT\grqq  ausgelöst. Die Felder der Nachricht enthalten neben einem Byte-Array (Cookie) eine Reihe von weiteren Arrays, in denen Listen der unterstützten Algorithmen für Server Host Key, Verschlüsselung, MACs und Komprimierung gesendet werden. 
+Durch einen Abgleich und weitere Protokollregeln ergeben sich die verwendeten Methoden für die Kommunikation. Sollte bei diesem Ablauf ein Fehler oder sonstige Störungen auftreten, wird eine \glqq SSH\_ MSG\_ DISCONNECT\grqq  Nachricht gesendet. Diese enthält u.a. einen sogenannten \glqq reason code\grqq , der einem Grund für den Verbindungsabbruch zugeordnet werden kann.\\
+
+Darauf folgend kann mithilfe des SSH Authentication Layer Protocol die Authentisierung des Benutzers vorgenommen werden. Für die Authentisierung stehen drei Methoden zur Verfügung (\glqq Public Key\grqq , \glqq hostbased\grqq  und \glqq password\grqq ). Nach der erfolgreichen Authentisierung besteht im Folgenden die Möglichkeit über das SSH Connection Layer Protocol die weiterreichenden Funktionalitäten von SSH zu nutzen (inklusive Port Forwarding, Remote Access und Remote Program Execution)\citep{SSH1}. \\%Quelle: https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch03_05.htm
+
+
+Für den Zweck der Authentifzierung des Servers existieren sogenannte \glqq Host Keys\grqq . Diese werden genutzt um die Authentizität der Serveridentität zu bescheinigen. Mit SSH-2 wird auf einem Server pro Netzwerksockel ein individueller Host Key verwendet. Die Benutzerauthentisierung findet u.a. per Passwort statt. Um die Rechtezuordnung pro Account bzw. pro Server zu konfigurieren, werden Konfigurationsdateien verwendet (etwa ~/.ssh2/authorization) \citep{SSH1}.
+
+\subsubsection{Remote Desktop Protocol (RDP)}
+%Quelle: https://msdn.microsoft.com/en-us/library/aa383015.aspx
+Das Remote Desktop Protocol ist ein Protokoll, dass die Darstellung und Kontrolle des Bildschirminhaltes eines anderen Computers mit dem Windows Betriebssystem ermöglicht. Es basiert auf dem T-120 Standard der ITU (International Telecommunication Union), der eine Sammlung an Kommunikations- und Anwendungsprotokollen enthält.
+
+Das Protokoll regelt u.a. wie die Dienste und Anwendungen auf der entfernten Windows-Maschine (Terminalserver) angesprochen und verwendet werden können. Dabei ist es möglich mehrere virtuelle Kanäle zu unterschiedlichen Maschinen zu öffnen und Kommunikations- sowie Präsentationsdaten zu übertragen. Für die Kommunikation notwendige Umgebungsvariablen werden aus den RPC-TCP Einstellungen ermittelt. 
+
+Die grafischen Daten werden auf dem Server von einem RDP-zugehörigen grafischen Treiber in Netzwerkpakete verpackt und über das Netzwerk gesendet. Der Client empfängt diese Daten und wandelt sie über Aufruf der Graphic Device Interface (GDI) Programmierschnittstelle in eine Darstellung um. Eingabedaten von Tastatur- und Maus werden über das RDP vom Client auf den Server umgeleitet\citep{RDP1}. 
+
+%Protocol Specs: https://msdn.microsoft.com/en-us/library/cc240445.aspx
+%Downloadlink: https://winprotocoldoc.blob.core.windows.net/productionwindowsarchives/MS-RDPBCGR/[MS-RDPBCGR].pdf
+Der Ablauf einer RDP-Verbindung kann in verschiedene Teile unterteilt werden. Für den Aufbau der Verbindung werden u.a. die folgenden Schritte durchgeführt. Für die Kommunikation werden in TCP/IP verpackte X.224 Paketeinheiten (Protocol Data Unit, PDU) verwendet:
+\begin{itemize}
+\item Initierung der Verbindung
+\item Austausch der grundlegenden Basiseinstellungen
+\item Erstellung eines dedizierten Kommunikationskanals
+\item Austausch von Sicherheitseinstellungen
+\item Versendung der Verbindungslizenz des Servers zum Client zu Validierungszwecken während der Verbindung
+\item Finalisierung der Verbindungsdetails
+\end{itemize}
+
+Für den Abbruch der Verbindung existieren verschiedene Szenarien, die unterschiedlich behandelt werden. Zu diesen zählen die vom Benutzer-initierte Beendigung der Verbindung auf der Clientseite (durch Beenden der RDP-Anwendung) sowie auf der Serverseite (durch Beenden der Sitzung). Als weiterer Fall wird das erzwungene Beenden der Verbindung durch einen Administrator genannt \citep{RDP2}. 
+
+
+\subsubsection{Microsoft SQL Server Protocol Suite}
+%Quelle: https://msdn.microsoft.com/en-us/library/ff420831(v=sql.105).aspx
+Für die Kommunikation mit dem Microsoft SQL Server werden verschiedene Protokolle verwendet, die für bestimmte Anwendungszwecke und Funktionen verwendet werden. Zu den Anwendungsbereichen zählen:
+\begin{itemize}
+\item Netzwerkverbindungen und Anwendungsentwicklung
+\item Verwaltung
+\item SQL Server Services
+\begin{itemize}
+\item Master Data Service
+\item Reporting Services
+\item Analysis Services
+\end{itemize}
+\item Database Engine
+\item Complex Event Processing (CEP) Engine
+\end{itemize}
+\citep{SQLProt1}
+Im Folgenden wird eine Untergruppe dieser Protokolle beschrieben, die für die Netzwerkverbindungen verwendet werden. 
+
+Der Verbindungsverlauf mit einer Client-Anwendung erfolgt in den folgenden Schritten:
+\begin{enumerate}
+\item Authentifizierungs Handshake zwischen Client und Server mit einem ausgewählten Schema (SQL Server Authentifzierung oder Windows Authentifzierung)
+\item Der SQL Server verifiziert die übermittelten Anmeldedaten. 
+\begin{itemize}
+\item Sind die Anmeldedaten korrekt, erfolgt die Bestätigung der Verbindung durch den Server
+\item Sind die Anmeldedaten nicht korrekt, wird die Verbindung durch den Server abgebrpchen und eine entsprechende Rückmeldung gesendet
+\end{itemize}
+\item Nach erfolgreicher Anmeldung werden Befehle gesendet
+\item Der Server beantwortet diese Anfrage mit einem Ausführungsstatus und einer Antwort
+\item Die Verbindung wird durch die Client-Anwendung beendet
+\end{enumerate}
+\citep{SQLProt1}
+
+Dieser Ablauf gilt für die Verwendung des Native Web Services (SSNWS) Protokolls und des Tabular Data Stream (TDS bzw. SSTDS (TDS v4.2) Protokolls. Das Native Web Services Protokoll ist ein Netzwerkprotokoll, welches für die Verbindung der Database Engine mit WebService-basierten Anwendungen genutzt wird. Auf der Basis von SOAP 1.1 und 1.2 definiert es Kommunikationslogik und Nachrichtenformate für den Austausch von T-SQL Abfragen. Das TDS Protokoll ist ein Protokoll der Anwendungsebene regelt die Übertragung von T-SQL Anfragen und Antworten zwischen Client-Anwendungen und Datenbanken auf dem SQL Server. Die Version 4.2 (SSTDS) fügt dem Protokoll weitere Eigenschaften hinzu (u.a. Authentifizierung, Kannalverschlüsselungsverhandlung, Spezifikationen für SQL-Anfragen und RPC-Integration) \citep{SQLProt1}.
+
+Neben diesen Protokollen werden desweiteren die folgenden Protokolle für die Netzwerkverbindungen verwendet:
+\begin{itemize}
+\item Session Multiplex Protocol (SMP): Dieses Protokoll wird für die Kommunikation zwischen Datenbankanwendungen und der SQL Server Database Engine verwendet. Es ermöglicht darüber hinaus Multiplex-Datenbankkommunikation über eine einzelne, stabile Transportverbindung.
+\item SQL Server Resolution Protocol (SSRP): Dieses Protokoll dient der Namensauflösung von SQL-Serverinstanzen im Netzwerk, sowie für die Auflistung der erreichbaren Serverinstanzen.
+\end{itemize}
+\citep{SQLProt1}
+
+
+\section{Analyse des Informationspools im Bezug auf Angriffsszenarien}
+In Folge der Beschreibung der Elemente des zu analysierenden Modells stellt sich die Frage der Relevanz im Bezug auf die Nutzbarkeit für die Erkennung von Sicherheitsvorfällen, u.a. mit Hilfe eines SIEM-Systems. Zu diesem Zweck wird im Folgenden zunächst der Informationspool als Gesamtmenge betrachtet und daraufhin unter dem Aspekt der Analyse von Angriffsszenarien.
+
+\subsection{Betrachtung der Datenmenge}
+Die Untersuchung der Netzwerkteilnehmer ergibt, dass auf jedem System eine Art Protokolldatei zur Verfügung steht, die Informationen über Veränderungen des Systems enthält. Diese Informationen umfassen u.a. Daten zu den Zeitpunkten der Veränderung, dem Objekt der Veränderung sowie abhängig von der Protokolldatei und der protokollierenden Software weitere Details wie etwa Verzeichnisdaten. Zudem erlaubt die Integration der Elemente im Netzwerk basierend auf dem einheitlich verwendeten Ethernet-Standard eine Betrachtung der Kommunikationsflüsse innerhalb des Netzwerkes durch die Analyse der Protokolldatein der Firewalls, Switche und Router sowie der zugehörigen Protokolldateien der Server. 
+
+Die grundlegenden Protokollierungsmechanismen der Betriebssysteme erlauben eine Übersicht über alle laufenden Prozesse und deren Abhängigkeiten, sowie der ausgeführten grundlegenden Operationen (z.B. die Erstellung eines Prozesses). Mit dieser Funktionalität werden zudem Events über Veränderungen von Dateien und Änderungen von Betriebssystemkomponenten (wie etwa Änderungen an der Registry-Komponente des Windows Betriebssystems) dokumentiert. Desweiteren ist mit der vorhanden Grundlage die Erstellung anwendungsspezifischer Protokolle von auf dem Betriebssystem aufsetzender Appplikationen möglich. Die Protokollierung der Betriebssystem umfasst zudem Daten über die Zugriffszeitpunkte, Dauer des Zugriffes und Rechtevergabe für Benutzer der Systeme. 
+Die Limitierung der Dokumentation der Systemveränderungen ergibt sich aus der Verwendung der Protokollierungsplattform durch Entwickler der installierten Anwendungen, etwa in Form der Nutzung der vorhanden Datenfelder und dem Definitionsgrad der Fehlermeldung und anderer Events im Bezug auf die Funktionalität der jeweiligen Anwendung. 
+
+Neben der Protokollierungfunktionalität der Betriebssysteme können zusätzlich weitere Überwachungs- und Analysewerkzeuge, wie etwa Endpoint Security Lösungen, verwendet werden um zusätzliche Informationen durch Auswertung der unterliegenden Datenlage sowie der Überwachung definierter Elemente des Systems im Rahmen der vorhanden Resourcen bzgl. Rechenleistung und Zeitkosten. 
+
+Zusätzlich zu der systembezogenen Überwachung und Analyse können die Protokolldatein von Netzwerkkomponenten (Firewalls, Switche, Router) genutzt werden um Informationen über die Kommunikation innerhalb des Netzwerkes, sowie der Kommunikation mit Kommunikationsteilnehmern außerhalb des Netzwerkes nachzuvollziehen und auf Unregelmäßigkeiten zu prüfen. Zu den verfügbaren Daten gehören Daten über den Ablauf der Kommunikation, das Ziel der Kommunikation (etwa die Anfrage und Übermittlung von Datenbankdaten), die Dauer der Kommunikation und auch die Anzahl an Kommunikationsfehlern, Verbindungsabbrüche und andere Störungen. 
+
+
+\subsection{Relevanz für die Sicherheitsbetrachung mit Hilfe von SIEM-Systeme}
+Um die Relevanz der dargestellten Informationen für ein SIEM-System darzustellen wird im Folgenden anhand von Beispielen, die Analyse von Angriffsszenarien bzgl. der Infektion von Systemen durch Malware beschrieben. Die Aufgabe eines SIEM-Systems ist es, wie bereits im Grundlagenkapitel beschrieben, Daten über den Status der Systeme im Unternehmensnetzwerk zu sammeln, zu speichern, auszuwerten und zu verknüpfen. Die zu diesem Zweck erstellten und fortlaufend aktualisierten Regeln basieren u.a. auf der Kenntnis des Verhaltens von Malware.
+
+Bei der Infektion, Ausführung und Verbreitung von Malware auf einem System werden Teile des Systems verändert um eine möglichst lange Ausführung der Malware zu ermöglichen. Diese Veränderungen werden durch das System an verschiedenen Stellen dokumentiert. Diese Daten werden im Rahmen einer Untersuchung und Überwachung eines Systems als Indikatoren für die Kompromittierung eines Systems (IoC, \glqq Indicator of Compromise\grqq ) bezeichnet. Für die Erkennung dieser Indikatoren wird bspw. für die Überwachung der normale Betriebszustand möglichst präzise definiert, sowie eine Analyse des infizierten Systems und der darauf befindlichen Malware durchgeführt, durch die potentielle Erkennungsmerkmale festgestellt und zu Indikatoren zusammengestellt werden. Diese werden von einem Sicherheitssystem wie etwa einem Softwareagenten eines SIEM-Systems oder einer Anti-Malware Software für die Erkennung und/oder Schutzmaßnahmen verwendet.
+
+Der Ablauf eines Angriffsszenarios, bei dem eine Malware für einen oder mehrere Zwecke auf einem System installiert wird, lässt sich grob in die folgenden Schritte einteilen:
+\begin{enumerate}
+\item Erlangen des Zugriffs auf das System über einen Angriffsvektor (z.B. Phishing, infizierte externe Speicher, infizierte Webinhalte)
+\item Erstellung eines Zugriffspunktes, Sicherstellung der Persistenz und Verschleierung der Aktivitäten
+\item Hinzufügen weiterer Werkzeuge von einem internen oder externen Speicherpunkt
+\item Ausführung der Malware auf dem System
+\item Ggf. Informationssammlung über weitere Systeme im Netzwerk und Verbreitung der Malware
+\end{enumerate}
+
+%Quelle: https://www.fireeye.com/blog/threat-research/2013/12/openioc-series-investigating-indicators-compromise-iocs.html 
+
+Quelle \citep{EntAnalysis1} beschreibt anhand eines Beispieles die Erstellung von IoCs. In diesem Beispiel wird zunächst der Angriffsvektor in Form einer Phishing-E-Mail analysiert. Durch das Herunterladen und den Versuch der Öffnung einer PDF-Datei im Anhang der E-Mail wurde die erste Komponente der Malware platziert, durch die eine Hintertür geöffnet und dem Angreifer Zugriff auf das System verschafft wurde. Bei der Betrachung des Vorfalles durch den zuständigen Analysten konnte dieser Prozess durch dokumentierte Operationen des Betriebssystems nachvollzogen werden. Im Speziellen wurde Operationen im Dateisystem protokolliert, die die Erstellung der PDF-Datei durch Herunterladen des Anhangs zeigen (inklusive des dazugehörigen Zeitstempels, Verzeichnispfades und der Betriebssystemoperation) sowie die Erstellung einer Anwendungsdatei (.exe) zum vermuteten Zeitpunkt des Öffnungsversuches durch den Benutzer. 
+Im nächsten Schritt konnten protokollierte Änderungen von Einträgen innerhalb der Windows Registry entdeckt werden, sowie weitere Spuren in Form von Dateien und Dateisystemoperationen, die dem Hinzufügen weiterer Funktionalität in dem Verzeichnispfad \glqq C:\\ \$RECYCLE.BIN\grqq (verstecktes Verzeichnis des Papierkorbes), etwa eines Werkzeuges für die Durchsuchung des Dateisystems, sowie der Verschleierung der Aktivitäten dienten. Ein typischer Fund konnte etwa das Hinzufügen der Malware in den Autostart-Schlüsseln der Windows Registry verzeichnet werden, durch das die Ausführung der Malware beim Start des Systems sichergestellt werden soll.
+Zudem wurde der Aufruf des Verzeichnises per Internet Browser dokumentiert sowie weitere Aktivitäten mit dem Ziel Informationen über Systeme im lokalen Netzwerk zu sammeln. 
+
+Andere Quellen und Beispiele der Untersuchung von Malware-Typen, u.a. Keylogger-Werkzeugen, Ransomware und trojanischen Pferden ergeben ähnliche Funde \citep{EntAnalysis2}. 
+%Quelle: http://hooked-on-mnemonics.blogspot.de/2011/01/intro-to-creating-anti-virus-signatures.html  
+Darüber hinaus werden diese Indikatoren auch für die Herstellung von Malware-Signaturen verwendet, die von Anti-Malware-Programmen genutzt werden um Malware-Infektionen zu erkennen und zu verhindern oder einzudämmen.
+
+Diese Beispiele zeigen, dass die Dokumentation jeglicher Systemprozesse sowie die kontinuirliche Auswertung dieser Dokumentationen essentiell sind um Angriffe durch Malware-Infektionen zu verhindern. Daraus ergibt sich die Relevanz der Informationsmenge für den Einsatz eines SIEM-Systems.

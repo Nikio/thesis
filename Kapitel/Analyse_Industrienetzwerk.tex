@@ -1,13 +1,320 @@
 \chapter{Analyse der Informationsquellen in einem industriellen Produktionsnetzwerk}
+In diesem Kapitel soll in Folge der Analyse der relevanten Informationsmenge in Unternehmensnetzwerken eine Betrachtung des Zustandes in industriellen Produktionsnetzwerken erfolgen. Als industrielles Produktionsnetzwerk werden dafür in diesem Kapitel die Netzwerkstrukturen in der Produktionsleit- und Feldebene betrachtet.
+
 \label{cha:Analyse der Informationsquellen in einem industriellen Produktionsnetzwerk}
+%Ziel der Analyse
+Wie bereits im vorherigen Kapitel ist das Ziel der Analyse ist es die sicherheitsrelevanten Infortmationsmenge zu erfassen. Informationen werden als sicherheitsrelevant betrachtet, wenn diese Informationen genutzt werden können um die Nutzung eines bestimmten Angriffsvektors erkennen zu können. Da automatisierte Anlagen abhängig vom Industriezweig und selbst von Unternehmen zu Unternehmen und zweckgebunden unterschiedlich sind, wird ein stark vereinfachtes Model verwendet, welches die Elemente eines Automatisierungsnetzwerkes zeigt. Da das grundlegende Ziel die Ermittlung der Informationsmenge ist, werden Elemente wie etwa die weite Verteilung / Verbreitung von Fertigungssystemen in diesem Kapitel nur am Rande berücksichtigt. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=175mm]{Zeichnungen/Analyseansatz.png}
+\caption{Analysestruktur (Placeholder)}
+\label{fig:Analyseansatz (Placeholder)}
+\end{figure}
+
+%Beschreibung der Durchführung
+Äquivalent zu der Betrachtung der Unternehmensnetzwerke wird das benutzte Model und dessen Komponenten beschrieben. Das Ziel der Beschreibung der Komponenten ist eine grobe Klassifizierung der verfügbaren Informationsquellen der Komponenten. Da in industriellen Netzwerken konkurrierende Standards verwendet und viele proprietäre Protokolle und Geräte verwendete werden, muss eine Einschränkung stattfinden. Aus diesem Grund werden für das Model populäre Elemente im europäischen Raum verwendet. Desweiteren wird basierend auf der individuellen Natur der Programmierungen und Parameteranpassungen auf den zu steuernden Prozess der Fokus der Beschreibungen basierend auf der betrachteten Komponente angepasst.
+
+Darauf folgend werden die betrachteten Angriffsszenarien beschrieben und die Informationsquellen der Komponenten für das jeweilige Angriffsszenario bewertet. Zu diesem Zweck wird beschrieben, welche Informationen pro Schritt des Angriffsszenarios als potentielle Indikatoren dienen könnten und ein Abgleich mit der kategorischen Verfügbarkeit der Daten, aus denen diese Informationen gewonnen werden können. 
+
 \section{Beschreibung der Unternehmensarchitektur (Beispiel)}
+Das verwendete Modell dient dem Zweck der Darstellung des Pfades vom Leitsystem (inklusive eines SCADA Systems) zu den Elemente der Feldebene (SPS und Aktoren/Sensoren). Das Leitsystem wird mit einem Industriellen PCs in der Funktion eines Servers für die Datenabfrage aus der Feldebene verbunden. Das verwendete SCADA System wird das Siemens WinCC System verwendet. Für die Kommunikation zwischen Server und der Kontrolleinheit des Prozesschrittes (SPS) wird das Industrial Ethernet Protokoll PROFINET eingesetzt. Für die Kommunikation mit einem Sensor und zugehörigen Aktor wird das Feldbussystem PROFIBUS verwendet. Als SPS wird eine Siemens S7 eingesetzt.
+
 \subsection{Systeme}
-\subsection{Applikationen}
-\subsection{Interaktionen der Systeme (und Anwender)}
-\section{Verwendete Analysemethode}
-\subsection{(Beschreibung der Kategorisierung und/oder wissenschaftliche Grundlage)}
-\section{Resultierende Informationstypen / -kategorien}
-\subsection{Extraktion und Verarbeitung}
-\subsection{Feldbus im Beispiel}
-\subsection{Industrial Ethernet im Beispiel}
-\section{Analyse im Bezug auf typische Angriffsvektoren (s. Grundlagen)}
+\subsubsection{SIMATIC S7-1200 (SPS)}
+Die SIMATIC S7-1200 wird als Beispiel für eine gebräuchliche SPS herangezogen. Wie im Grundlagenkapitel bereits erläutert, wird die Funktionsweise der SPS durch die Firmware für die unterliegenden Funktionen des Ansprechens der Baugruppen und der Zentralen Einheit (CPU) und das Anwenderprogramm bestimmt. Basierend auf diesem Zustand ist es nicht möglich eine allgemeine Aussage darüber zu treffen, welche Daten grundsätzlich protokolliert und verfügbar gemacht werden können. Aus diesem Grund widment sich diese Beschreibung genauer den verfügbaren Befehlen und Optionen der SPS und der SPS-Programmierung um eine Abschätzung der verfügbaren Datenmenge und Art der Daten vorzunehmen. 
+
+%Quelle: https://www.siemens.com/global/de/home/produkte/automatisierung/systeme/industrie/sps/s7-1200.html
+Grundlegend besteht die S7-1200 aus den folgenden Baugruppen:
+\begin{itemize}
+\item Zentralbaugruppe (CPU): Ausführung des Anwenderprogrammes
+\item Signalbaugruppen: Schnittstellen zu den Aktoren und Sensoren
+\item Kommunikationsbaugruppen: Erweiterung der SPS um weitere Kommunikationsschnittstellen
+\item Technologiebaugruppen: Erweiterung der SPS um spezielle Funktionen (z.B. das Messen von Energiedaten)
+\end{itemize}
+
+Basierend auf dieser Auflistung wird für eine gemeinsame Grundmenge im Folgenden auf die Zentralbaugruppe eingegangen. //
+
+%Handbuchquelle: https://support.industry.siemens.com/cs/document/109741593/simatic-s7-s7-1200-automatisierungssystem?dti=0&dl=de&lc=en-WW
+Grundlegend werden für die Programmierung einer SPS Programmbausteine verwendet. Diese dienen dem Zweck der Steuerung und Ausführung des Anwenderprogrammes. Grundsätzlich wird zwischen den folgenden Bausteinen unterschieden:
+\begin{itemize}
+\item Organisationsbausteine (OBs): Diese Bausteine legen die Struktur des Programmes fest und fungieren für den Aufruf und die Ausführung bestimmter Unterprogramme und Alarme
+\item Funktionsbausteine (FBs) und Funktionen (FCs): Funktionen werden etwa durch die CPU bereitgestellt. Sowohl FBs als auch FCs enthalten ausführbaren Programmcode, der für die Ausführung einer bestimmten Aktion und die Definition von E/A-Parametern im Umgang mit bestimmten Modulen genutzt wird. 
+\item Datenbausteine (DBs): Datenbausteine werden für die temporäre Speicherung von Daten (z.B. Rechnungsergebnissen) verwendet. DBs können auf verschiedenen Ebenen eingesetzt werden, wodurch der Zugriff auf die Daten durch andere Funktionsbausteine oder Programme möglich wird.
+\end{itemize}
+
+Diese Bausteine werden relevant u.a. im Bezug auf die Interaktion mit den Betriebszuständen der CPU. Die Steuerung der Programmausführung durch die OBs umfasst u.a. die folgenden Bereiche: Strukturierung des Programmzykluses, Strukturierung des Anlaufes, Strukturierung des Aufrufes von Alarmen (Weckalarm, Prozessalarm, Zeitfehler und Diagnosefehler). Dies ist u.a. deshalb relevant, weil Fehlerereignisse in den Diagnosepuffer eingetragen und über eine Schnittstelle abgerufen werden können. //
+
+Für die CPU sind die folgenden Betriebszustände definiert:  
+\begin{itemize}
+\item STOP: Programm wird nicht ausgeführt, Laden eines neuen Programmes ist hier möglich
+\item STARTUP: Einmalige Ausführung von OBs, die für den Anlauf des Programmes notwendig sind
+\item RUN: Ausführung des Programmes in einem sich wiederholenden Zyklus
+\end{itemize}
+
+Basierend auf diesen Zuständen kann die Ausführung eines Anwenderprogrammes gesteuert werden. Treten Fehler auf, können diese Ereignisse u.a. in den Diagnosepuffer geschrieben werden. Ein Diagnoseereignis werd durch Datum, Uhrzeit, Kategorie und Beschreibung des Ereignis beschrieben. Ereigniskategorien sind etwa Systemereignisse, die durch Diagnosefunktionen ermittelt werden, CPU-Fehler und Modulfehler. Zudem wird jede Änderung des Betriebszustandes protokolliert. Der Diagnosepuffer speichert die neuesten fünfzig Ereignisse. //
+
+Für die Parametrisierung und den Zugriff auf Daten ist es essentiell den Datenspeicher und seine Bereiche zu betrachten. Für den Zugriff auf bestimmte Daten ermöglicht die Programmierumgebung für die Steuerungslogik, \glqq STEP7\grqq , das Binden von Datenadressen an symbolische Namen, äquivalent zu Variablen in höheren Programmiersprachen. Der Speicher wird unterteilt in die folgenden Bereiche:
+\begin{itemize}
+\item E: und A: - Prozessabbild der Eingänge und Ausgänge
+\item M: Merker (Elemente, die für das temporäre Speichern von Zwischenergebnissen genutzt werden)
+\item DB: Zugriff auf einen Datenbaustein
+\end{itemize}
+
+Bzgl. des Zugriffes auf die Ein- und Ausgänge ist es zudem möglich direkt auf die physischen Eingänge und Ausgänge zuzugreifen. Das Schreiben von Daten ist jedoch nur für die Ausgänge möglich, da die Eingänge direkt mit den Sensoren und Aktoren verbunden sind und die enthaltenen Zustände dementsprechend nicht überschrieben werden dürfen.  //
+
+\textbf{Informationen und Ereignisse}
+Im Folgenden wird basierend auf den verfügbaren Anweisungsmöglichkeiten und Funktionen eine Auflistung der potentiellen Daten vorgenommen. Für diese Arbeit wurden die folgenden Kategorien definiert:
+\begin{itemize}
+\item Potentielle Systemereignisse basierend auf Änderungen der Systemkonfiguration
+\item Fehlerereignisse basierend auf Funktionalitäten
+\item Fehlerereignisse basierend auf Kommunikationsaktivitäten
+\end{itemize}
+
+Eine Auswahl an potentiell wichtigen Informationen wird in der folgenden Tabelle dargestellt. Die Limitierung durch die maximale Größe des Anwendungsprogrammes und des Speichers wird in diesem Abschnitt noch nicht berücksichtigt. 
+\todoForm{Tabelle erstellen und Listen ersetzen}
+\begin{itemize}
+\item Kommunikation: 
+\begin{itemize}
+\item PROFINET / PROFIBUS Analysefunktionen 
+\begin{itemize}
+\item Verbindungsinformationen (MAC-Adresse, IP-Adresse oder Busadresse, Spezifikationen des Gerätes)
+\item Auslesen der Diagnoseinformationen mit GET\_ DIAG
+\item Abrufen der Betriebszustände von Peripheriegeräten oder Modulen
+\item Abrufen von LED-Zuständen
+\end{itemize}
+\item Fehler bei Zugriffen auf die Peripherie
+\end{itemize}
+
+\item System:
+\begin{itemize}
+\item Änderung der System- oder Lokalzeiten
+\item Weck- und Verzögerungsalarme (Auslöser für die Ausführung eines Programmteils)
+\item (De-)Aktivierung von Unterprogrammen (durch Fehlerereignisse von Alarm-OBs)
+\item Ziehen / Stecken-Ereignisse beim Entfernen / Hinzufügen von Baugruppen
+\item Fehler bei Baugruppenträgern 
+\item Gemeinsame Fehlercodes für erweiterte Anwendungen bzgl. E/A-Ereignissen und Zugriffe auf DBs
+\end{itemize}
+
+
+\item Funktionalitäten:
+\begin{itemize}
+\item Diagnosefehler
+\item Ereignisse bzgl. des Zugriffsschutz der CPU und bestimmter Bausteine
+\end{itemize}
+\end{itemize}
+
+Basierend auf diesem Ausschnitt wird das Potential der Verfolgung von funktionalen Fehlern im Prozess sowie bei der Prozessausführung dargestellt. Ein besonderes Augenmerk soll desweiteren auf die Möglichkeit der Datenprotokollierung gelegt werden.
+
+Die S7-1200 und andere Siemens SPSen unterstützen die Erstellung von Protokolldateien im CSV-Datenformat. Für die Einträge von Daten in diese Protokolldateien werden verschiedene Funktionen für die Erstellung, Schreiben und Schließung dieser Dateien bereitgestellt. Jede Protokolldatei kann maximal 256 Einträge speichern. Über interne Ereignisse lässt sich der Zustand und die Erstellung und Schließung der Dateien kontrollieren. Dabei können mehrere Protokolldateien, maximal jedoch acht verschiedenen Dateien, gleichzeitig geöffnet sein. Die Gesamtmenge an Protokolldateien wird durch die Größe des Ladespeichers bzw. einer hinzugefügten Speicherkarte definiert. Die Gesamtmenge darf maximal 25\% des Speichers einnehmen (basierend auf der Größe des Ladespeichers 250-500 KByte / Speicherkarte bis zu 6 MByte). Der Zugriff auf die Log-Dateien kann entweder über die Aktivierung des Webservers oder den direkten Zugriff auf Log-Dateien über einen Webbrowser (\glqq http://<IP-Adresse>/DataLog.html?FileName=<Name der Protokolldatei>\grqq ) erfolgen, sofern eine geeignete Verbindung (z.B. über PROFINET) vorhanden ist. 
+Protokolldateien werden im Ladespeicher oder auf einer Speicherkarte abgelegt, dürfen jedoch maximal 25\% der Speicherka
+
+%Quelle für Loggingmethoden: https://cache.industry.siemens.com/dl/files/939/109746939/att_936594/v4/109746939_WinCC_TIA_Portal_Archivierung_Komp_DOC_en.pdf
+
+
+\subsection{Kommunikationsmedien}
+\subsubsection{PROFIBUS}
+%Quelle:http://www.feldbusse.de/Profibus/profibus.shtml
+PROFIBUS ist ein serielles Feldbussystem, welches u.a. in der Fertigungs-, Prozess- und Gebäudeautomatisierung verwendet wird. Es ermöglicht die zeitkritische, deterministische Kommunikation von Steuer- und Peripheriegeräten (Aktoren und Sensoren) sowie HMIs und anderen Elementen. Das Kommunikationsprinzip basiert auf dem Multi-Master-Prinzip. Dies soll den gemeinsamen Betrieb mehrerer Systeme für den Zweck der Automatisierung, des Engineerings oder der Visualisierung der Anlage, mit den verteilten Pheripheriegeräten der Anlage ermöglichen. Zu diesem Zweck werden die Kommunikationsteilnehmer in zwei Gerätearten unterteilt: Master- und Slave-Geräte. Master-Geräte bestimmten die Kommunikation und senden auf dem Feldbus, wenn sie im Besitz des Tokens sind, welches das Zugriffsrechte auf den Datenbus darstellt. Slave-Geräte hingegen können lediglich empfangene Nachrichten bestätigen oder auf Anfrage des Master-Gerätes Daten senden.
+
+%http://www.feldbusse.de/Profibus/Buszugriffsprotokoll.shtml
+Für die Zuweisung der Buszugriffsrechte wird das Fieldbus Data Link (FDL) Protokoll verwendet. Dieses verbindungslose, Layer-2-Protokoll bestimmt zu welchem Zeitpunkt ein bestimmter, aktiver Kommunikationsteilnehmer (Master) das Recht erhält Daten zu senden. Die dadurch etablierte Buszugriffskontrolle (MAC, Medium Access Control) führt die folgenden Aufgaben aus:
+\begin{itemize}
+\item Etablierung des Token-Rings während des Hochfahrens des Systems
+\item Hinzufügen/Entfernen von Teilnehmern
+\item Kontrolle der Weitergabe des Tokens
+\end{itemize}
+
+Der Token-Ring wird durch aufsteigende Busadressen der Master-Geräte realisiert. Die Tokeninformationen werden durch ein spezielles Telegram weitergegeben. Abhängig von der Definition und Größe des Systems muss das Token in einer maximalen Token-Umlaufzeit einmal an jeden aktiven Kommunikationsteilnehmer weitergesendet werden. Dieses Verfahren ermöglicht die Erstellung von Master-Slave-, Master-Master- und Misch-Kommunikationsformen. Die Adressierung wird durch einen Byte-Wert zwischen 0 und 127 kodiert. Dabei werden bestimmte Bereiche für etwa Programmiergeräte, Slaves und Master bestimmt.
+
+Desweiteren wird durch eine Unterscheidung der verschickten Telegramme (Nachrichten) eine logische Datensicherung etabliert. Diese wird durch bestimmte Start- und Endzeichen sowie Paritätsbits und Kontrollbytes hergestellt. 
+
+%QUelle: https://de.wikipedia.org/wiki/Profibus
+Für die PROFIBUS-Protokolle der Anwendungsebene (DP-Varianten) werden Telegramtypen bereitgestellt:
+\begin{itemize}
+\item Keine Daten (SD1)
+\item Daten variabler Länge (SD2)
+\item Daten fester Länge (SD3)
+\item Token (SD4)
+\item Kurzquittung (SC)
+\end{itemize}
+
+%Quelle:  https://www.profibus.felser.ch/fdl_parameter.html
+Zusätzlich zu der FDL-Funktionalität existieren die Fieldbus Management (FMA) Dienste für die Verwaltung der Schichten 1 (Übertragungstechnik) und 2 (FDL). Diese Dienste können unterteilt werden in lokale Dienste (bzgl. der Station) und stationsübergreifende Dienste. Zu den lokalen Diensten zählen \glqq Reset\grqq , \glqq Set Value\grqq , \glqq Read Value\grqq , \glqq (R)SEP (De-)Activate\grqq  und \glqq Event\grqq . Event ist ein Dienst, der Anwender über Ereignisse oder Fehler in den Schichten 1 und 2 informieren kann. Zu diesen Events zählen:
+\begin{itemize}
+\item Duplicate adress (Master)
+\item Faulty transceiver (Master)
+\item Time\_ put (Master / Slave)
+\item Not\_ syn (Master / Slave)
+\item Out\_ of\_ ring (Master
+\item GAP\_ event (Master)
+\end{itemize}
+
+Zu den stationsübergreifenden Diensten zählen \glqq Ident (Versionsdaten von Hardware und Software)\grqq , \glqq LSAP Status (Informationen zu einem SAP)\grqq  und \glqq Live-List (Liste aller erreichbaren Teilnehmer)\grqq
+
+%http://www.feldbusse.de/Profibus/Profibus-DP.shtml
+PROFIBUS DP dient als Protokoll für den zyklischen Datenaustausch zwischen einer Kontrolleinheit (SPS) und Peripheriegeräten. Bei der Verwendung von DP wird zwischen drei Gerätetypen unterschieden:
+\begin{itemize}
+\item DP-Master 1 (DPM1): Dieser Kommunikationsteilnehmer regelt den zyklischen Datenaustausch (typischerweise SPS oder PC)
+\item DP-Master 2 (DPM2): Ein zusätzliches Gerät, etwa für Bedienungs- oder Engineering-Zwecke, die Kommunikation erfolgt azyklisch
+\item Slave: Pheripheriegeräte (Aktoren/Sensoren)
+\end{itemize}
+
+PROFIBUS DP unterstützt Mono- und Multi-Mastersysteme. Ein Multi-Mastersystem besteht aus verschiedenen Subsystemen (Mono-Master, d.h. DPM1 mit mehreren Slaves) und weiteren DPM2-Geräten. Die Kommunikation wird mit Hilfe des FDL Protokolls geregelt.
+
+
+Das Verhalten eines (Sub-)Systems hängt von dem Betriebszustand des DPM1 ab. Es wird zwischen den folgenden Betriebszuständen unterschieden:
+\begin{itemize}
+\item Stop: Kein Datenverkehr zwischen DPM1 und Slaves
+\item Clear: DPM1 liest Eingangsinformationen der Slaves und schaltet die Ausgänge in einen sicheren Zustand
+\item Operate: Zyklische Kommunikation zwischen DPM1 und Slaves (Datentransferphase)
+\end{itemize}
+
+Bei der zyklischen Kommunikation im \glqq Operate\grqq -Zustand sendet (schreibt) der Master per Aufruf-Telegramm Ausgangsdaten an den jeweiligen Slave und empfängt (liest) die Eingangsdaten des Slaves. Dieser Vorgang wiederholt sich in dieser Reihenfolge konsequent. Wird ein neuer Slave in das System eingefügt werden drei Phasen durchlaufen: Parametriesierungs-, Konfigurations- und Datentransferphase. Die ersteren Phasen dienen einem Ist-Soll-Abgleich zwischen DPM1 und Slave bei dem der DPM1 Gerätetyp, Format- und Längeninformationen sowie die Anzahl der Ein- und Ausgänge prüft. Nach erfolgreicher Prüfung geht die Kommunikation in die Datentransferphase über.
+
+
+Neben dem Datenaustauschen zwischen einem DPM1 und einem einzelnen Slave besteht auch die Möglichkeit eines Multicasts bei dem Steuerungsbefehle an einen, eine Gruppe oder alle Slaves des von dem DPM1 verwalteten System gesendet werden können. Diese Funktionalität ermöglicht die Betriebsarten Sync und Freeze. 
+Bei der Sync-Betriebsart werden zunächst die Ausgangszustände der Slaves eingefroren, d.h. sie können nicht mehr verändert werden. Darauf werden Ausgangsdaten vom DPM1 auf dem Slave gespeichert, die Zustände jedoch nicht verändert. Durch einen erneuten Sync-Befehl werden die Zustände überschrieben. Ein Unsync-Befehl beendet den Sync-Betrieb.
+Bei der Freeze-Betriebsart werden die Eingangszustände der Slaves eingefroren. Die Eingangszustände werden aktualisiert, sobald ein weiterer Freeze-Befehl gesendet wurde. Analog zu Sync wird der Freeze-Betrieb durch den Unfreeze-Befehl beendet.
+
+
+Für den Schutz gegen Fehlparametrisierung, d.h. falscher Setzung der Operationsparameter, und Ausfall des Übertragungsmedium werden für DP-Master als auch DP-Slaves \glqq Data\_ Control\_ Timer\grqq  ausgelöst sobald innerhalb eines festgelegten Zeitintervalls keine ordnungsgemäße Kommunikation stattgefunden hat. Im Fall des DP-Masters kann zu diesem Zweck der Parameter \glqq Auto-Clear\grqq  aktiviert (True) sein. In diesem Falle werden die Ausgänge aller Slaves in einen sicheren Zustand geschaltet und daraufhin der Clear-Betriebszustand eingenommen.
+
+
+%Quelle: http://www.feldbusse.de/Profibus/DPV1.shtml
+PROFIBUS DP kann durch PROFIBUS DPV1 erweitert werden. DPV1 dient der azyklischen Kommunikation und ermöglicht die Kommunikation von DPM2-Geräten und Slaves. Die azyklische Kommunikation dient der Übertragung von Bedarfsdaten. Bedarfsdaten sind Parameter (z.B. Grenzwerte) oder Optionen (z.B. Fehlerlisten), die von den Slaves abgerufen werden können. Zu diesem Zweck erweitert DPV1 DP um die folgenden Dienste: \glqq Read\grqq und \glqq Write\grqq .
+
+\todoQuestion{PROFIBUS Frage: Unterschiede zwischen Informationsmengen DP vs DPV1 bzgl. Status und Alarmmeldungen?}
+
+Die azyklische Kommunikation wird parallel zur zyklischen Kommunikation durchgeführt. Der Ablauf kann am Beispiel Read demonstriert werden:
+\begin{itemize}
+\item (Für DPM2: Aufbau einer C2-Verbindung)
+\item DP-Master sendet den Aufruf an den DP-Slave
+\item Der DP-Slave bestätigt den Erhalt der Anfrage und beginnt die interne Bereitstellung der Daten (Quittierung)
+\item DP-Master führt zyklische Prozesskommunikation durch
+\item Wiederholend:
+\begin{itemize}
+\item DP-Master sendet Poll-Request
+\begin{itemize}
+\item Daten stehen noch nicht bereit? DP-Slave quittiert Poll-Request
+\item Daten stehen bereit: DP-Slave sendet Daten an Stelle der Quittierung
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Die aufgerufenen Betriebsdaten werden über den das Modul ("Slot") und den jeweiligen Parameter ("Index") definiert. Soll nur ein Teilwert des Parameters gelesen werden kann über die Länge ("Length") dies definiert werden. Die Indexnummern und Datentypen werden in PROFIBUS Profilen festgelegt.
+
+
+Da die Leistungsmerkmale der Geräte, d.h. Busparameter und Funktionalitäten (z.B. Anzahl der E/A-Signale und Diagnosemeldungen), abhängig von Gerätetyp und Hersteller unterschiedlich sind, werden GSD-Dateien für die Definition dieser Elemente verwendet. Eine GSD-Datei stellt dabei eine Art elektronische Gerätedatenblatt da und kann während der Konfiguration, z.B. durch ein Projektierungswerkzeug, eingelesen werden. Die GSD-Dateien sind in drei Abschnitte eingeteilt:
+\begin{enumerate}
+\item Allgemeine Festlegungen
+\item Master-bezogene Festlegungen
+\item Slave-bezogene Festlegungen
+\end{enumerate}
+
+Zudem muss in der GSD-Datei eine Identnummer vermerkt sein. Diese Identnummer muss bei der PROFIBUS-Nutzerorganisation beantragt werden und dient der schnellen Identifzierung eines angeschlossenen Gerätetyps durch einen DP-Master.
+
+In der Erweiterung PROFIBUS DPV2 wird die Uhrensynchronisierung durch den DPM1 und isochrone Kommunikation hinzugefügt. Zum Zweck der Uhrensychronisation wurde der Gerätetyp DP-Master 3 (Uhrenmaster) eingefügt.
+
+%Details aus dem Handbuch: https://www.profibus.felser.ch/fdl_parameter.html
+% Für Daten: https://www.profibus.felser.ch/gsd_dateien.html
+
+\subsubsection{PROFINET}
+%Quelle: 20180322(Profinet Descriptions)\PROFINET_Systembeschreibung_DT_2014_web.pdf
+Profinet ist ein offener Industrial-Ethernet-Standard für die Integration  von IT-Systemen in den Automatisierungsprozess auf Basis von TCP/IP. 
+
+
+Wie bei PROFIBUS werden Kommunikationsteilnehmer in einem Profinet-IO-System in verschiedene Gerätekategorien eingeteilt: IO-Controller (typischerweise eine SPS), IO-Device (Gerät der Feldebene) und IO-Supervisor (Programmiergerät, PC, HMI oder anderes zusätzliches Werkzeug (etwa für Engineering-Zwecke)). Der IO-Supervisor entspricht dem PROFIBUS DP-Master 2. 
+
+Zusätzlich werden wie bei PROFIBUS Geräte- bzw. Anwendungsprofile in Form von GSDML-Dateien verwendet. Diese werden durch den Hersteller erstellt und beschreiben Eigenschaften, Leistungsmerkmale und Verhaltensweise der Geräte. Dabei wird zwischen allgemeinen Anwendungsprofilen mit verschiedenen Einsatzmöglichkeiten und spezifischen Anwendungsprofilen unterschieden. 
+
+Geräte der Feldebene werden durch ihr Gerätemodell beschrieben, welches die technischen und funktionellen Möglichkeiten beschreibt. Das Gerätemodell wird definiert durch den Zugriffspunkt (Device Access Point (DAP)) und die für eine bestimmte Gerätefamilie definierten Module (Baugruppen über die die Kommunikation der Prozessdaten abläuft). Der DAP dient als Schnittstelle für die Ethernet-Kommunikation und Verarbeitungsprogramme. Die Module erlauben die Adressierung der E/A-Daten über die Parameter Slot (Steckplatz/Baugruppe), Subslot (Prozess-Schnittstelle, definiert durch den Hersteller), den Index (gibt den Parameter an) sowie den Application Profile Identifier (API). Diese Daten werden azyklisch per Read/Write ausgelesen.
+Der Ausbaugrad eines Anwendungsprofils wird kategorisiert als "kompakt" (nicht-veränderbar) oder "modular". Die GSDML-Datei wird auf einer XML-Basis erstellt.
+
+
+Die Kommunikationswege innerhalb eines PROFINET-Systems werde auf Basis dieser GSDML-Dateien erstellt während der Projektierung. Der Datenaustausch zwischen Kommunikationsteilnehmern wird innerhalb einer Application Relation (AR) durchgeführt, die verschiedene Communication Relations (CRs) spezifiziert:
+\begin{itemize}
+\item Recorded Data CR: Standardkanal für Konfigurationsdaten
+\item IO Data CR: Kanal für die zyklische Übertragung von Echtzeitdaten
+\item Alarm CR: Kanal für Alarme und Fehlermeldungen
+\end{itemize}
+
+Sollen mehrere IO-Controller auf die gleichen Daten eines IO-Device zugreifen, muss dieses während der Projektierung angegeben werden. Jeder IO-Controller kann genau eine AR zu einem bestimmten IO-Device aufbauen. Jedes Feldgerät erhält zudem einen symbolischen Namen als Identifier, welcher als Schlüssel für die Zuordnung von MAC- und IP-Adresse verwendet wird. Die Zuordnung dieses Namens kann über das \glqq Discovery and basic Configuration (DCP)\grqq Protokoll, alternativ aber auch über die Topologie und Nachbarschaft zu einem bestimmten IO-Controller, durchgeführt werden. Die Zuweisung der IP-Adresse wird per DHCP oder einen hersteller-spezfischen Mechanismus durchgeführt. Die verwendbaren Möglichkeiten sind innerhalb der GSDML-Datei definiert.
+
+Für die Adressierung innerhalb des PROFINET-Systems werden eindeutige 48-Bit-MAC-Adressen verwendet. Die MAC-Adresse wird zusammengesetzt aus der FIrmenkennung und einer Organization Unit ID (OUI), welche gegen eine Gebühr von IEEE-Departments vergeben werden.
+
+
+Der Funktionsumfang von Profinet ist flexibel anpassbar abhängig von der notwendigen Funktionalität. Für eine Differenzierung der Funktionalitäten teilt man Profinet in die folgenden Konformitätsklassen ein:
+\begin{itemize}
+\item CC-A: Grundfunktionen
+\item CC-B: CC-A wird um Netzwerkdiagnose und Topologieinformationen erweitert
+\item CC-B(PA (Process Automization)): CC-B wird um Systemredundanzen erweitert
+\item CC-C: Basisfunktionen für Geräte und hardwareunterstützte Bandbreitenreserver für isochrone Echtzeitkommunikation (Basis für taktsynchrone Anwendungen)
+\end{itemize}
+
+
+\textbf{Grundfunktionen}
+
+
+Die Grundfunktionen umfassen den zyklischen Austausch von E/A-Daten mit Echtzeiteigenschaften sowie azyklische Kommunikation (Read/Write) von bedarfsorientierten Daten (Parameter, Diagnose) sowie Identifizierungs- und Verwaltungsfunktionen (Identification and Maintenance (I\& M)) und eine Alarmfunktionalität für die Signalisierung von Geräte- und Kommunikationsfehlern. 
+
+Der zyklische Datenaustausch wird über eine IO Daten CR auf Layer 2 des OSI-Modells in einem Zeitfenster zwischen 250 $\mu $s und 512ms durchgeführt. Die gesendeten Daten werden durch den Empfänger nicht bestätigt. Die Telegramme enthalten neben den Prozessdaten weitere Informationenen für die Bestätigung der Gültigkeit der Daten, Redundanz- und diagnosedaten sowie Informationen über den Taktzyklus des Providers. Wie auch bei PROFIBUS werden die Zeitintervalle zwischen den Kommunikation überwacht und Mechanismen ausgelöst, falls der Zeitabstand überschritten werden sollte. 
+
+Der azyklische Datenaustausch wird über die Record Data CR auf Basis von TCP/IP durchgeführt. Die Read/Write-Frames werden verwendet um Diagnose- und Identifzierungsinformationen über das Netzwerk und die Kommunikationsteilnehmer abzurufen. Die Diagnosedaten enthalten u.a. mehrstufige Alarmereignisse. Das Zustandsmodell unterscheidet zwischen den Kategorien \glqq gut\grqq , \glqq Wartungsbedarf (etwa bei einem Ausfall der Medienredundanz-Funktionalität)\grqq , \glqq Wartungsanforderung\grqq und \glqq fehlerhaft\grqq . Zudem wird zwischen Diagnosealarmen und Prozessalarmen unterschiedene. Diagnosealarme umfassen Fehler oder Ereignisse, wie etwa das Abziehen oder Aufstecken einer Baugruppe, innerhalb des IO-Devices und im Bezug auf zusammenhängende Komponenten. Prozesslarame werden durch den Anwender definiert und signalisieren etwa die Überschreitung eines Grenzwertes. \\
+
+
+\textbf{Netzwerkdiagnose und -verwaltung (CC-B)}
+
+
+Die Konformitätsklasse (CC) B erweitert PROFINET um weitere Diagnoseinformationen und Topologieinformationen. Diese Informationen werden durch die Erweiterung des Link Layer Discovery Protocols (LLDP-MIB EXT) und innerhalb einer Management Information Base (MIB) gesichert. Die Informationen sind abrufbar über die Verwendung des Netzwerkprotokolls SNMP oder die Verwendung azyklischer Profinet-Dienste. 
+
+Die Erweiterung um Informationen um die Topologie des Netzwerkes wird durch die Nachbarschaftserkennung ermöglicht. Durch diese Erweiterung tauschen Profinet-Feldgeräte über LLDP vorhandene Adressierungs-Informationen aus, wodurch der phyikalische Aufbau auf Basis der Port-Nachbarn erschlossen wird. Diese Funktionalität ermöglicht einen Soll-Ist-Vergleich der Topologie sowie die Prüfung des korrekten Anschlusses für den Falls des Austausches eines Gerätes mithilfe eines Software-Werkzeuges. 
+
+Für die Verwendung dieser Erweiterung müssen die Switche als IO-Device eingesetzt werden können um die Übertragung der Alarme über die Alarm CR zu ermöglichen. \\
+
+
+\textbf{Synchrone Echtzeit (CC-C)}
+
+
+Um Profinet für zeitkritische, deterministische Kommunikation nutzen zu können müssen weitere Funktionalitäten hinzugefügt werden. Dies umfasst eine netzwerkweite Synchronisierungsfunktion und zeitliche Übertragungsschwankungen (\glqq Jitter\grqq ) von weniger als 1 ms. Zu diesem Zweck wird eine definierte Bandbreite für das Übertragen dieser Daten reserviert, während die restliche Bandbreite für den restlichen Datenverkehr genutzt wird. Die synchrone Kommunikation erfordert, dass alle Kommunikationsteilnehmer den gleichen Takt verwenden. Dies wird über einen Clock-Master für alle lokalen Taktgeneratoren innerhalb des Taktystems (IRT Domäne) umgesetzt. Zwischen den beteiligten Geräten dürfen keine nicht-synchronen Geräte verwendet werden. Um die Schnelligkeit der Übertragung zu verbessern können verschiedene, zusätzliche Mechanismen verwendet werden (Fragmentierung in kleinere TCP/IP-Pakete sowie Dynamic Frame Packing (DFP)). 
+
+%Was fehlt: Ablauf der Profinet-Kommunikation, Aufbau eines Profinet-Datenpaketes
+
+\section{Applikationen}
+\subsection{WinCC (SCADA / HMI)}
+%Quellen: 
+%Getting-Started Dokument, 
+%https://mall.industry.siemens.com/mall/de/WW/Catalog/Products/10042373?tree=CatalogTree
+Als Beispiel für das SCADA-System wird in diesem Modell das System "WinCC" von Siemens verwendet. WinCC ist ein pc-basiertes System, das sowohl als eigenständiges SCADA-System als auch als HMI für Prozessleitsysteme eingesetzt werden kann. WinCC wird auf einer modernen Version des Betriebssystem Windows (z.B. Windows 7, 8.1 oder 10 sowie Windows Server 2008 oder 2016). Mit Hilfe dieses Systems ist es möglich die Durchführung und Überwachung eines Fertigungsprozesses durchzuführen. Dies beinhaltet im Kern die folgenden Funktionalitäten:
+\begin{itemize}
+\item Meldung und Bestätigung von Ereignissen innerhalb des Fertigungsprozesses
+\item Archivierung von Meldungen und Messwerten
+\item Protokollierung von Prozessdaten und Daten, die für die Konfiguration von Geräten im Fertigungsprozess, gesendet und empfangen werden
+\item Grafische Darstellung des überwachten Netzwerkes
+\end{itemize}
+
+Hinzu kommen Elemente wie etwa eine Benutzerverwaltung für den geregelten Zugriff auf das System.
+
+Im Bezug auf die für diese Arbeit relevante Informationsmenge ist die Protokollierung und Überwachung des Systems und des Netzwerkes interessant. Da das Betriebssystem bereits im vorherigen Kapitel ausführlich beschrieben wurde, wird im Folgenden das System \glqq WinCC\grqq  selbst betrachtet und die potentiellen Quellen für Informationen bzgl. des Systems selbst. Da das SCADA-System Prozessdaten und definierte Bedarfsdaten, also Parameterdaten auf den Elementen, und damit der Elemente des Netzwerkes empfängt und Daten sendet, werden außerdem die Schnittstellen für das Senden und Empfangen der Daten betrachtet.
+
+Für WinCC lassen sich diese Elemente im Groben in die folgenden Elemente des Systems einteilen: Tags, Nachrichten und Alarm Logging
+
+
+In WinCC werden \glqq Tags\grqq  als Elemente benutzt um Daten eines Projektes zu lesen, zu schreiben oder weiterzuleiten. Jeder Tag wird mit einer Datenadresse, einem symbolischen Namen und einem Datentyp sowie weiteren Eigenschaften definiert.
+
+Es wird zwischen Prozesstag und internen Tags unterschieden. Ein Prozesstag ist mit bestimmten Parameter eines Automatisierungssystem (z.B. einer SPS) verknüpft und definiert u.a. den Kommunikationstreiber, der die Details der Kommunikation definiert. Diese Verbindung wird genutzt um Daten auszulesen und zu schreiben. Ein interner Tag wird genutzt um innerhalb des Projektes Daten zu verwalten und dient zudem als Schnittstelle zur Archivierungsfunktion. Interne Tags, die für die Verwaltung des Projektes notwendig sind, werden Systemtags genannt.
+
+Für die Feststellung, Darstellung und Archivierung von Fehlern wird das Nachrichtensystem (Message System) verwendet um erkannte Fehler visuell darzustellen und an das Archivierungssystem weiterzuleiten. Die Nachrichten werden in drei Teile unterteilt: Systemblocks (Datum, Zeit, Dauer,...), User Text Blocks (vor-definierte Beschreibungen) und Process Value Blocks (Tag-Werte). Zudem wird jede Nachricht einem Typ zugeteilt: Operationsnachrichten (Status eines Prozesses), Fehlernachrichten (Fehler in einem Prozess) und Systemnachrichten (Fehler von anderen Anwendungen).
+Dokumentierte Ereignisse schließen binäre Ereignisse (Statusänderungen von Tags) sowie \glqq Monitoring Events\grqq  (Archivfehler, Serverfehler, Fehler in der Prozesskommunikation) ein. Für die Archivierung werden Prozessdaten und Nachrichten für den Status der Operation und von Fehlern in einem Microsoft SQL Server gesichert. 
+
+
+\section{Analyse im Bezug auf typische Angriffsvektoren}
+In Folge der Beschreibung der Elemente des zu analysierenden Modells stellt sich die Frage der Relevanz im Bezug auf die Nutzbarkeit für die Erkennung von Sicherheitsvorfällen, u.a. mit Hilfe eines SIEM-Systems. Zu diesem Zweck wird im Folgenden zunächst der Informationspool als Gesamtmenge betrachtet und daraufhin unter dem Aspekt der Analyse von Angriffsszenarien.
+
+\subsection{Betrachtung der Datenmenge}
+Die Betrachtung der ausgewählten Elemente zeigt eine Datenmenge, die sich hauptsächlich auf die Dokumentierung und Analyse des Fertigungsprozesses bezieht. Die verfügbaren Diagnosefunktionalitäten durch die genutzten Kommunikationssysteme PROFINET und PROFIBUS sowie die Diagnose und Alarmierungsfunktionalitäten der SPS und die Abfrage entsprechender Parameter-Tags, sowie die Möglichkeit der Speicherung und statistischen Analyse der Prozessdaten ermöglichen eine präzise Kontrolle des Prozesses. Basierend auf den verfügbaren Bausteinen und Parametern der SPS und der Protokollierung von Parametern besteht die Möglichkeit genau festzulegen, welche Daten wichtig für die Überwachung eines Prozessschrittes sind. IT-Sicherheitsfunktionen werden in Form von Zugriffskontrollen der Benutzerverwaltung und Passwortschutz auf wichtige Komponenten umgesetzt. Desweiteren bieten sich die bereits diskutieren Möglichkeiten für die Systemüberwachung des SCADA-Servers durch das Windows-Betriebssystem an. Die Protokollierung von SCADA-Ereignissen ist eingeschränkt möglich, eine genauere Betrachtung ist u.U. im späteren Verlauf zu untersuchen.
+
+\subsection{Relevanz für die Sicherheitsbetrachung mit Hilfe von SIEM-Systeme}
+Im Bezug auf die Verfügbarkeit sicherheitsrelevanter Informationen soll in diesem Fall wie im vorherigen Kapitel der Fokus auf der Möglichkeit einer Infektion der Systeme durch Malware liegen. Allgemein ermöglicht die Überwachung der Prozessdaten eine Informationsgrundlage, die grobe Manipulationen des Prozesses durch eine Malware erkennen lassen. Für eine Betrachtung anderer Szenarien, etwa der geringfügigen Manipulation im Rahmen von Prozessschwellwerten und Spionageszenarien, kann auf ein gut dokumentiertes Beispiel in Form des Stuxnet-Falles zurückgegriffen werden. Während der Umfang und Komplexität des Stuxnet-Angriffes die Möglichkeiten bestimmter Akteure ggf. übersteigt, kann dieses Beispiel jedoch einen guten Einblick in potentielle Angriffswege und -szenarien geben, wodurch eine Betrachtung sinnvoll wird. Aus diesem Grund erfolgt im Folgenden eine grobe Beschreibung des Vorgehens der Stuxnet Software und eine Betrachtung, welche Informationen für die Identifzierung genutzt wurden.
+
+\todoForm{Stuxnet-Betrachtung und Informationen}

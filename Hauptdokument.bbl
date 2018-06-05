@@ -1,0 +1,252 @@
+\begin{thebibliography}{33}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[admin(2013)]{SCADA3}
+admin.
+\newblock Was ist der unterschied zwischen scada und hmi?
+\newblock
+  "\url{http://www.indusoft.com/blog/2013/04/19/unterschied-zwischen-scada-und-hmi}",
+  2013.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Bhatt et~al.(2014)Bhatt, Manadhata, and Zomlot]{6924640}
+S.~Bhatt, P.~K. Manadhata, and L.~Zomlot.
+\newblock The operational role of security information and event management
+  systems.
+\newblock \emph{IEEE Security Privacy}, 12\penalty0 (5):\penalty0 35--41, Sept
+  2014.
+\newblock ISSN 1540-7993.
+
+\bibitem[Campbell(2016)]{Campbell2016}
+Tony Campbell.
+\newblock \emph{Protection of Systems}, pages 155--177.
+\newblock Apress, Berkeley, CA, 2016.
+\newblock URL \url{https://doi.org/10.1007/978-1-4842-1685-9_10}.
+
+\bibitem[Constantine(2014)]{AV1}
+Conrad Constantine.
+\newblock What kind of logs do you need for an effective siem implementation?
+\newblock
+  "\url{https://www.alienvault.com/blogs/security-essentials/what-kind-of-logs-for-effective-siem-implementation}",
+  2014.
+\newblock last visited on 20.\,Mai.\,2018.
+
+\bibitem[Edwards(2016)]{SIEMVendors4}
+Jeff Edwards.
+\newblock 7 siem and security analytics vendors to watch in 2017.
+\newblock
+  "\url{https://solutionsreview.com/security-information-event-management/7-siem-and-security-analytics-vendors-to-watch-in-2017}",
+  2016.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Feldbusse.de(N/A{\natexlab{a}})]{IndEth1}
+Feldbusse.de.
+\newblock Industrial ethernet - status und ausblick.
+\newblock "\url{http://www.feldbusse.de/trends/status-ethernet.shtml }",
+  N/A{\natexlab{a}}.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Feldbusse.de(N/A{\natexlab{b}})]{IndEth3}
+Feldbusse.de.
+\newblock Vergleich der industrial-ethernet-systeme.
+\newblock "\url{http://www.feldbusse.de/Vergleich/vergleich_ethernet.shtml}",
+  N/A{\natexlab{b}}.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[für Sicherheit in~der Informationstechnik(2016)]{IndAttVec1}
+Bundesamt für Sicherheit in~der Informationstechnik.
+\newblock Industrial control system security - top 10 bedrohungen und
+  gegenmaßnahmen 2016.
+\newblock
+  "\url{https://www.allianz-fuer-cybersicherheit.de/ACS/DE/_/downloads/BSI-CS_005.pdf?__blob=publicationFile}",
+  2016.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[für Wirtschaft~und Energie(2018)]{Ind401}
+Bundesministerium für Wirtschaft~und Energie.
+\newblock Was ist industrie 4.0?
+\newblock
+  "\url{https://www.plattform-i40.de/I40/Navigation/DE/Industrie40/WasIndustrie40/was-ist-industrie-40.html}",
+  2018.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Gutekunst(2017)]{Gutekunst2017}
+J{\"u}rgen Gutekunst.
+\newblock \emph{Schnittstellen, Bussysteme und Netze}, pages 687--744.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2017.
+\newblock URL \url{https://doi.org/10.1007/978-3-662-54214-9_15}.
+
+\bibitem[H{\"o}nle(2017)]{Hoenle2017}
+Rainer H{\"o}nle.
+\newblock \emph{Speicherprogrammierbare Steuerungen}, pages 745--792.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2017.
+\newblock ISBN 978-3-662-54214-9.
+\newblock URL \url{https://doi.org/10.1007/978-3-662-54214-9_16}.
+
+\bibitem[IPC2U(N/A)]{HMI1}
+IPC2U.
+\newblock Hmi.
+\newblock "\url{https://ipc2u.de/catalog/automatisierungstechnik/hmi/}", N/A.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[ITWissen.info(N/A)]{SCADA2}
+ITWissen.info.
+\newblock Scada (supervisory control and data acquisition).
+\newblock
+  "\url{https://www.itwissen.info/SCADA-supervisory-control-and-data-acquisition-SCADA-Protokoll.html}",
+  N/A.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Jayathilake(2012)]{6261962}
+D.~Jayathilake.
+\newblock Towards structured log analysis.
+\newblock In \emph{2012 Ninth International Conference on Computer Science and
+  Software Engineering (JCSSE)}, pages 259--264, May 2012.
+
+\bibitem[Jeong(2009)]{Jeong2009}
+Wootae Jeong.
+\newblock \emph{Sensors and Sensor Networks}, pages 333--348.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2009.
+\newblock ISBN 978-3-540-78831-7.
+\newblock URL \url{https://doi.org/10.1007/978-3-540-78831-7_20}.
+
+\bibitem[Kersten et~al.(2016)Kersten, Klett, Reuter, and Schröder]{RM2}
+Heinrich Kersten, Gerhard Klett, Jürgen Reuter, and Klaus-Werner Schröder.
+\newblock \emph{Risikomanagement}, pages 39--62.
+\newblock 09 2016.
+\newblock ISBN 978-3-658-14693-1.
+
+\bibitem[Kompendium(N/A)]{OSI1}
+Elektronik Kompendium.
+\newblock Iso/osi-7-schichtenmodell.
+\newblock "\url{https://www.elektronik-kompendium.de/sites/kom/0301201.htm}",
+  N/A.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Krotofil and Gollmann(2013)]{6622964}
+M.~Krotofil and D.~Gollmann.
+\newblock Industrial control systems security: What is happening?
+\newblock In \emph{2013 11th IEEE International Conference on Industrial
+  Informatics (INDIN)}, pages 670--675, July 2013.
+
+\bibitem[Lankhorst(2017)]{Lankhorst2017}
+Marc~M. Lankhorst.
+\newblock \emph{Introduction to Enterprise Architecture}, pages 1--10.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2017.
+\newblock ISBN 978-3-662-53933-0.
+\newblock \doi{10.1007/978-3-662-53933-0_1}.
+\newblock URL \url{https://doi.org/10.1007/978-3-662-53933-0_1}.
+
+\bibitem[Lawton(2015)]{SIEMVendors3}
+Stephen Lawton.
+\newblock A guide to security information and event management.
+\newblock
+  "\url{http://www.tomsitpro.com/articles/siem-solutions-guide,2-864-2.html}",
+  2015.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Linke(2017)]{Linke2017}
+Petra Linke.
+\newblock \emph{Grundlagen zur Automatisierung}, pages 1--28.
+\newblock Springer Fachmedien Wiesbaden, Wiesbaden, 2017.
+\newblock ISBN 978-3-658-17582-5.
+\newblock URL \url{https://doi.org/10.1007/978-3-658-17582-5_1}.
+
+\bibitem[Marty(2007)]{EP1}
+Raffael Marty.
+\newblock Event processing – normalization.
+\newblock
+  "\url{http://raffy.ch/blog/2007/08/25/event-processing-normalization}", 2007.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[McAffee(2016)]{EP3}
+McAffee.
+\newblock Mcafee siem event aggregation.
+\newblock
+  "\url{https://community.mcafee.com/nysyc36988/attachments/nysyc36988/business-documents/457/1/SIEM-Aggregation-AW.pdf}",
+  2016.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Partida and Andina(2010)]{Partida2010}
+Alberto Partida and Diego Andina.
+\newblock \emph{Vulnerabilities, Threats and Risks in IT}, pages 1--21.
+\newblock Springer Netherlands, Dordrecht, 2010.
+\newblock ISBN 978-90-481-8882-6.
+\newblock URL \url{https://doi.org/10.1007/978-90-481-8882-6_1}.
+
+\bibitem[Pereira and Neumann(2009)]{Pereira2009}
+Carlos~E. Pereira and Peter Neumann.
+\newblock \emph{Industrial Communication Protocols}, pages 981--999.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2009.
+\newblock ISBN 978-3-540-78831-7.
+\newblock URL \url{https://doi.org/10.1007/978-3-540-78831-7_56}.
+
+\bibitem[Scarfone(2015{\natexlab{a}})]{SIEMVendors1}
+Karen Scarfone.
+\newblock Comparing the best siem systems on the market.
+\newblock
+  "\url{http://searchsecurity.techtarget.com/feature/Comparing-the-best-SIEM-systems-on-the-market}",
+  2015{\natexlab{a}}.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Scarfone(2015{\natexlab{b}})]{SIEMVendors5}
+Karen Scarfone.
+\newblock Comparung the best siem systems on the market.
+\newblock
+  "\url{http://searchsecurity.techtarget.com/feature/Comparing-the-best-SIEM-systems-on-the-market}",
+  2015{\natexlab{b}}.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Seal(2009)]{DNS1}
+The~Barking Seal.
+\newblock Understanding dns: Essential knowledge for all it professionals.
+\newblock
+  "\url{https://www.appliedtrust.com/resources/infrastructure/understanding-dns-essential-knowledge-for-all-it-professionals}",
+  2009.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Siemens(N/A)]{HMI2}
+Siemens.
+\newblock Basic hmi.
+\newblock
+  "\url{http://w3.siemens.com/mcms/human-machine-interface/de/bediengeraete/basic-hmi/Seiten/Default.aspx}",
+  N/A.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[SoftSelect(N/A)]{MES1}
+SoftSelect.
+\newblock Definition mes - manufacturing execution system.
+\newblock
+  "\url{http://www.softselect.de/business-software-glossar/mes-manufacturing-execution-system}",
+  N/A.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Stingley(2015)]{Stingley2015}
+Mark Stingley.
+\newblock Infrastructure security architecture for effective security
+  monitoring.
+\newblock
+  "\url{https://www.sans.org/reading-room/whitepapers/bestprac/infrastructure-security-architecture-effective-security-monitoring-36512}",
+  2015.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[techopedia(N/A)]{AttackVector1}
+techopedia.
+\newblock Attack vector.
+\newblock "\url{https://www.techopedia.com/definition/15793/attack-vector}",
+  N/A.
+\newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Teixeira(2017)]{EP2}
+Alex Teixeira.
+\newblock Get over siem event normalization.
+\newblock "\url
+  {https://medium.com/ateixei/get-over-siem-event-normalization-595fc36559b4}",
+  2017.
+\newblock Last visited on 20.\,May.\,2018.
+
+\end{thebibliography}

@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Hauptdokument.aux
+A level-1 auxiliary file: Deckblatt/h_da_arbeit.aux
+A level-1 auxiliary file: Erklaerung/Erklaerung.aux
+A level-1 auxiliary file: Abstract/Abstract.aux
+A level-1 auxiliary file: Kapitel/Einleitung.aux
+A level-1 auxiliary file: Kapitel/Grundlagen.aux
+A level-1 auxiliary file: Kapitel/Analyse_Unternehmensnetzwerk.aux
+A level-1 auxiliary file: Kapitel/Analyse_Industrienetzwerk.aux
+A level-1 auxiliary file: Kapitel/Vergleich.aux
+A level-1 auxiliary file: Kapitel/Bewertung.aux
+A level-1 auxiliary file: Kapitel/Loesungsansatz.aux
+A level-1 auxiliary file: Kapitel/Fazit.aux
+The style file: plainnat.bst
+Database file #1: MeineQuellen.bib
+Warning--can't use both author and editor fields in Hoenle2017
+Warning--empty publisher in RM2
+You've used 33 entries,
+            2773 wiz_defined-function locations,
+            814 strings with 10857 characters,
+and the built_in function-call counts, 12583 in all, are:
+= -- 1189
+> -- 412
+< -- 42
++ -- 158
+- -- 123
+* -- 698
+:= -- 1877
+add.period$ -- 137
+call.type$ -- 33
+change.case$ -- 131
+chr.to.int$ -- 31
+cite$ -- 68
+duplicate$ -- 657
+empty$ -- 1233
+format.name$ -- 162
+if$ -- 2791
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 21
+newline$ -- 211
+num.names$ -- 132
+pop$ -- 404
+preamble$ -- 1
+purify$ -- 107
+quote$ -- 0
+skip$ -- 499
+stack$ -- 0
+substring$ -- 374
+swap$ -- 129
+text.length$ -- 11
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 318
+warning$ -- 2
+while$ -- 130
+width$ -- 0
+write$ -- 498
+(There were 2 warnings)
