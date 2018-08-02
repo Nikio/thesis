@@ -33,6 +33,8 @@
 \usepackage{color}
 \usepackage{amsmath} %für mathematische Formeln
 \usepackage{amssymb} % ermöglicht die Nutzung verschiedener Sonderzeichen und Symbole
+\usepackage[]{acronym} %für das Abkürzungsverzeichnis
+
 
 %\usepackage[nottoc]{tocbibind}
 
@@ -71,13 +73,13 @@
 \pagenumbering{Roman} % Seitennummer
 
 %----------------- DECKBLATT -----------------%
- \include{Deckblatt/h_da_arbeit}
+\include{Deckblatt/h_da_arbeit}
  
 %-----------------ERKLAERUNG---------------%
 \include{Erklaerung/Erklaerung}
  
 %----------------- ABSTRACT -----------------%
- \include{Abstract/Abstract}
+\include{Abstract/Abstract}
  
  
 \listoftodos 
@@ -96,7 +98,6 @@
 \include{Kapitel/Grundlagen}	
 
 %------------------KAPITEL : KOMPROMITTIERUNGSANSATZ ------%
-%\include{Kapitel/Kompromittierungsansatz}
 \include{Kapitel/Analyse_Unternehmensnetzwerk}
 
 %------------------KAPITEL : EVALUATION ----------------- %
@@ -137,7 +138,14 @@
 
 % ----- Tabellen----- %
 % \addcontentsline{toc}{section}{Tabellenverzeichnis}  % falls in Inhalsverzeichnis
-% \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
+%\fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} 
+
+%\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\phantomsection \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\renewcommand\refname{Abkürzungsverzeichnis} 
+\include{Kapitel/Abkuerzungsverzeichnis}
+
+%Kopfzeile links
 %\listoftables
 	
 \end{document}

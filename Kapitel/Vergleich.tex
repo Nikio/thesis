@@ -1,4 +1,120 @@
 \chapter{Vergleich der Analysen}
 \label{cha:Vergleich der Analysen}
-\section{Vergleichsmetrik}
+
+In diesem Kapitel wird der Vergleich der Informationsmengen durchgeführt. Als Grundlage für den Vergleich werden die Informationsmengen verwendet, die in den Analysen (Kapitel 3 und 4) ermittelt und in Tabellenform dargestellt sind. Das Ziel dieses Kapitels ist die Erstellung einer Liste, mit Unterschieden zwischen den ermittelten Netzwerkmodellen, die im nächsten Kapitel einer Bewertung unterzogen wird. In diesem Kapitel wird zunächst die verwendete Vergleichsmethode beschrieben, worauf die Anwendung dieser Methode erfolgt und das Ergebnis des Vergleiches dargestellt wird.
+
+\section{Vergleichsmethode}
+Die Basisannahme für die Vergleichsmethode ist, dass die Informationsmengen zwischen dem Unternehmens- und dem Industrienetzwerkmodell unterschiedlich sind und Differenzen auftreten. Diese Annahme ergibt sich aus der Tatsache, dass etwa in einem industriellen Netzwerk Systeme verwendet werden, die spezielle Anforderungen des Umfeldes erfüllen müssen und damit bestimmte Limitierungen aufweisen, welche üblicherweise in einem Unternehmensnetzwerk nicht zu finden sind. Dies schließt sowohl Systeme als auch die verwendeten Kommunikationstechnologien ein.
+Deswegen werden die Analysen angefertigt. Um den Vergleich unterschiedlicher Systemtypen zu ermöglichen, ist es notwendig, eine gemeinsame Basis zu schaffen. Hier wird dies mit der Unterteilung in System und Kommunikationsprotokolle und auch mit der Unterteilung der Informationen in Kategorien erreicht. \\ 
+
+Diese Basis ermöglicht einen mehrschichtigen Vergleich. In einem ersten Schritt wird untersucht, ob für jede Kategorie jeweils Informationsquellen vorhanden sind. Durch die Informationsquellen des Unternehmensnetzwerkes (hauptsächlich in Form von Protokolldateien) ergeben sich gewisse Unterkategorien, für die die Existenz äquivalenter Informationsquellen im Industrienetzwerkmodell geprüft werden. Im letzten Schritt folgt ein Vergleich dieser äquivalenten Informationsquellen. In diesem werden Unterschiede dieser äquivalenten Informationsquellen herausgearbeitet und Unterschiede notiert.\\
+
+
 \section{Vergleich}
+Die beschriebene Methodik wird zunächst für den Vergleich zwischen Server und SPS angewandt. Das Ziel ist es, die Unterschiede zwischen den beiden Systemtypen zu zeigen. Zusätzlich werden desweiteren die Anwendungen verglichen und Unterschiede aufgezeigt. Es folgt der Vergleich zwischen die Ethernet/IP/TCP-basierte Kommunikation und der Feldbuskommunikation am Beispiel von PROFIBUS. Dadurch werden die grundlegenden Unterschiede herausgestellt. Desweiteren wird PROFINET mit seinen verschiedenen Konfigurationen und Diensten mit den Protokollen der Anwendungsebene verglichen.
+
+\subsection{Systeme}
+Im Folgenden werden die Betriebssysteme mit dem SPS-Modell anhand der ermittelten Informationsquellen verglichen.\\
+
+%Ebene 2
+%System 
+\textbf{Kategorie: System}
+
+Bei der Betrachtung der Kategorie \glqq System\grqq{} sind in allen drei Systemen Informationen über deren Zustand verfügbar. Im Detail protokollieren sowohl die Betriebssysteme als auch die SPS Ereignisse bei Start- und Stop-Vorgängen des Systems. Während jedoch bei den Betriebssystemen die einzelnen Schritte dokumentiert werden, ist die Dokumentation des Betriebszustandwechsels der SPS von STOP zu Anlauf zu RUN limitiert. Die dokumentierten Ereignisse im Diagnosepuffer beschränken sich auf protokollierte Ereignisse der Anlauf-OBs (Standardereignisse) und der damit verbundenen Anzahl der Anlauf-OBs sowie Fehlerereignisse, die während des Anlaufes auftreten. 
+
+Bei Hardwarefehlern werden Fehlerereignisse protokolliert, die durch das Betriebssystem erkannt werden (etwa bei Schnittstellen-Fehlern) sowie Fehlern, die durch die Gerätetreiber an das Betriebssystem gemeldet werden. Daraus ergibt sich, dass die dokumentierten Fehler beschränkt sind durch Treiberdefinition und Betriebssystemkennwerte. Äquivalent werden im Diagnosepuffer der SPS von der CPU erkannte Fehler bzgl. der CPU selbst, des Gerätes, eingebauter Module und angeschlossener Peripheriegeräte dokumentiert. Die Alarme der (Pheripherie-)Geräte sind in der entsprechenden GSD Datei dokumentiert. Desweiteren dokumentiert die SPS auch Kommunikationsfehler zu den Pheripheriegeräten (etwa Kurzschlüsse oder Drahtbrüche).
+
+Änderungen an Betriebssystemkomponenten (inklusive Verzeichnissen, Softwarekomponenten und Dateien) inklusive Sicherheits(sub-)systemen werden in System- bzw. Sicherheitsprotokollen dokumentiert. Erweiterte Ereignisse etwa bzgl. Änderungen an der Windows Registry oder System Daemons (Linux) lassen sich mit zusätzlicher Sicherheitssoftware überwachen. Die S7-1200 dokumentiert äquivalent Änderungen des Betriebssystemzustandes (wie bereits für die Installationen erwähnt). Darüber hinaus können in neueren Versionen weitere Systeminformationen durch die System- und Taktmerker gewonnen werden. Desweiteren werden Sicherheitsereignisse wie etwa die Wiederherstellung einer CPU-Konfiguration, Änderungen an den Schutzeinstellungen der CPU und Änderungen an der Aktualisierungsdatei der Firmware gewonnen. Es ist nach Wissen des Verfassers nicht genau geklärt, ob dabei auch konkrete Änderungen der Konfiguration bzw. der Firmware dokumentiert werden können.
+
+Als letzter Vergleichspunkt werden Fehlermeldungen des Systems betrachtet. Diese Unterkategorie überschneidet sich teilweise mit dem Punkt der Hardwarefehlermeldungen, jedoch werden zudem softwareseitige Fehler bei der Systemausführung mit einbezogen. Diese werden bei den Betriebssystemen in System- und Diagnoseprotokollen festgehalten. Die S7-1200 dokumentiert in diesem Zusammenhang funktionelle Fehler während des Betriebs wie etwa E/A-Fehler durch Unerreichbarkeit oder fehlerhaften Zugriff auf E/A Speicherplätze oder Datenbausteine. Desweiteren werden auch Überschreitungen der maximalen Zykluszeit protokolliert.\\
+
+%Datenablage
+\textbf{Kategorie: Datenspeicher}
+
+Änderungen an Dateien werden auf Betriebssystemen durch das verwendete Dateisystem durch Zeitstempel definiert. Neben dem Eigentümer/Ersteller der Datei werden in moderenen Dateisystemen der Zeitpunkt der Erstellung, der letzten Änderung und des letzten Zugriffes in Protokollen festgehalten sowie der Zugriff auf kritische und bestimmte benutzerdefinierte Verzeichnisse. Bei der S7-1200 ist diese Dokumentation deutlich stärker limitiert. So werden im Diagnosepuffer Fehlerereignisse von Zugriffsoperationen (etwa beim Lesen/Schreiben von Datensätzen) dokumentiert. Quellen, die die Protokollierung weiterer Ereignisse belegen, konnten nicht gefunden werden. Das einzige Sicherheitsevent in dieser Kategorie protokolliert, dass eine Änderung von Daten auf einer Speicherkarte der S7-1200 stattgefunden hat.\\
+
+%Prozesse und Dienste
+\textbf{Kategorie: Prozesse und Dienste}
+
+Windows und Linux dokumentieren den Lebenszyklus der durchgeführten Prozesse und (Hintergrund-)Dienste. Dabei können detaillierte Informationen wie etwa das Ausführungsverzeichnis, Laufzeit, Speicherverbrauch oder der Elternprozess ermittelt werden. Mithilfe von zusätzlicher Software, wie etwa einer Anti-Malware-Software, lassen sich darüber hinaus verdächtige Prozesse oder Prozessketten erkennen und Sicherheitsereignisse protokollieren. Zusätzlich werden Ereignisse bzgl. Ausführung und Fehler der Hintergrunddienste (Services / \glqq cron jobs\grqq ) protokollieren. Bei der S7-1200 SPS werden für das Aufrufen und Ausführen des Programmes und Unterprogrammen verschieden Organisationsbausteine verwendet, die durch von der CPU erkannte Ereignisse angestoßen und teils protokolliert werden. Für jeden Organisationsbausteintyp wird eine limitierte Liste an Standard- und Fehlerereignissen definiert. Diese Form der Dokumentation schließt die Ausführung und Ausführungspausen von (Unter-)Programmen sowie die zeitgesteuerte Ausführung von Unterprogrammen ein.\\
+
+%Benutzer 
+\textbf{Kategorie: Benutzerzugriff}
+
+Sowohl für Windows- als auch Linux-basierte Betriebssysteme werden Zugriffsversuche auf das System in verschiedenen Protokolldateien dokumentiert. Bei Windows werden u.a. auch Loginversuche von lokalen und domänen-abhängigen Logins unterschieden. Im Detail werden fehlgeschlagene als auch erfolgreiche Anmeldungen protokolliert. Desweiteren wird in einem gewissen Rahmen die Nutzung von privilegierten Benutzerrechten sowie Änderungen an den Sicherheitseinstellungen des Systems bzgl. Authentifizierungs- und Authorisierungsregeln festgehalten. Bzgl. der betrachteten SPS sind für den direkten Zugriff auf die CPU bzw. den Zugriff auf den integrierten Webserver verschiedene Sicherheitsereignisse definiert. Die Liste dieser Ereignisse beinhaltet zunächst Ereignisse bzgl. der erfolgreichen oder fehlgeschlagenen Anmeldung an dem Gerät (spezieller: der Online CPU) bzw. dem Webserver (etwa durch Eingabe eines Passwortes). Desweiteren werden weitere Auffälligkeiten dokumentiert wie etwa Zeitablauf einer Online-Verbindung durch Inaktivität, multiple gleichzeitige Zugriffe und Änderungen an den Schutzeinstellungen, speziell des CPU-Schutzes. Die Genauigkeit der Protokollierung dieser Ereignisse (speziell bzgl. der Häufigkeit) kann durch Einstellungen des Diagnosepuffers limitiert werden. Zusätzlich zu dieser Liste könnten weitere Sicherheitsereignisse existieren, zu denen jedoch zum Zeitpunkt des Rechercheabschlusses keine Dokumentation gefunden werden konnte.\\  
+
+%Anwendungen 
+\textbf{Kategorie: Anwendungen}
+
+An dieser Stelle soll noch ein kurzer Blick auf die verwendeten Anwendungen sowohl im Unternehmensnetzwerk als auch im Fertigungsnetzwerk geworfen werden. Alle drei Anwendungen (Apache Webserver, Microsoft SQL Server, Siemens WinCC) setzen auf Windows oder Linux auf. Der Apache Webserver und Microsoft SQL Server dokumentieren beide verschiedene Aspekte in verschiedenen Protokolldateien. Dabei werden Ereignisse teilweise in Systemprotokolle integriert. Zu den dokumentierten Bereichen zählen u.a. die Dokumentation von Benutzerzugriffen, Datenanforderungen über die jeweilige Schnittstelle, Senden von Befehlen und Anwendungsfehler. Damit werden verschiedene Bereiche überwacht und protokolliert, die genutzt werden können, um den Zugriff auf gespeicherte Daten in der jeweiligen Anwendung nachzuvollziehen.
+Für WinCC ergeben sich ähnliche Fähigkeiten. Der Begriff \glqq Protokollierung\grqq{} wird in WinCC als Ausdruck für die Möglichkeit verwendet, verschiedene Datensätze auszudrucken. Neben der Dokumentation von ein- und ausgehenden Prozessdaten, Projektdaten und Änderungen an diesen Projektdaten kann mit Hilfe der WinCC/Audit Option eine Dokumentation der Benutzeraktionen erreicht werden. Dabei werden sämtliche Aktionen des Benutzers vom erfolgreichen/fehlerhaften Login (inklusive Methode) über die Ausführung von Aktionen innerhalb des Projektes bis zur Logout-Methode nachvollzogen werden.
+
+
+\subsection{Kommunikationsprotokolle}
+Für den Vergleich der Kommunikationsprotokolle werden die Kategorien \glqq Header\grqq{} und \glqq Verhalten\grqq{} verwendet. Da jedoch die Protokolle unterschiedliche Funktionalitäten erfüllen, wird im Folgenden darüber hinaus zwischen Kommunikations- und Anwendungsprotokollen unterschieden. Die Kommunikationsprotokolle ermöglichen die Datenübertragung und die Anwendungsprotokolle setzen darauf auf.
+
+Für die Unterteilung werden daher zunächst PROFIBUS und die Kombination von Ethernet, IP und TCP/UDP verglichen. Darauf folgend werden die Anwendungsprotokolle des Unternehmensnetzwerkes und die Gemeinsamkeiten mit Informationen über Anwendungen bzw. Diensten von PROFIBUS und PROFINET jeweils verglichen. \\
+
+
+\subsubsection{Vergleich von PROFIBUS und Ethernet-basierter Kommunikation}
+\textbf{Header}
+
+Bei dem Vergleich von PROFIBUS und Ethernet-basierter Kommunikation sind zunächst die Gemeinsamkeiten zu nennen. Diese bestehen in einer Sender- und Empfängeradresse der Nachricht, einer Kennung der Nachricht für einen bestimmten Typ sowie einer Kennung für einen bestimmten Dienst bzw. Service-Typ. 
+
+Der fundamentale Unterschied ergibt sich aus der Menge der möglichen Kodierungen bzw. Detailtiefe der Informationen über die verschickte Nachricht selbst. So finden sich Daten, wie etwa die Gültigskeitsdauer einer Nachricht oder Informationen über die Länge, in jeder Ethernet-basierten Nachricht, während die Gültigkeitsdauer überhaupt nicht und die Länge der Nachricht nur für ein bestimmtes Nachrichtenformat in der PROFIBUS-Kommunikation versendet wird. Bei PROFIBUS werden teilweise Paritäts-Bits oder CRC-Daten innerhalb der Nutzdaten mitgesendet. 
+
+Eine weitere Gemeinsamkeit ergibt sich aus der Übermittlung von Port-Daten bzw. SAP (Service Access Point) Daten. Diese Informationen definieren äquivalent den Zugangspunkt einer Anwendung bzw. eines Dienstes am System.\\
+
+\textbf{Informationen durch Verhaltensanalyse}
+
+Bei der Betrachtung der Verhaltens der Kommunikationssysteme im laufenden Betrieb lassen sich Gemeinsamkeiten finden in Form der Nachvollziehbarkeit bei der Eingliederung von neuen Teilnehmern. In der Ethernet-basierten Kommunikation wird von verschiedenen Protokollen wie etwa dem Adress Resolution Protocol (ARP) eine Zuweisungsliste am Switch bzw. Router des jeweiligen Netzwerkes erzeugt. Diese Aktivität kann dokumentiert werden. Bei der PROFIBUS Kommunikation kann durch das FDL das Hinzufügen bzw. Entfernen von Kommunikationsteilnehmern durch Mitschneiden der Kommunikation ermittelt werden und durch eine Option eines PROFIBUS-Master-Gerätes lassen sich die Kommunikationsteilnehmer im Feldbus durch Abfrage ermitteln. 
+
+Bei der Kommunikation zwischen Geräten lassen sich zusätzliche Daten über den Kommunikationsaufbau bei der Verwendung von TCP gewinnen. So wird bei der Kommunikation zwischen Sender und Empfänger eine Sequenz- bzw. Bestätigungsnummer verschickt. Dieser Punkt ist erwähnenswert, da bei PROFIBUS ebenfalls Bestätigungen für den Empfang von Nachrichten durch die PROFIBUS-Slaves gesendet werden, jedoch die Bestätigung allgemein gehalten wird und keine Daten über eine bestimmte Nachricht in der Bestätigung vorhanden ist. Bei der Verwendung von UDP werden nach der Protokollspezifikation keine Bestätigungen versendet und keine Sequenznummern übertragen.
+
+Bei der Verwendung von TCP durch den TCP-Handshake und das Austauschen von Informationen für die Herstellung einer Verbindung. Die Aufzeichnung dieses Verhaltens ergibt Informationen über den konkreten Verbindungsaufbau zwischen zwei Kommunikationsteilnehmern. Bei PROFIBUS lassen sich diese Informationen aus der Analyse des Nachrichtenverlaufs und die Ermittlung der jeweiligen Empfängeradresse ermitteln. Da genau ein Kommunikationsteilnehmer zur Zeit auf dem Kommunikationsbus senden darf und ein PROFIBUS-Slave-Gerät eine temporäre Sendeerlaubnis vom PROFIBUS-Master für das Senden von Prozessdaten bzw. Bestätigungen erhält, lässt sich auf diese Art rudimentär ein ähnliches Verhalten nachvollziehen. Abhängig von dem verwendeten Übertragungsdienst kann jedoch nicht ermittelt werden, ob die Nachricht erhalten wurde, wenn eine Quittierung nicht verlangt wird. Hier lässt sich eine Parallele zu UDP ziehen.
+
+Fehler innerhalb der Kommunikation lassen sich durch Fehlermeldungen der Kommunikationsteilnehmer in Ethernet-basierten Netzwerken nachvollziehen (etwa in Form von ICMP-Nachrichten). Bei PROFIBUS-Systemen können durch Dienste des FDMA-Protokolls Funktionsfehlernachrichten verschickt werden. \\
+
+
+\subsubsection{PROFIBUS-Dienste und Anwendungsprotokolle des TCP/IP Stacks}
+\textbf{Gemeinsamkeiten der Kommunikationsprotokolle}
+
+Bei erster Betrachtung verbindet die ausgesuchten Protokolle ihre grundlegende Eigenschaft der Client-Server-Anwendung, d.h. jedes Protokoll dient dazu, den Lebenszyklus der Verbindung von einem Client-Gerät zu einem Server-Gerät zu verwalten und den Austausch zu kontrollieren. 
+
+An dieser Stelle hebt sich HTTP in der Form von den restlichen Netzwerkprotokollen derart ab, dass es für die Verbindungsverwaltung und -abwicklung nicht mehrere Subprotokolle verwendet. SSH, RDP und MSSQL benutzen Protokollsuiten mit dedizierten Protokollen für verschiedene Schritte. So werden Protokolle verwendet, um die Verbindung zu initialisieren oder die Verbindungskonfiguration zu regeln. Ein weiteres Subprotokoll dient dann der Ausführung der eigentlichen Anwendung durch den Nutzer. Auffallend sind auch die vorhanden Authentisierungsmechanismen, die durch ein eigenes Subprotokoll durchgeführt werden.
+
+Desweiteren lassen sich die Protokolle zunächst in zwei Arten unterteilen. Die Protokolle der MSSQL Suite und das HTTP dienen der Anfrage von Ressourcen und Diensten an den Server und den Erhalt einer Bestätigung und/oder Ressource. SSH und RDP hingegen dienen dem Zugriff auf das Serversystem. 
+
+%Header
+Bei der Betrachtung der Header der versendeten Nachrichten kann von jedem Protokoll Name und -version sowie Nachrichtentyp ermittelt werden. Darüber hinaus werden weitere Informationen über die gewählte Verbindung mitgesendet, wie etwa die verwendeten Verschlüsselungsmethoden (für  HTTP über TLS (Schicht 5 im OSI Modell))  und Informationen über die Nachricht in Form von Längendaten und weiteren Daten über den versendeten Payload. Alle Protokolle haben die Möglichkeit, verschiedene Verschlüsselungs- und Authentifizierungsmechanismen einzusetzen.
+
+%Verhalten
+Der Aufbau der Verbindung für SSH, RDP und MSSQL erfolgt in festgelegten Sequenzen. So wird eine initiale Verbindung erzeugt, die Authentizität des Servers geprüft, Konfigurationsdaten für die Verbindung ausgetauscht und eine Authentizitätsprüfung des Benutzers durchgeführt. Für HTTP gilt dies nicht, da die Kommunikation zustandslos verläuft, d.h. das Anfragen und Antworten ausgetauscht werden ohne Kenntnis des vorhergegangenen Austausches.\\
+
+\textbf{Vergleich mit PROFIBUS-Diensten}
+
+Für den Vergleich der Anwendungsprotokolle werden im Folgenden PROFIBUS DP-V0 und DP-V1 betrachtet. Diese setzen auf der Kommunikationsfunktionalität auf, die durch das FDL-Protokoll bereitgestellt wird. Dies bildet einen Äquivalenzpunkt zu der Art und Weise, wie die Anwendungsprotokolle auf der Ethernet-basierten Kommunikation aufsetzen. 
+
+%Verhalten des Systems
+Als ersten Vergleichspunkt wird der Verbindungsaufbau betrachtet. Ähnlich wie bei einem Client-Server Modell werden über das Protokoll Anfragen geschickt und und Antworten erhalten. Für die Initialisierung eines PROFIBUS-DP-Slave-Gerätes wird, wie bei SSH, RDP und MSSQL, eine Verbindung hergestellt und Konfigurationsdaten gesendet. Im Unterschied ist der Austausch der Daten allerdings einseitig, da die Informationen nur von dem Master-Gerät an das Slave-Gerät gesendet und der Empfang durch den Slave quittiert wird. Desweiteren findet keine Prüfung der Authentizität des Masters statt. Zwar wird eine Identifikationsnummer gesendet, anhand derer das Slave-Gerät prüft, ob die über den gemeinsamen Datenbus gesendete Konfiguration auf dem Gerät angewendet werden soll. Darüber hinaus wird allerdings keine weitere Prüfung durchgeführt. Es werden zudem keine Verschlüsselungsmethoden ausgetauscht. Die Definition der Parameter wird über die Daten der GSD-Datei definiert, die dem Master-Gerät zur Verfügung stehen. In Folge dessen wird die Konfiguration zwar innerhalb der Sequenz geprüft, es findet jedoch im Vergleich zu SSH, RDP und MSSQL keine Aushandlung der gemeinsamen Konfiguration für die Verbindung statt.
+
+%Header
+Eine Gemeinsamkeit der Headerdaten zwischen PROFIBUS DP-V0/V1 und den Anwendungsprotokollen besteht in der Information über die Länge der Anfrage/Antwort-Nachricht sowie des Nachrichtentyps. Desweiteren werden bei der DP-V1 Kommunikation äquivalent zu HTTP Informationen über die angefragte Ressource übertragen. 
+Bei Verwendung der synchronen Kommunikation mit DP-V0 werden bei der Initialisierung im Zuge der Parametrisierung Daten über die verwendbaren Alarmtypen, die Gruppenzugehörigkeit für die Anwendung der Broadcast-Funktionalität durch einen Master der Klasse 1 sowie weitere Benutzerparameter übertragen. 
+Im Vergleich zu den SSH, RDP und MSSQL werden diese Konfigurationsdaten unverschlüsselt übertragen. 
+
+Eine weitere Gemeinsamkeit besteht in der Existenz eines spezifizierten Fehler-Nachrichtentyps, der einen Fehler der Kommunikation beschreibt. Im Unterschied zu den Anwendungsprotokollen des Unternehmensnetzwerk variiert jedoch die Anzahl der Typen abhängig von dem Kommunikationspartner. Während dies eingeschränkt auch für unterschiedliche Servertypen zutrifft, wird jedoch eine Grundmenge über das Protokoll definiert. Darin liegt der entscheidende Unterschied.\\
+
+
+\textbf{Vergleich PROFINET und PROFIBUS}
+
+Als Grundlage basiert PROFINET zunächst auf dem Ethernet-Standard. Abhängig von dem gewählten Kommunikationskanal werden jedoch UDP/IP bzw. TCP/IP verwendet oder nur auf Basis von Ethernet. In diesem Fall besteht eine Nachricht aus einem Rahmen, der eine PROFIBUS-Nachricht zwischen den Ethernet-Headern und einem CRC-Feld einkapselt. Auf der Anwendungsebene betrachtet man die PROFINET Dienste und Protokolle \citep{PROFINET3}.
+Die Dienste beziehen sich prinzipiell auf die bereits verglichenen Read/Write-Dienste von PROFIBUS. Zusätzlich wird durch die verwendete Kommunikationbeziehung (CM, IO data oder Alarm) eine zusätzliche Information über den allgemeinen Zweck der Nachricht gewonnen. Diese Beziehung und die zusätzlichen Protokolle DCP und LLDP (vgl. Industrieanalyse/PROFINET) erlauben eine genauere Eingrenzung des Nachrichtenzweckes, äquivalent zu den Subprotokollen von SSH, RDP und MSSQL. Die verwendeten Protokolle ermöglichen es im Vergleich zu einer PROFIBUS-Kommunikation, zusätzliche Informationen über die Identität eines Kommunikationsteilnehmers zu erhalten sowie Prozesse der Adressvergabe nachzuvollziehen. Dies ermöglicht die genauere Segmentierung des Nachrichtenverkehrs und in der Folge zusätzliche Informationen über den Nachrichtenaustausch im Netzwerk.
+
+\section{Ergebnis}
+Als Ergebnis des Vergleiches ist festzustellen, dass grundlegende Ähnlichkeiten der Informationsmengen zu erkennen sind. Dies ist ein natürlicher Schluss aus dem Zweck der Anwendung. Es ergeben sich jedoch auch Unterschiede. \\
+
+Zunächst kann sowohl für die verglichenen Systeme als auch Kommunikationsprotokolle festgehalten werden, dass die Elemente des industriellen Netzwerkes nach dem vorliegenden Vergleich eine eingeschränktere Informationstiefe vorweisen. Im Speziellen ergeben sich bei der S7-1200 Limitierungen in der Dokumentation von Ereignissen im Diagnosepuffer, die hauptsächlich funktionelle Fehlermeldungen und Systemereignisse zeigen. Dies ist besonders präsent in der Dokumentation von Parameteränderungen. Die potentielle Einschränkung der Protokollierung von Benutzerzugriffen (im Sinne der Häufigkeit und Vielfalt der Ereignisse), basierend auf der Auslastung des Diagnosepuffers, schränkt die Möglichkeit der Dokumentation von Änderungen ebenfalls ein. \\
+
+Bei dem Vergleich der Kommunikationsprotokolle ergaben sich die folgenden Unterschiede: Zum einen konnte keine Unterstützung von Integritätsprüfung der Kommunikationspartner bei der Verwendung des PROFIBUS-Protokoll festgestellt werden. Darüber hinaus ergeben sich Unterschiede in der Art der Festlegung verfügbarer Nachrichtentypen für die Kommunikation zwischen zwei Geräten auf der Anwendungsebene.
+

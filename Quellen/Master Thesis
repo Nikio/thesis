@@ -343,8 +343,8 @@
   author       = {Microsoft},
   title        = {Windows Filtering Platform},
   howpublished = {"\url{﻿https://msdn.microsoft.com/de-de/library/windows/desktop/aa366510(v=vs.85).aspx}"},
-  year         = {N/A},
-  note         = {Last visited on 05.\June.\,2018},
+  year         = {2018},
+  note         = {Last visited on 05.\,June.\,2018},
 }
 
 @Misc{MS5,
@@ -492,7 +492,172 @@
 }
 
 @Misc{EntAnalysis2,
+  author       = {Alexander Hanel},
+  title        = {An Intro to Creating Anti-Virus Signatures},
   howpublished = {"\url{﻿http://hooked-on-mnemonics.blogspot.de/2011/01/intro-to-creating-anti-virus-signatures.html}"},
+  year         = {2011},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{SiemensSPS1,
+  author       = {Siemens AG},
+  title        = {Die SIMATIC S7-1200 Baugruppen im Überblick},
+  howpublished = {"\url{﻿https://www.siemens.com/global/de/home/produkte/automatisierung/systeme/industrie/sps/s7-1200.html}"},
+  year         = {2018},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{SiemensSPS2,
+  author       = {Siemens AG},
+  title        = {SIMATIC S7-1200 Automatisierungssystem Betriebshandbuch},
+  howpublished = {"\url{﻿https://support.industry.siemens.com/cs/document/109741593/simatic-s7-s7-1200-automatisierungssystem?dti=0&dl=de&lc=en-WW}"},
+  year         = {2016},
+  note         = {Last visited on 05.\,June.\,2018},
+  address      = {"},
+}
+
+@Misc{Profibus1,
+  author       = {Feldbusse.de},
+  title        = {Profibus},
+  howpublished = {"\url{﻿http://www.feldbusse.de/Profibus/profibus.shtml}"},
+  year         = {2015},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{Profibus2,
+  author       = {Feldbusse.de},
+  title        = {Profibus - Buszugriffsprotokoll (FDL)},
+  howpublished = {"\url{﻿http://www.feldbusse.de/Profibus/Buszugriffsprotokoll.shtml}"},
+  year         = {2015},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{Profibus3,
+  author       = {Wikipedia},
+  title        = {Profibus},
+  howpublished = {"\url{﻿https://de.wikipedia.org/wiki/Profibus}"},
+  year         = {2018},
+  note         = {Last visited on 05\,June.\,2018},
+}
+
+@Misc{Profibus4,
+  author       = {Max Felser},
+  title        = {PROFIBUS Handbuch - FDL Parameter},
+  howpublished = {"\url{﻿https://www.profibus.felser.ch/fdl_parameter.html}"},
+  year         = {2017},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{Profibus5,
+  author       = {Feldbusse.de},
+  title        = {Profibus-DP},
+  howpublished = {"\url{﻿http://www.feldbusse.de/Profibus/Profibus-DP.shtml}"},
+  year         = {2015},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{Profibus6,
+  author       = {Feldbusse.de},
+  title        = {Profibus-DPV1},
+  howpublished = {"\url{﻿http://www.feldbusse.de/Profibus/DPV1.shtml}"},
+  year         = {2015},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{PROFINET1,
+  author       = {PROFIBUS Nutzerorganisation e.V. (PNO)},
+  title        = {Profinet Systembeschreibung},
+  howpublished = {"\url{https://de.profibus.com/downloads/profinet-technology-and-application-system-description/}"},
+  year         = {2014},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{WinCC1,
+  author       = {Siemens AG},
+  title        = {SIMATIC WinCC V7 - Produktinformation},
+  howpublished = {"\url{https://mall.industry.siemens.com/mall/de/WW/Catalog/Products/10042373?tree=CatalogTree}"},
+  year         = {2018},
+  note         = {Last visited on 0ß5.\,June.\,2018},
+}
+
+@Misc{WinCC2,
+  author       = {Siemens AG},
+  title        = {SIMATIC HMI WinCC V7.2 Getting Started},
+  howpublished = {"\url{https://cache.industry.siemens.com/dl/files/596/73505596/att_77660/v1/GettingStarted_en-US.pdf}"},
+  year         = {2013},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{WinCC3,
+  author       = {Siemens AG},
+  title        = {WinCC V7.3 - Working with WinCC},
+  howpublished = {"\url{https://cache.industry.siemens.com/dl/files/925/102754925/att_62020/v1/WinCC_Working_with_WinCC_en-US_en-US.pdf}"},
+  year         = {2014},
+  note         = {Last visited on 05.\,June.\,2018},
+}
+
+@Misc{Profibus7,
+  author       = {Max Felser},
+  title        = {PROFIBUS Handbuch - Dienste für die Datenübertragung},
+  howpublished = {﻿"\url{https://www.profibus.felser.ch/datenubertragung_1.html}"},
+  year         = {2017},
+  note         = {﻿Last visited on 24.\,June.\,2018},
+}
+
+@Misc{Profibus8,
+  author       = {Max Felser},
+  title        = {PROFIBUS Handbuch - Telegrammformate},
+  howpublished = {﻿"\url{https://www.profibus.felser.ch/telegrammformate.html}"},
+  year         = {2017},
+  note         = {﻿Last visited on 24.\,June.\,2018},
+}
+
+@Misc{Profibus9,
+  author       = {Max Felser},
+  title        = {PROFIBUS Handbuch - Initialisierung eines DP-Slave},
+  howpublished = {﻿"\url{https://www.profibus.felser.ch/initialisierung_eines_dp-slave.html}"},
+  year         = {2017},
+  note         = {﻿Last visited on 24.\,June.\,2018},
+}
+
+@Misc{Profibus10,
+  author       = {Max Felser},
+  title        = {PROFIBUS Handbuch - Diagnose},
+  howpublished = {﻿"\url{https://www.profibus.felser.ch/diagnose.html}"},
+  year         = {2017},
+  note         = {﻿Last visited on 24.\,June.\,2018},
+}
+
+@Misc{Profibus11,
+  author       = {Max Felser},
+  title        = {PROFIBUS Handbuch - MS1 Verbindung},
+  howpublished = {﻿"\url{https://www.profibus.felser.ch/ms1_verbindung.html}"},
+  year         = {2017},
+  note         = {﻿Last visited on 24.\,June.\,2018},
+}
+
+@Misc{PROFINET2,
+  author       = {John Rinaldi},
+  title        = {PROFINET I\&M},
+  howpublished = {"\url{﻿https://www.rtaautomation.com/blog/profinet-im/}"},
+  year         = {2016},
+  note         = {﻿Last visited on 04.\,July.\,2018},
+}
+
+@Misc{PROFINET3,
+  author       = {Max Felser},
+  title        = {PROFINET Handbuch - Protokolle und Dienste},
+  howpublished = {"\url{https://www.profinet.felser.ch/protokolleunddienste.html}"},
+  year         = {2018},
+  note         = {Last visited on 24.\,July.\,2018},
+}
+
+@Misc{Profibus12,
+  author       = {Max Felser},
+  title        = {PROFIBUS Handbuch - Stationsübergreifende Dienste},
+  howpublished = {"\url{https://www.profibus.felser.ch/stationsubergreifende_dienste.html}"},
+  year         = {2017},
+  note         = {Last visited on 24.\,June.\,2018},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

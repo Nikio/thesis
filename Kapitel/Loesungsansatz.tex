@@ -1,7 +1,100 @@
 \chapter{Lösungsansatz zur Schlie\ss ung der fokussierten Informationslücke}
+In diesem Kapitel wird die Informationlücke der Protokollierung von Änderungen an Datenbausteinen und Parametern untersucht und ein Ansatz für die Schließung dieser Informationslücke beschrieben.
 
-\section{Tiefergehende Beschreibung der Informationslücke und bestehende Abhängigkeiten}
-\section{Beschreibung des Lösungsansatz}
-\section{Beschreibung des Versuchsaufbaus des Beweises}
-\section{Beschreibung der Ergebnisse}
+\section{Ansatzentwicklung und Szenarien}
+Das Ziel des Ansatzes ist es, eine Möglichkeit zu finden, Änderungen an E/A-Parametern sowie Bausteinen zu dokumentieren. 
 
+\subsection{Annahmen und Szenarien}
+Zu diesem Zweck werden zunächst die folgenden Annahmen definiert:
+\begin{itemize}
+\item Die Protokollierung der Änderungen an Parametern und Bausteinen ist aktuell nicht möglich
+\item Für eine skalierbare Lösung ist eine dauerhafte Überwachung nach aktuellem Stand nicht möglich
+\item Für die Komprimittierung einer SPS ist die Infizierung eines Servers mit Kommunikationsschnittstelle zu der Malware notwendig
+\end{itemize}
+
+Diese Annahmen werden im Folgenden weiter ausgeführt und begründet.
+
+\subsubsection{Keine Änderungsprotokollierung auf der SPS}
+Für diese Hypothese sprechen mehrere Faktoren. Zum einen sind die Werte von Prozessdaten und der zugehörigen Speicherplätze sehr volatil. 
+Es wird angenommen, dass sich aus der Zykluszeit der Ausführung eines Rezeptes, der zugehörigen Änderung der Sensorwerte und der daraus resultierenden Anpassung der Ausgangswerte der verschiedenen angeschlossenen Feldgeräte eine hohe Wertefluktuation ergibt. 
+Abhängig von der Größe des Ladespeichers und der Verfügbarkeit von zusätzlichem Speicherplatz durch eine Speicherkarte ist zudem die Kapazität des Ladespeichers und damit die Anzahl der möglichen Einträge begrenzt. 
+Ein weiteres Argument ist, dass die Protokollierung von Prozessdaten auf einer SPS durch den Programmierer des Programmes eingepflegt werden müssen. Abhängig von der Zykluszeit und der notwendigen Operationen kann die Anzahl an möglichen Schreiboperationen stark begrenzt sein. Laut dem Systemhandbuch der im Modell verwendeten SPS S7-1200 kann bspw. nur die Erstellung einer Datenprotokolldatei einige Zeit in Anspruch nehmen. Desweiteren ist die Limitierung einer Datenprotokolldatei auf 255 Einträge eine weitere Begrenzung.
+
+\subsubsection{Keine dauerhafte Überwachung bei skalierbarer Lösung}
+Diese Hypothese wird aufgestellt basierend auf der Anzahl der zu überwachenden Geräte an einem Feldbus, z.B. PROFIBUS. Durch den gemeinsamen Datenbus steht für ein potentielles Gerät, welches Datenanfragen an SPS-Teilnehmer schickt, nur ein begrenzter Zeitrahmen zur Verfügung. Die Erhöhung des Zeitrahmens könnte die Prozessdurchführung einschränken bzw. nicht die dafür notwendigen Reaktionszeiten erreichen, die für die Prozessdurchführung notwendig sind. 
+
+\subsubsection{Infizierung eines Servers für SPS-Manipulation notwendig}
+Diese Hypothese leitet sich aus der Vorgehensweise des Stuxnet-Angriffes ab. Die Manipulation der Kommunikationsschnittstelle kann bspw. durch reinen Schadcode auf der SPS nur schwierig verhindert oder verborgen werden. Zu diesem Zweck müssten Anwenderprogramm und Firmware derart manipuliert werden, dass die Korrektur der eigentlichen Werte, wie sie bei Stuxnet durch die Rootkit-Funktionalität durchgeführt werden, direkt auf der SPS mit der zur Verfügung stehenden, unter Umständen sehr geringen, Rechenleistung durchgeführt werden. Die Infizierung der SPS ist zudem ohne eine Infizierung eines Servers mit einer Verbindung zu der betroffenen SPS nur durch einen Insider möglich, dessen Aktivitäten ohne spezielle Kenntnisse, etwa durch das WinCC-SCADA-System, protokolliert werden.
+
+\subsubsection{Szenarien}
+Aus diesen Hypothesen ergeben sich die folgenden potentielle Angriffsszenarien für die Manipulation des SPS-Verhaltens:
+
+\begin{itemize}
+\item Manuelle Manipulation von Parametern durch einen Insider 
+\begin{itemize}
+\item über ein Hardware-Programmiergerät (erfordert physikalischen Zugriff)
+\item über einen angeschlossenen Server mit installierter Programmiersoftware (etwa WinCC)
+\end{itemize}
+\item Manipulation per Malware
+\begin{itemize}
+\item Autonome Malware wie am Beispiel Stuxnet
+\item Manipulierbare Malware, die etwa eine eigene Kommunikationsverbindung mit Hilfe der Serverschnittstellen aufbauen kann (erfordert Zugriff des Angreifers entweder direkt oder indirekt über eine Hintertür)
+\end{itemize}
+\end{itemize}
+
+Auf der Grundlage der beschriebenen Hypothesen und Szenarien lassen sich zudem weitere Schlussfolgerungen für Anforderungen an einen möglichen Lösungsansatz generieren. 
+
+Basierend auf der weiteren Hypothese, dass eine dauerhafte Überwachung nicht stattfinden kann, lässt sich die Schlussfolgerung ziehen, dass die Erhebung und Prüfung der SPS-Daten zu bestimmten Zeitpunkten, etwa durch ein Ereignis, ausgelöst werden muss. Dieses Ereignis kann unterschiedlichen Szenarien entstammen. 
+In Bezug auf das Stuxnet-Beispiel könnten sich z.B. Hinweise bei einem Abgleich der Prozessdaten der gesendeten/empfangenen Nachrichten ergeben. In diesem Falle wird ein Unterschied bei gesendeten Frequenzdaten festgestellt, die beim Aufruf der Write-Methode durch Stuxnet manipuliert werden. 
+Ein weiterer Hinweis kann aus einem Abgleich der Anzahl der durch einen Benutzer angeordneten und der an die SPS gesendeten Anfragen resultieren. Hier wird im Zuge des Abgleiches der Anzahl der Nachrichten eine Differenz entstehen durch die regelmäßigen Anfragen der Stuxnet-Malware bzgl. des manipulierten Datenbausteines. 
+
+Eine weitere Schlussfolgerung ergibt sich aus der limitierten Protokollierungskapazität. Durch diese Limitierungen ist es notwendig, die Protokollierung der Nachrichten etwa durch ein dediziertes Element wie einen weiteren Server als DP-V1-Master der Klasse 2 durchführen zu lassen. 
+
+\section{Beschreibung des Lösungsansatzes}
+Der folgende Lösungsansatz wird basierend auf den vorher geschilderten Annahmen und Schlussfolgerungen erstellt. Eine Übersicht über Datenfluss und Elemente des Ansatzes sind in der folgenden Abbildung zu sehen.
+\todoForm{Lösungsansatz: Bild für Ansatzkonzept einfügen}
+
+Für den Lösungsansatz wird angenommen, dass eine Möglichkeit besteht, die Kommunikation zwischen SCADA-Server und SPS über ein Switch zu leiten oder über eine andere Möglichkeit den Nachrichtenverkehr durch ein externes Gerät zu überwachen. Aus den beschriebenen Hypothesen und Schlussfolgerungen ergibt sich die Notwendigkeit, dass eine unabhängige Datenquelle vorhanden sein muss, auf deren Basis unabhängig Informationen über den Datenverkehr erheben lassen. Diese Notwendigkeit besteht, da die Integrität der Kommunikationsdaten auf dem SCADA-Server bei einer Infizierung nicht gewährleistet werden kann. 
+
+Mit Hilfe dieses \glqq Netzwerkmonitors\grqq{} kann der Datenaustausch protokolliert werden und an einen weiteren Server weitergegeben werden, der etwa als Zwischenstation für ein SIEM-System oder eine andere Sicherheitsanwendung verwendet werden kann. Dieser Server wird im Folgenden als \glqq Agenten-Server\grqq{} bezeichnet. 
+Die Aufgabe dieses Servers ist es, Datenprotokolle der SCADA-Anwendung und Datenprotokolle des Netzwerkmonitors zu vergleichen und Unterschiede in den Datensätzen festzustellen. Ist eine solche Differenz festgestellt, wird basierend auf den Details des Unterschiedes (etwa Unterschied zwischen den Prozessdaten oder Unterschiede in der Nachrichtenanzahl) die Aufgabe der Prüfung der entsprechenden SPS an ein unabhängiges Element weitergeleitet. 
+Dies wird durch einen weiteren Server oder Industrie-PC mit einer Kommunikationsschnittstelle zu der entsprechenden SPS umgesetzt. Dieses Element wird im folgenden als \glqq Prüfer\grqq{} bezeichnet. Die Aufgabe dieses Elementes ist es, einen bestimmten Datensatz aus der SPS auszulesen und diesen an den Agenten-Server zu senden. 
+Der Agenten-Server vergleicht den Datensatz mit den zugehörigen Werten des SCADA-Systems. Diese zusätzliche Prüfung ist notwendig, um sicherzugehen, dass der übertragene Wert des Netzwerkmonitors dem auf der SPS gespeicherten Wert entspricht und ein Unterschied tatsächlich vorliegt. Wird ein Unterschied festgestellt, ergibt sich daraus die Information, dass eine Änderung der SPS-Daten ohne Dokumentation im SCADA-System vorgenommen wurde.
+
+\subsection{Limitierungen des Ansatzes}
+Der beschriebene Ansatz ermöglicht eine grundlegende Prüfung der SPS-Daten auf Änderungen, jedoch ist die Problematik der Datenmanipulation auf dem System vor der Übertragung der Daten an das Prüfer-System nicht auszuschließen. Eine weitere Problematik könnte im Bezug auf die Funktionsweise der SPS und die Dauer der Übertragung auftreten. So kann etwa bei dem Vergleich der Datensätze basierend auf dem Zeitstempel ein Unterschied der Daten bestehen. Aus diesem Grund funktioniert der beschriebene Ansatz nur annäherungsweise.
+
+\section{Demonstration des Lösungsansatzes}
+Für die Demonstration des beschriebenen Ansatzes wurde eine abstrakte Simulation erstellt. Da der Erwerb der notwendigen Software-Lizenzen außerhalb des finanziell sinnvollen Rahmens liegt, wurden für die Demonstration notwendige Charakteristiken der Elemente in Form von Java-basierten Klassen umgesetzt.
+
+Dafür wurden die folgenden Software-Pakete erstellt:
+\begin{itemize}
+\item Kommunikationspakete: Dieses Paket definiert notwendige Kommunikationsroutinen und Nachrichtenformate (Orientierung an PROFINET-Formaten).
+\item SPS: Dieses Pakete enthält repräsentativ anfragbare Klassen (Bausteine und E/A-Speicher), eine \glqq Firmware\grqq{} für die Ausführung von der Bausteinklassen sowie eine Verwaltung zu Kommunikationszwecken.
+\item SCADA\_Server: Dieses Paket nutzt die definierten Kommunikationsroutinen für die Kommunikation mit der SPS und dem Agenten-Server. Zusätzlich werden die Daten der SPS während der Anwendung gespeichert.
+\item Netzwerkmonitor: Diese Komponente dokumentiert die Kommunikation zwischen SCADA-Server und SPS. 
+\item Prüfer: Diese Komponente enthält eine Logik, die abhängig von der empfangen Nachricht des Agentenservers eine bestimmte Komponente der SPS anfragt.
+\item Agenten-Server: Verwaltung des Anfrageprozesses, ausgelöst durch den Netzwerkmonitor. Enthält Vergleichsroutinen für den Vergleich der empfangenen Daten.
+\end{itemize} 
+
+Das folgende Schaubild zeigt die Struktur der Demonstration:
+\todoForm{Lösungsansatz: Schaubild des Demonstrationsnetzwerkes einfügen}
+
+Die versendeten Kommunikationspakete haben die folgende Struktur:
+\todoForm{Lösungsansatz: Bild des Nachrichtenformates einfügen}
+
+Der Prozessablauf des SPS-Paketes simuliert in einem einfachen Beispiel den Prozess einer SPS. Dabei wird in einer definierten Zykluszeit ein definiertes \glqq Anwenderprogramm\grqq{} ausgeführt, welches die Werte im E/A-Array durch simple mathematische Operationen modifiziert. Empfängt die SPS eine Nachricht des WinCC-Servers werden die Anpassungen der Werte vorgenommen. Das Modell orientiert sich dabei an der echten Adressierung einer SPS. So werden E/A-Werte in verschiedenen Arrays gespeichert, die durch einen Zahlenwert (Slot-Number) adressiert werden können.
+
+Der SCADA-Server sendet in regelmäßigen Abständen Änderungen für E/A-Daten an die SPS. Die Modifikation der Daten wird dabei durch eine mathematische Funktion zwischen den Write-Nachrichten verändert. Ein Zufallszahlengenerator berechnet dabei die Chance einer Negation des entsprechenden Wertes. Diese Modifikation stellt den Manipulationsversuch einer Malware da. 
+
+Da die Simulation einer weiteren Komponente in Form eines Switches weiteren Aufwand erfordert hätte, wird bei der Anwendung der Kommunikationsroutinen die Nachricht jeweils an die SPS bzw. den SCADA-Server und jeweils auch an den Nachrichtenmonitor gesendet. Dieser prüft den enthalten Wert auf das Vorzeichen. Bei einem negativen Wert wird eine Nachricht an den Agentenserver versendet, die die Werte der verdächtigen Nachricht enthält.
+
+Der Agentenserver lauscht auf dem Socket. Sobald eine Nachricht des Netzwerkmonitors eingeht, wird eine Nachricht mit der entsprechenden Speicherstelle an den Prüfer gesendet. Dieser fragt bei der SPS den Wert der entsprechenden Quelle ab und leitet diesen Wert an den Agenten-Server zurück. 
+
+Der Agentenserver fordert den aktuellen Wert der Speicherstelle von dem SCADA-System an und vergleicht die Werte. 
+
+\todoForm{LösungsansatzDemo: Falls noch Zeit ist, Wireshark Bild einfügen}
+Der vollständige Quellcode ist auf der DVD im Einband der Masterarbeit hinterlegt.
+
+\section{Zusammenfassung}
+In diesem Kapitel wurden Hypothesen und Schlussfolgerungen bzgl. eines möglichen Ansatzes für die Protokollierung von Datenänderung auf einer SPS ausgeführt. Basierend auf diesen Kriterien wurden ein Lösungsansatz und eine demonstrativen Umsetzung des Ansatzes beschrieben.

@@ -1,5 +1,82 @@
 \chapter{Bewertung der Informationslücken}
 \label{cha:Bewertung der Informationslücken}
-\section{Bewertungsschema}
+In diesem Kapitel erfolgt die Bewertung der Unterschiede, die aus dem Vergleich ermittelt wurden. Zunächst wird die Methode definiert. Diese beschreibt das Ziel der Bewertung, die Herleitung der angewendeten Methode und die verwendeten Kriterien. Darauf folgt die Diskussion der Unterschiede.
+
+\section{Bewertungsmethode}
+Diese Bewertung soll veranschaulichen, ob es sich bei den gefundenen Unterschieden um einen oder mehrere Bereiche handelt, in denen Informationen nicht verfügbar sind (\glqq Informationslücke\grqq ), die für die proaktive Erkennung eines laufenden Angriffes und/oder reaktive, forensische Untersuchungen hilfreich sein könnten. Diese Aktivitäten stehen in direktem Zusammenhang mit der Funktion, die durch ein SIEM-System ausgeführt wird.
+
+\subsection{Entwicklung der Methode}
+Die Methodik basiert auf dem Vorgehen der forensischen Untersuchung eins Vorfalles durch ein Sicherheitsteam in einem Unternehmensnetzwerk.
+
+%Kopiert aus der Unternehmensanalyse für spätere Verwendung
+Bei der Erkennung von Angriffsszenarien spielen erste Anzeichen, die potentiell auf einen Angriff hindeuten, eine tragende Rolle. Informationen, die zu solchen Anzeichen ausgewertet werden, werden als \glqq Indicator of Compromise\grqq{}  (IoC) bezeichnet. Ein IoC ist eine Information, die auf ein anomales Verhalten oder einen anomalen Zustand eines Netzwerkelementes schließen lässt. Um dieses Verhalten zu erkennen ergeben sich prinzipiell zwei Bereiche der Analyse: 1) Das Verhalten des Netzwerkelementes in sich, also der Zustand des Elements und Änderungen dieses Zustandes sowie 2) die Interaktion mit anderen Netzwerkelementen in Form des Austauschens von Nachrichten über die Netzwerkverbindung (vgl. Kaspersky Paper). \todoForm{Bewertung: Quelle Kaspersky Paper einfügen!} 
+Diese Beobachtung wird durch das Vorgehen in Unternehmen durch den \glqq Incident Response Process\grqq gestützt. Dieser Prozess dient als Durchführungsplan eines Teams, das für die Aufklärung und Behebung von Indikatoren und Brüchen des Sicherheitszustandes eines Netzwerkes zuständig ist. 
+
+%Beschreibung von Incident Response
+Der initiale Zustand dieses Plans ist die Überwachung der Netzwerkelemente und ihrer Kommunikation mit Hilfe von Detektions- und Analysesoftware (z.B. SIEM Systeme) und -hardware (z.B. \glqq Intrusion Detection Systems\grqq ). Durch die Überwachung werden eine Vielzahl an Alarmen oder Sicherheitsereignissen produziert, die auf Fehler oder Anomalien im Netzwerk hinweisen. Werden diese Informationen aus diesen Ereignissen als potentiell kritisch eingestuft, wird ein IoC an das Team ausgegeben, das basierend auf Risiko und potentieller Schadensgröße weitere Untersuchungen einleitet. Bei diesen Untersuchungen wird der oder die IoC(s) als Ansatz genutzt. Ein IoC kann dabei auf Informationen im Payload oder Headern von Netzwerkpaketen als auch aus Logging Informationen eines Betriebssystems oder einer Überwachungssoftware auf einem Netzwerkelement beruhen. Basierend auf dem Ansatzpunkt können Informationen sowohl aus der Kommunikation als auch der Netzwerkelemente weitere Hinweise liefern, um den potentiellen Sicherheitseinbruch einzugrenzen und schließlich zu identifizieren. \\
+
+Wie bereits in den Analysen beschränkt sich diese Arbeit konkret auf Angriffe mit Hilfe von Schadprogrammen (Malware). Ziel einer forensischen Untersuchung bzgl. einer \textit{Malware} ist es, Mechanismen für Infektion und Verbreitung sowie Interaktionen mit System, Netzwerk und Angreifer zu identifzieren. In Bezug auf die betrachteten Elemente des Industrienetzwerkmodells und der verfügbaren Informationen ist interessant, welche Informationen als Indikatoren verwendet werden können, um auf die Existenz von Schadcodes zu schließen.\\
+
+Dieses Vorgehen zeigt, wie Malware-Angriffe identifiziert und untersucht werden. Um also die Notwendigkeit bestimmter Informationen zu beurteilen, muss an konkreten Beispielen geprüft werden, ob und inwiefern die Dokumentation dieser Informationen vorhanden gewesen ist und welchen Beitrag die Informationen konkret für das Erreichen der forensischen Ziele leisten können. Eines der bekanntesten Beispiele für einen Angriff auf ein Fertigungssystem ist der Fall \textit{Stuxnet}, welcher als Basis für die Bewertung verwendet wird. Das Beispiel von Stuxnet zeigt einen durchgängigen Infektionsweg von der Ausnutzung einer Schwachstelle, der Ausbreitung über das Netzwerk und schließlich der Manipulation einer SPS. Aus diesem Grund werden anhand des Beispiels von Stuxnet die Unterschiede untersucht.
+
+\subsection{Bewertungkriterien}
+Basierend auf der Vorgehensweise der forensischen Untersuchung werden die folgenden Bewertungskriterien angewandt:
+\begin{itemize}
+\item Informationen über Ziele und Aktionen der Malware
+\item Bedeutung als Indikator
+\end{itemize}
+\todoForm{Bewertung: Bewertungskriterien kurz erläutern}
+
 \section{Bewertung}
-\section{Beschreibung existierender wissenschaftlichen Lösungsansätze}
+Für die Bewertung wird zunächst kurz die Manipulation einer SPS durch Stuxnet geschildert. 
+
+\subsection{Stuxnet}
+Bei dem Stuxnet-Angriff handelte es sich um einen vielschichtigen Angriff mit dem Ziel, das Verhalten von ICSs (Industrial Control Systems) zu manipulieren. Zu diesem Zweck wird in mehreren Schritten das betreffende Netzwerk infiziert und die Malware verbreitet. Bei der Verbreitung wird nach einem Computer gesucht, der als Programmiergerät für eine SPS verwendet wird. Es wird u.a. gezielt nach einer installierten WinCC-Software gesucht. Wenn ein solchen Systems gefunden wird, kann über Kommandos an den Datenbankserver die Schadsoftware geladen werden. Diese infiziert schrittweise Dateien von bestimmten Step7-Projektdateien über Schnittstellen spezieller Einschubmethoden (Hook API). Die Step7-Projekte werden über eine integrierte Filter-Logik ausgewählt. Für die Beeinflussung der SPS wird die Datei so manipuliert, dass Stuxnet über die WinCC-Ladeschnittstelle für Projekte auf die SPS übertragen wird. \\
+
+DIe WinCC/Step7-Software benutzt eine spezifische .dll-Datei, um die Kommunikation zwischen WinCC und der SPS zu ermöglichen. Für die Kommunikation ruft die Anwendung die Bibliothek \glqq s7otbxdx.dll\grqq{} auf. Diese enthält bis zu 106 (Maximum) Funktionen für die Verwaltung der Kommunikation. 
+
+So wurde etwa die Funktion \textit{s7blk\_ read} verwendet, um eine Anfrage von WinCC an eine SPS weiterzuleiten. Stuxnet benennt diese Datei um und erstellt die eigene .dll-Datei mit gleichem Namen. Diese leitet die meisten Funktionsaufrufe an die Original-Datei weiter, fängt jedoch bestimmte Aufrufe ab. Zu diesen zählen u.a. die Funktionen für das Schreiben, das Lesen und die Aufzählung von Funktions-, (System-)Daten- und Organisationsbausteinen. 
+Erwähnenswert ist an dieser Stelle, dass Stuxnet die Systemdatenbausteine prüft und unter bestimmten Bedingungen die Hersteller-ID (vergeben durch den PI-Dachverband (Profibus \& Profinet International)) verändert wird. Das Abfangen dieser Funktionen erlaubt die Manipulation der Bausteindaten, die zu der SPS gesendet und von der SPS empfangen werden. 
+
+Im Folgenden manipuliert Stuxnet spezielle Organisationsbausteine nach bestimmten Mustern. Die Manipulation eines speziellen Datenbausteins erlaubt es dabei, Daten auf der SPS zu überwachen und das Verhalten der Malware (Muster) anzupassen. Diese Funktion wird benutzt, um das Kommunikationsverhalten der angeschlossenen Systeme nach Aktionen, die durch Stuxnet ausgelöst wurden, zu überwachen sowie die Manipulation der Pakete mit Hilfe von aufgezeichneten Daten zu verfeinern. Die eigentliche Manipulation im Falle von Stuxnet wird durch die Anpassung von Frequenzwerten durchgeführt, die an Frequenz-Konvertierungstreiber geschickt werden. Diese Treiber erlauben die Kommunikation mit Motoren, die in einer von der Frequenz-abhängigen Geschwindigkeit arbeiten. 
+
+Um diese Funktionalität zu erhalten, wird über die Manipulationsfähigkeit der Kommunikation und Bausteine der SPS zudem eine Art Rootkit durch die Vorverarbeitung von Antworten an das WinCC-Systems umgesetzt. Die Folge daraus ist, dass die Antworten, die an das WinCC weitergeleitet werden, keine korrekten Daten enthalten und damit die Veränderungen nicht unmittelbar erkannt werden können.
+
+\subsection{Betrachtung der Unterschiede}
+Die im Vergleich ermittelten Unterschiede sind im Kern die folgenden:
+\begin{itemize}
+\item S7-1200 SPS
+\begin{itemize}
+\item Keine Dokumentation von Parameter- und Bausteinänderungen aus authentifizierter Quelle
+\item Eingeschränkte Dokumentation der Benutzerzugriffe, u.a. bei bestimmten Einstellungen des Diagnosepuffers
+\end{itemize}
+\item PROFIBUS-Kommunikation
+\begin{itemize}
+\item Keine Informationen über die Integrität der Sender-/Empfänger-ID
+\item Eingeschränkte Nachrichteninformationen, u.a. basierend auf der GSD-Konfiguration
+\end{itemize}
+\end{itemize}
+
+%Doku von Parametern/Bausteinen, Check
+\textbf{Fehlende Dokumentation von Parameter- und Bausteinänderungen aus authentifzierter Quelle}
+
+Der Fall Stuxnet zeigt, dass Parameter in Ein- und Ausgängen sowie Bausteine manipuliert werden können, um das Verhalten einer SPS zu verändern und Störungen am Fertigunssystem zu verursachen. Durch eine Dokumentation von Änderungen bzw. der Änderung eines Bausteines im Sinne von Änderungen bei Kommunikation mit einem Anwendersystem könnten Hinweise auf ungewollte bzw. nicht-angeordnete Änderungen schneller und gezielter erschlossen werden. Desweiteren ermöglicht eine solche Dokumentation Rückschlüsse auf die Existenz und die Funktion der Malware. So ergibt eine Änderung an OB1 etwa, dass die Ausführung bestimmter Funktionsbausteine durchgeführt werden soll. Die Änderungen am Datenbaustein geben einen Hinweis auf die protokollierten Daten, woraus sich weitere Schlüsse auf Ziel und Möglichkeiten der Malware ergeben können. Die Dokumentation der Veränderung von bestimmten Speicherbereichen wie etwa der Prozessabbilder können Hinweise auf das Ziel der Manipulation des Fertigungsprozesses und die konkrete Methode geben. Zusätzlich gibt die bloße Dokumentation der Änderung bestimmter Bausteine einen Hinweis darauf, welche Bausteine anderer SPSen im Netzwerk betroffen sein könnten.
+
+Insgesamt könnte durch eine regelmäßige Abfrage der protokollierten Änderung und dem Abgleich mit Aktionprotokollen etwa einer WinCC-Applikation und/oder durch Einsatz zusätzlicher Programmiergeräte die Integrität der Daten bestätigt werden. Jegliche Änderungen / Abweichungen vom Soll-Zustand ergeben einen Indikator für potentielle Manipulationen.\\
+
+%Benutzerzugriff 
+\textbf{Geringe Dokumentation des Benutzerzugriffes}
+
+Das Stuxnet-Beispiel zeigt auch, wie wichtig der Schutz von Informationen auf den SPSen ist. Essentieller Bestandteil der Stuxnet Sequenzen ist das Verändern von Bausteinen, um gewisse Funktionen auszuführen oder Daten abzufragen. Die S7-1200 dokumentiert Zugriffsversuche auf die CPU. Nach erfolgter Recherche ist nicht bekannt, ob Ereignisse bei (in-)korrektem Zugriff auf geschützte Datenbausteine im Diagnosepuffer eingetragen werden. Basierend auf der abgedeckten Funktionalität des Systems wird jedoch die Hypothese aufgestellt, dass zumindest Fehlerereignisse dokumentiert werden. Alle darauf folgenden Benutzeraktionen bzgl. des Bausteins werden jedoch nicht dokumentiert, sofern keine funktionellen Fehlerereignisse ausgelöst werden. 
+Die Dokumentation weiterer Informationen über die Interaktion des Benutzers mit dem Gerät, liefert Hinweise auf den Zweck der Interaktion und damit ggf. Aktionen der Malware. Diese kann genutzt werden, um in Verbindung mit Informationen über Zugriffsverbindungen zu der SPS Hinweise auf Anomalien zu generien. Ein Beispiel für einen Hinweis auf eine Anomalie könnte etwa in Form von Anmeldungen außerhalb bestimmter Zeitintervalle oder undokumentierter Änderungsanweisungen bestehen. 
+Greift etwa die Malware mit dem vorher beschaften Passwort oder anderweitig erfolgreich auf einen geschützten Baustein zu, kann über die Dokumentation der Aktionen ein Hinweis auf den Zweck und/oder die Funktion der Malware erhalten werden. Bzgl. der Durchführung von Stuxnet ist nach Wissen des Verfassers unklar, ob der Know-How-Schutz der S7-1200 die Manipulationen durch Stuxnet hätte einschränken oder verhindern können.\\
+
+\textbf{PROFIBUS Sender-/Empfänger-Verifikation}
+
+Eine bekannte, nicht verfügbare Information des PROFIBUS-Systems ist das Fehlen von Daten zur Verifikation einer Sender- bzw. Empfänger-ID. Im konkreten Fall von Stuxnet hätten diese Informationen keinen Einfluss gehabt, da der Datenaustausch zwischen WinCC und SPS unverschlüsselt stattfand und die Manipulation auf dem WinCC-System stattfand. Die Information, dass der Sender- bzw. der Empfänger-ID vertraut werden kann (etwa durch ein (Hardware-)Zertifikat), ermöglicht eine sichere Zuordnung dokumentierter Telegramme, sodass z.B. die Verschleierung der Identität durch Angriffstypen, die Spoofing-Mechanismen, etwa bei Man-In-The-Middle-Angriffen, ausgeschlossen bzw. als unwahrscheinlich eingestuft werden kann.
+
+%\section{Beschreibung existierender wissenschaftlichen Lösungsansätze}
+\subsection{Zusammenfassung}
+Zusammenfassend ist festzuhalten, dass die gefundenen Unterschiede in der Informationverfügbarkeit bzw. die fehlenden Informationen bei einer Attacke wie im Beispiel von Stuxnet wichtige Informationen auf die Existenz und Aktionen der Malware  bereitstellen könnten. 
+
+Hinzuzufügen ist, dass durch die vertikale (und teils horizontale) Integration der Systeme Komplexitäten bei der Entwicklung von Stuxnet bzgl. der Autonomie der Aktivitäten beseitigt werden könnten. Durch einen Insider oder durch Erlangen der Kontrolle über Systeme im Unternehmensnetzwerk könnte ein Angreifer weit genug vordringen, um diese Aktivitäten durch spätere Einschleusung von zusätzlichem Schadcode, etwa über einen C\&C-Server, \glqq nachzureichen\grqq . Diese Hypothese soll darauf hinweisen, dass die Komplexität und der Erstellungsaufwand von Stuxnet-Funktionalität in zukünftigen Manipulationsversuchen leichter und damit für eine größere Menge an Angreifern zugänglich sein könnte. Die konkrete Untersuchung dieses Sachverhaltes kann in folgenden Forschungsarbeiten durchgeführt werden. 

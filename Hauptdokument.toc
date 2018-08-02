@@ -1,87 +1,112 @@
 \select@language {ngerman}
 \contentsline {chapter}{\numberline {1}Einleitung}{2}{chapter.1}
-\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Industrie 4.0 Konzept}{4}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Stand der IT-Sicherheit in industriellen Produktionsnetzwerken}{4}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Forschungsgebiete der IT-Sicherheit}{5}{subsection.2.1.2}
-\contentsline {subsubsection}{Sichere Kontrolle (\glqq Secure Control\grqq )}{5}{section*.6}
-\contentsline {subsubsection}{Erkennung von Eindringungsversuchen}{6}{section*.7}
-\contentsline {subsubsection}{Simulation und Modellierung}{6}{section*.8}
-\contentsline {subsubsection}{Kommunikations- und Infrastruktursicherheit}{6}{section*.9}
-\contentsline {section}{\numberline {2.2}IT Security Schutzziele}{7}{section.2.2}
-\contentsline {section}{\numberline {2.3}Risiko Management}{7}{section.2.3}
-\contentsline {section}{\numberline {2.4}Security Information and Event Management}{9}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}SIEM Konzept und Zweck}{9}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}SIM \/ Log Management}{12}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Kollektoren}{14}{subsection.2.4.3}
-\contentsline {subsubsection}{Herausforderungen auf Basis von Log Dateien}{15}{section*.17}
-\contentsline {subsection}{\numberline {2.4.4}Event Verarbeitung}{16}{subsection.2.4.4}
-\contentsline {subsection}{\numberline {2.4.5}Security Event Management}{17}{subsection.2.4.5}
-\contentsline {subsection}{\numberline {2.4.6}Features \& Gemeinsamkeiten von SIEM-System-Anbietern}{18}{subsection.2.4.6}
-\contentsline {section}{\numberline {2.5}Infrastruktur Office}{19}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Ger\IeC {\"a}te}{19}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Architekturen \& Anforderungen}{22}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Kommunikation}{23}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}Bekannte Angriffsvektoren}{24}{subsection.2.5.4}
-\contentsline {subsubsection}{Malware}{25}{section*.21}
-\contentsline {subsubsection}{Denial-of-Service}{26}{section*.22}
-\contentsline {subsubsection}{Angriffsvektoren auf Webinhalte}{27}{section*.23}
-\contentsline {section}{\numberline {2.6}Infrastruktur industrielle Produktionsnetzwerke}{27}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Architektur \& Anforderungen}{27}{subsection.2.6.1}
-\contentsline {subsubsection}{Die Automatisierungspyramide}{28}{section*.25}
-\contentsline {subsubsection}{Prozessleittechnik und Architekturanforderungen}{29}{section*.28}
-\contentsline {subsection}{\numberline {2.6.2}Ger\IeC {\"a}te}{30}{subsection.2.6.2}
-\contentsline {subsubsection}{Speicherprogrammierbare Steuerungen}{30}{section*.29}
-\contentsline {subsubsection}{Sensoren und Aktoren}{31}{section*.30}
-\contentsline {subsubsection}{Human Machine Interface (HMI)}{32}{section*.31}
-\contentsline {subsubsection}{Server und industrielle PCs}{32}{section*.32}
-\contentsline {subsection}{\numberline {2.6.3}Kommunikationstechnologien}{34}{subsection.2.6.3}
-\contentsline {subsubsection}{Feldbus}{35}{section*.33}
-\contentsline {subsubsection}{Industrial Ethernet}{36}{section*.34}
-\contentsline {subsection}{\numberline {2.6.4}Kommunikationsprotokolle }{37}{subsection.2.6.4}
-\contentsline {subsection}{\numberline {2.6.5}Bekannte Angriffsvektoren}{37}{subsection.2.6.5}
-\contentsline {chapter}{\numberline {3}Analyse der Informationsquellen in einer typischen Unternehmensstruktur}{39}{chapter.3}
-\contentsline {section}{\numberline {3.1}Verwendete Analysemethode}{39}{section.3.1}
-\contentsline {section}{\numberline {3.2}Beschreibung der Unternehmensarchitektur (Model)}{42}{section.3.2}
-\contentsline {section}{\numberline {3.3}Beschreibung der Systeme}{44}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Windows}{44}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Linux}{49}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Applikationen}{51}{subsection.3.3.3}
-\contentsline {subsubsection}{Apache Webserver}{51}{section*.43}
-\contentsline {subsubsection}{Microsoft SQL Server}{53}{section*.44}
-\contentsline {subsection}{\numberline {3.3.4}Interaktionen der Systeme (und Anwender)}{55}{subsection.3.3.4}
-\contentsline {subsection}{\numberline {3.3.5}Netzwerkprotokolle}{55}{subsection.3.3.5}
-\contentsline {subsubsection}{HTTP (Hypertext Transfer Protocol)}{55}{section*.46}
-\contentsline {subsubsection}{Secure Shell (SSH)}{56}{section*.48}
-\contentsline {subsubsection}{Remote Desktop Protocol (RDP)}{58}{section*.49}
-\contentsline {subsubsection}{Microsoft SQL Server Protocol Suite}{59}{section*.50}
-\contentsline {section}{\numberline {3.4}Analyse des Informationspools im Bezug auf Angriffsszenarien}{60}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Betrachtung der Datenmenge}{61}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Relevanz f\IeC {\"u}r die Sicherheitsbetrachung mit Hilfe von SIEM-Systeme}{62}{subsection.3.4.2}
-\contentsline {chapter}{\numberline {4}Analyse der Informationsquellen in einem industriellen Produktionsnetzwerk}{64}{chapter.4}
-\contentsline {section}{\numberline {4.1}Beschreibung der Unternehmensarchitektur (Beispiel)}{65}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Systeme}{66}{subsection.4.1.1}
-\contentsline {subsubsection}{SIMATIC S7-1200 (SPS)}{66}{section*.51}
-\contentsline {subsection}{\numberline {4.1.2}Kommunikationsmedien}{69}{subsection.4.1.2}
-\contentsline {subsubsection}{PROFIBUS}{69}{section*.53}
-\contentsline {subsubsection}{PROFINET}{74}{section*.55}
-\contentsline {section}{\numberline {4.2}Applikationen}{77}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}WinCC (SCADA / HMI)}{77}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Analyse im Bezug auf typische Angriffsvektoren}{78}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Betrachtung der Datenmenge}{79}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Relevanz f\IeC {\"u}r die Sicherheitsbetrachung mit Hilfe von SIEM-Systeme}{79}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Vergleich der Analysen}{80}{chapter.5}
-\contentsline {section}{\numberline {5.1}Vergleichsmetrik}{80}{section.5.1}
-\contentsline {section}{\numberline {5.2}Vergleich}{80}{section.5.2}
-\contentsline {chapter}{\numberline {6}Bewertung der Informationsl\IeC {\"u}cken}{81}{chapter.6}
-\contentsline {section}{\numberline {6.1}Bewertungsschema}{81}{section.6.1}
-\contentsline {section}{\numberline {6.2}Bewertung}{81}{section.6.2}
-\contentsline {section}{\numberline {6.3}Beschreibung existierender wissenschaftlichen L\IeC {\"o}sungsans\IeC {\"a}tze}{81}{section.6.3}
-\contentsline {chapter}{\numberline {7}L\IeC {\"o}sungsansatz zur Schlie\ss ung der fokussierten Informationsl\IeC {\"u}cke}{82}{chapter.7}
-\contentsline {section}{\numberline {7.1}Tiefergehende Beschreibung der Informationsl\IeC {\"u}cke und bestehende Abh\IeC {\"a}ngigkeiten}{82}{section.7.1}
-\contentsline {section}{\numberline {7.2}Beschreibung des L\IeC {\"o}sungsansatz}{82}{section.7.2}
-\contentsline {section}{\numberline {7.3}Beschreibung des Versuchsaufbaus des Beweises}{82}{section.7.3}
-\contentsline {section}{\numberline {7.4}Beschreibung der Ergebnisse}{82}{section.7.4}
-\contentsline {chapter}{\numberline {8}Fazit}{83}{chapter.8}
-\contentsline {chapter}{Literaturverzeichnis}{iv}{appendix*.57}
-\contentsline {chapter}{Abbildungsverzeichnis}{v}{appendix*.58}
+\contentsline {section}{\numberline {1.1}Kontext}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Zielsetzung und Zweck}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Vorgehen}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Struktur}{5}{section.1.4}
+\contentsline {chapter}{\numberline {2}Grundlagen}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Industrie 4.0 Konzept}{7}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Stand der IT-Sicherheit in industriellen Produktionsnetzwerken}{7}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Forschungsgebiete der IT-Sicherheit}{8}{subsection.2.1.2}
+\contentsline {subsubsection}{Sichere Kontrolle (\glqq Secure Control\grqq )}{8}{section*.5}
+\contentsline {subsubsection}{Erkennung von Eindringungsversuchen}{9}{section*.6}
+\contentsline {subsubsection}{Simulation und Modellierung}{9}{section*.7}
+\contentsline {subsubsection}{Kommunikations- und Infrastruktursicherheit}{9}{section*.8}
+\contentsline {section}{\numberline {2.2}IT Security Schutzziele}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}Risiko Management}{10}{section.2.3}
+\contentsline {section}{\numberline {2.4}Security Information and Event Management}{12}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}SIEM Konzept und Zweck}{12}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}SIM \/ Log Management}{15}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Kollektoren}{17}{subsection.2.4.3}
+\contentsline {subsubsection}{Herausforderungen auf Basis von Protokolldateien}{19}{section*.14}
+\contentsline {subsection}{\numberline {2.4.4}Event Verarbeitung}{19}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.5}Security Event Management}{20}{subsection.2.4.5}
+\contentsline {subsection}{\numberline {2.4.6}Features \& Gemeinsamkeiten von SIEM-System Anbietern}{21}{subsection.2.4.6}
+\contentsline {section}{\numberline {2.5}Unternehmensnetzwerke}{22}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Ger\IeC {\"a}te}{23}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Architekturen \& Anforderungen}{26}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Kommunikation}{27}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Bekannte Angriffsvektoren}{28}{subsection.2.5.4}
+\contentsline {subsubsection}{Malware}{29}{section*.16}
+\contentsline {subsubsection}{Denial-of-Service}{30}{section*.17}
+\contentsline {subsubsection}{Angriffsvektoren auf Webinhalte}{31}{section*.18}
+\contentsline {section}{\numberline {2.6}Infrastruktur industrielle Produktionsnetzwerke}{31}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Architektur \& Anforderungen}{31}{subsection.2.6.1}
+\contentsline {subsubsection}{Die Automatisierungspyramide}{32}{section*.20}
+\contentsline {subsubsection}{Prozessleittechnik und Architekturanforderungen}{33}{section*.22}
+\contentsline {subsection}{\numberline {2.6.2}Ger\IeC {\"a}te}{34}{subsection.2.6.2}
+\contentsline {subsubsection}{Speicherprogrammierbare Steuerungen}{35}{section*.23}
+\contentsline {subsubsection}{Sensoren und Aktoren}{35}{section*.24}
+\contentsline {subsubsection}{Human Machine Interface (HMI)}{36}{section*.25}
+\contentsline {subsubsection}{Server und industrielle PCs}{37}{section*.26}
+\contentsline {subsection}{\numberline {2.6.3}Kommunikationstechnologien}{39}{subsection.2.6.3}
+\contentsline {subsubsection}{Feldbus}{40}{section*.27}
+\contentsline {subsubsection}{Industrial Ethernet}{41}{section*.28}
+\contentsline {subsection}{\numberline {2.6.4}Kommunikationsprotokolle }{42}{subsection.2.6.4}
+\contentsline {subsection}{\numberline {2.6.5}Bekannte Angriffsvektoren}{42}{subsection.2.6.5}
+\contentsline {chapter}{\numberline {3}Analyse der Informationsquellen in eines Unternehmensnetzwerkes}{44}{chapter.3}
+\contentsline {section}{\numberline {3.1}Verwendete Analysemethode}{44}{section.3.1}
+\contentsline {section}{\numberline {3.2}Beschreibung des Modells}{45}{section.3.2}
+\contentsline {section}{\numberline {3.3}Beschreibung der Systeme}{47}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Windows}{47}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Linux}{53}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Applikationen}{55}{subsection.3.3.3}
+\contentsline {subsubsection}{Apache Webserver}{55}{section*.35}
+\contentsline {subsubsection}{Microsoft SQL Server}{57}{section*.37}
+\contentsline {subsection}{\numberline {3.3.4}Interaktionen der Systeme (und Anwender)}{59}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}Netzwerkprotokolle}{59}{subsection.3.3.5}
+\contentsline {subsubsection}{HTTP (Hypertext Transfer Protocol)}{59}{section*.39}
+\contentsline {subsubsection}{Secure Shell (SSH)}{60}{section*.41}
+\contentsline {subsubsection}{Remote Desktop Protocol (RDP)}{62}{section*.44}
+\contentsline {subsubsection}{Microsoft SQL Server Protocol Suite}{63}{section*.45}
+\contentsline {section}{\numberline {3.4}Analyse des Informationspools}{65}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Betrachtung der Datenmenge}{65}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Kategorisierung der Informationsmenge}{66}{subsection.3.4.2}
+\contentsline {subsubsection}{Systeme}{66}{section*.46}
+\contentsline {subsubsection}{Netzwerkprotokolle}{68}{section*.48}
+\contentsline {subsection}{\numberline {3.4.3}Informationsanalyse am Beispiel einer Malwareinfektion}{69}{subsection.3.4.3}
+\contentsline {chapter}{\numberline {4}Analyse der Informationsquellen in einem industriellen Produktionsnetzwerk}{72}{chapter.4}
+\contentsline {section}{\numberline {4.1}Beschreibung der Unternehmensarchitektur (Beispiel)}{73}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Systeme}{73}{subsection.4.1.1}
+\contentsline {subsubsection}{SIMATIC S7-1200 (SPS)}{73}{section*.51}
+\contentsline {subsection}{\numberline {4.1.2}Kommunikationsmedien}{77}{subsection.4.1.2}
+\contentsline {subsubsection}{PROFIBUS}{77}{section*.54}
+\contentsline {subsubsection}{PROFINET}{83}{section*.55}
+\contentsline {section}{\numberline {4.2}Applikationen}{87}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}WinCC (SCADA / HMI)}{87}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Analyse der Informationsmenge}{88}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Betrachtung der Datenmenge}{89}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Kategorisierung der Informationsmenge}{89}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Systeme}{89}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Netzwerkprotokolle}{91}{subsection.4.3.4}
+\contentsline {chapter}{\numberline {5}Vergleich der Analysen}{94}{chapter.5}
+\contentsline {section}{\numberline {5.1}Vergleichsmethode}{94}{section.5.1}
+\contentsline {section}{\numberline {5.2}Vergleich}{95}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Systeme}{95}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Kommunikationsprotokolle}{98}{subsection.5.2.2}
+\contentsline {subsubsection}{Vergleich von PROFIBUS und Ethernet-basierter Kommunikation}{99}{section*.61}
+\contentsline {subsubsection}{PROFIBUS-Dienste und Anwendungsprotokolle des TCP/IP Stacks}{100}{section*.62}
+\contentsline {section}{\numberline {5.3}Ergebnis}{103}{section.5.3}
+\contentsline {chapter}{\numberline {6}Bewertung der Informationsl\IeC {\"u}cken}{104}{chapter.6}
+\contentsline {section}{\numberline {6.1}Bewertungsmethode}{104}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Entwicklung der Methode}{104}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Bewertungkriterien}{106}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Bewertung}{106}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Stuxnet}{106}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Betrachtung der Unterschiede}{107}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Zusammenfassung}{109}{subsection.6.2.3}
+\contentsline {chapter}{\numberline {7}L\IeC {\"o}sungsansatz zur Schlie\ss ung der fokussierten Informationsl\IeC {\"u}cke}{111}{chapter.7}
+\contentsline {section}{\numberline {7.1}Ansatzentwicklung und Szenarien}{111}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Annahmen und Szenarien}{111}{subsection.7.1.1}
+\contentsline {subsubsection}{Keine \IeC {\"A}nderungsprotokollierung auf der SPS}{112}{section*.65}
+\contentsline {subsubsection}{Keine dauerhafte \IeC {\"U}berwachung bei skalierbarer L\IeC {\"o}sung}{112}{section*.66}
+\contentsline {subsubsection}{Infizierung eines Servers f\IeC {\"u}r SPS-Manipulation notwendig}{112}{section*.67}
+\contentsline {subsubsection}{Szenarien}{113}{section*.68}
+\contentsline {section}{\numberline {7.2}Beschreibung des L\IeC {\"o}sungsansatzes}{114}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Limitierungen des Ansatzes}{115}{subsection.7.2.1}
+\contentsline {section}{\numberline {7.3}Demonstration des L\IeC {\"o}sungsansatzes}{115}{section.7.3}
+\contentsline {section}{\numberline {7.4}Zusammenfassung}{116}{section.7.4}
+\contentsline {chapter}{\numberline {8}Fazit}{117}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{vii}{appendix*.73}
+\contentsline {chapter}{Abbildungsverzeichnis}{viii}{appendix*.74}
+\contentsline {chapter}{Abk\IeC {\"u}rzungsverzeichnis}{viii}{section*.75}

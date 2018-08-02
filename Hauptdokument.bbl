@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{72}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -12,6 +12,74 @@ admin.
   "\url{http://www.indusoft.com/blog/2013/04/19/unterschied-zwischen-scada-und-hmi}",
   2013.
 \newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Admin(N/A)]{Linux2}
+Admin.
+\newblock Centos / redhat : Beginners guide to log file administration.
+\newblock
+  "\url{https://www.thegeekdiary.com/centos-redhat-beginners-guide-to-log-file-administration/}",
+  N/A.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[AG(2013)]{WinCC2}
+Siemens AG.
+\newblock Simatic hmi wincc v7.2 getting started.
+\newblock
+  "\url{https://cache.industry.siemens.com/dl/files/596/73505596/att_77660/v1/GettingStarted_en-US.pdf}",
+  2013.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[AG(2014)]{WinCC3}
+Siemens AG.
+\newblock Wincc v7.3 - working with wincc.
+\newblock
+  "\url{https://cache.industry.siemens.com/dl/files/925/102754925/att_62020/v1/WinCC_Working_with_WinCC_en-US_en-US.pdf}",
+  2014.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[AG(2016)]{SiemensSPS2}
+Siemens AG.
+\newblock Simatic s7-1200 automatisierungssystem betriebshandbuch.
+\newblock
+  "\url{ï»¿https://support.industry.siemens.com/cs/document/109741593/simatic-s7-s7-1200-automatisierungssystem?dti=0&dl=de&lc=en-WW}",
+  2016.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[AG(2018{\natexlab{a}})]{SiemensSPS1}
+Siemens AG.
+\newblock Die simatic s7-1200 baugruppen im Überblick.
+\newblock
+  "\url{https://www.siemens.com/global/de/home/produkte/automatisierung/systeme/industrie/sps/s7-1200.html}",
+  2018{\natexlab{a}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[AG(2018{\natexlab{b}})]{WinCC1}
+Siemens AG.
+\newblock Simatic wincc v7 - produktinformation.
+\newblock
+  "\url{https://mall.industry.siemens.com/mall/de/WW/Catalog/Products/10042373?tree=CatalogTree}",
+  2018{\natexlab{b}}.
+\newblock Last visited on 0ß5.\,June.\,2018.
+
+\bibitem[Amy~Echeverri(N/A)]{Linux4}
+Sadequl~Hussain Amy~Echeverri.
+\newblock Linux logging basics.
+\newblock "\url{https://www.loggly.com/ultimate-guide/linux-logging-basics/}",
+  N/A.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Apache(2018)]{Apache2}
+Apache.
+\newblock Apache-kernfunktionen - loglevel-direktive.
+\newblock "\url{https://httpd.apache.org/docs/2.4/mod/core.html#loglevel}",
+  2018.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Autoren(2018)]{Linux5}
+Verschiedene Autoren.
+\newblock Logdateien.
+\newblock "\url{https://wiki.ubuntuusers.de/Logdateien/}", 2018.
+\newblock Last visited on 05.\,June.\,2018.
 
 \bibitem[Bhatt et~al.(2014)Bhatt, Manadhata, and Zomlot]{6924640}
 S.~Bhatt, P.~K. Manadhata, and L.~Zomlot.
@@ -27,6 +95,13 @@ Tony Campbell.
 \newblock Apress, Berkeley, CA, 2016.
 \newblock URL \url{https://doi.org/10.1007/978-1-4842-1685-9_10}.
 
+\bibitem[Christoph(2003)]{Linux3}
+Christoph.
+\newblock Howto: linux logfiles.
+\newblock "\url{http://www.linux-community.de/fragen/howto-linux-logfiles/}",
+  2003.
+\newblock Last visited on 05.\,June.\,2018.
+
 \bibitem[Constantine(2014)]{AV1}
 Conrad Constantine.
 \newblock What kind of logs do you need for an effective siem implementation?
@@ -35,6 +110,14 @@ Conrad Constantine.
   2014.
 \newblock last visited on 20.\,Mai.\,2018.
 
+\bibitem[Ed~Macauley(2016)]{MSSQL6}
+Craig~Guyer Ed~Macauley.
+\newblock Sql server audit action groups and actions.
+\newblock
+  "\url{https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions?view=sql-server-2017}",
+  2016.
+\newblock Last visited on 05.\,June.\,2018.
+
 \bibitem[Edwards(2016)]{SIEMVendors4}
 Jeff Edwards.
 \newblock 7 siem and security analytics vendors to watch in 2017.
@@ -42,6 +125,42 @@ Jeff Edwards.
   "\url{https://solutionsreview.com/security-information-event-management/7-siem-and-security-analytics-vendors-to-watch-in-2017}",
   2016.
 \newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[e.V. (PNO)(2014)]{PROFINET1}
+PROFIBUS~Nutzerorganisation e.V. (PNO).
+\newblock Profinet systembeschreibung.
+\newblock
+  "\url{https://de.profibus.com/downloads/profinet-technology-and-application-system-description/}",
+  2014.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Feldbusse.de(2015{\natexlab{a}})]{Profibus1}
+Feldbusse.de.
+\newblock Profibus.
+\newblock "\url{http://www.feldbusse.de/Profibus/profibus.shtml}",
+  2015{\natexlab{a}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Feldbusse.de(2015{\natexlab{b}})]{Profibus2}
+Feldbusse.de.
+\newblock Profibus - buszugriffsprotokoll (fdl).
+\newblock "\url{http://www.feldbusse.de/Profibus/Buszugriffsprotokoll.shtml}",
+  2015{\natexlab{b}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Feldbusse.de(2015{\natexlab{c}})]{Profibus5}
+Feldbusse.de.
+\newblock Profibus-dp.
+\newblock "\url{http://www.feldbusse.de/Profibus/Profibus-DP.shtml}",
+  2015{\natexlab{c}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Feldbusse.de(2015{\natexlab{d}})]{Profibus6}
+Feldbusse.de.
+\newblock Profibus-dpv1.
+\newblock "\url{http://www.feldbusse.de/Profibus/DPV1.shtml}",
+  2015{\natexlab{d}}.
+\newblock Last visited on 05.\,June.\,2018.
 
 \bibitem[Feldbusse.de(N/A{\natexlab{a}})]{IndEth1}
 Feldbusse.de.
@@ -56,6 +175,50 @@ Feldbusse.de.
 \newblock "\url{http://www.feldbusse.de/Vergleich/vergleich_ethernet.shtml}",
   N/A{\natexlab{b}}.
 \newblock Last visited on 20.\,May.\,2018.
+
+\bibitem[Felser(2017{\natexlab{a}})]{Profibus11}
+Max Felser.
+\newblock Profibus handbuch - ms1 verbindung.
+\newblock "\url{https://www.profibus.felser.ch/ms1_verbindung.html}",
+  2017{\natexlab{a}}.
+\newblock Last visited on 24.\,June.\,2018.
+
+\bibitem[Felser(2017{\natexlab{b}})]{Profibus12}
+Max Felser.
+\newblock Profibus handbuch - stationsübergreifende dienste.
+\newblock
+  "\url{https://www.profibus.felser.ch/stationsubergreifende_dienste.html}",
+  2017{\natexlab{b}}.
+\newblock Last visited on 24.\,June.\,2018.
+
+\bibitem[Felser(2017{\natexlab{c}})]{Profibus7}
+Max Felser.
+\newblock Profibus handbuch - dienste für die datenübertragung.
+\newblock "\url{https://www.profibus.felser.ch/datenubertragung_1.html}",
+  2017{\natexlab{c}}.
+\newblock Last visited on 24.\,June.\,2018.
+
+\bibitem[Felser(2017{\natexlab{d}})]{Profibus8}
+Max Felser.
+\newblock Profibus handbuch - telegrammformate.
+\newblock "\url{https://www.profibus.felser.ch/telegrammformate.html}",
+  2017{\natexlab{d}}.
+\newblock Last visited on 24.\,June.\,2018.
+
+\bibitem[Felser(2017{\natexlab{e}})]{Profibus9}
+Max Felser.
+\newblock Profibus handbuch - initialisierung eines dp-slave.
+\newblock
+  "\url{https://www.profibus.felser.ch/initialisierung_eines_dp-slave.html}",
+  2017{\natexlab{e}}.
+\newblock Last visited on 24.\,June.\,2018.
+
+\bibitem[Felser(2018)]{PROFINET3}
+Max Felser.
+\newblock Profinet handbuch - protokolle und dienste.
+\newblock "\url{https://www.profinet.felser.ch/protokolleunddienste.html}",
+  2018.
+\newblock Last visited on 24.\,July.\,2018.
 
 \bibitem[für Sicherheit in~der Informationstechnik(2016)]{IndAttVec1}
 Bundesamt für Sicherheit in~der Informationstechnik.
@@ -74,11 +237,38 @@ Bundesministerium für Wirtschaft~und Energie.
   2018.
 \newblock Last visited on 20.\,May.\,2018.
 
+\bibitem[Gibb(2013)]{EntAnalysis1}
+Will Gibb.
+\newblock Openioc series: Investigating with indicators of compromise (iocs)
+  – part i.
+\newblock
+  "\url{https://www.fireeye.com/blog/threat-research/2013/12/openioc-series-investigating-indicators-compromise-iocs.html}",
+  2013.
+\newblock Last visited on 05.\,June.\,2018.
+
 \bibitem[Gutekunst(2017)]{Gutekunst2017}
 J{\"u}rgen Gutekunst.
 \newblock \emph{Schnittstellen, Bussysteme und Netze}, pages 687--744.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2017.
 \newblock URL \url{https://doi.org/10.1007/978-3-662-54214-9_15}.
+
+\bibitem[Guyer et~al.(2016)Guyer, Macauley, Kumar, Hamilton, Cai, Byham, and
+  Milener]{MSSQL5}
+Craig Guyer, Ed~Macauley, Sudeep Kumar, Bruce Hamilton, Saisang Cai, Rick
+  Byham, and Gene Milener.
+\newblock Sql server audit (database engine).
+\newblock
+  "\url{https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-2017}",
+  2016.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Hanel(2011)]{EntAnalysis2}
+Alexander Hanel.
+\newblock An intro to creating anti-virus signatures.
+\newblock
+  "\url{http://hooked-on-mnemonics.blogspot.de/2011/01/intro-to-creating-anti-virus-signatures.html}",
+  2011.
+\newblock Last visited on 05.\,June.\,2018.
 
 \bibitem[H{\"o}nle(2017)]{Hoenle2017}
 Rainer H{\"o}nle.
@@ -113,6 +303,14 @@ Wootae Jeong.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2009.
 \newblock ISBN 978-3-540-78831-7.
 \newblock URL \url{https://doi.org/10.1007/978-3-540-78831-7_20}.
+
+\bibitem[Kerneltalks.com(2017)]{Linux6}
+Kerneltalks.com.
+\newblock 11 log files you should see on your linux system.
+\newblock
+  "\url{https://kerneltalks.com/troubleshooting/11-log-files-you-should-see-on-your-linux-system/}",
+  2017.
+\newblock Last visited on 05.\,June.\,2018.
 
 \bibitem[Kersten et~al.(2016)Kersten, Klett, Reuter, and Schröder]{RM2}
 Heinrich Kersten, Gerhard Klett, Jürgen Reuter, and Klaus-Werner Schröder.
@@ -149,12 +347,44 @@ Stephen Lawton.
   2015.
 \newblock Last visited on 20.\,May.\,2018.
 
+\bibitem[LeBlanc(2013{\natexlab{a}})]{MSSQL2}
+David LeBlanc.
+\newblock Overview of microsoft sql server 2012.
+\newblock
+  "\url{https://www.microsoftpressstore.com/articles/article.aspx?p=2201648}",
+  2013{\natexlab{a}}.
+\newblock Last visited on 05.\,Junes.\,2018.
+
+\bibitem[LeBlanc(2013{\natexlab{b}})]{MSSQL3}
+David LeBlanc.
+\newblock Overview of microsoft sql server 2012 - database engine.
+\newblock
+  "\url{https://www.microsoftpressstore.com/articles/article.aspx?p=2201648&seqNum=2}",
+  2013{\natexlab{b}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[LeBlanc(2013{\natexlab{c}})]{MSSQL4}
+David LeBlanc.
+\newblock Overview of microsoft sql server 2012 - security subsystem.
+\newblock
+  "\url{https://www.microsoftpressstore.com/articles/article.aspx?p=2201648&seqNum=4}",
+  2013{\natexlab{c}}.
+\newblock Last visited on 05.\,June.\,2018.
+
 \bibitem[Linke(2017)]{Linke2017}
 Petra Linke.
 \newblock \emph{Grundlagen zur Automatisierung}, pages 1--28.
 \newblock Springer Fachmedien Wiesbaden, Wiesbaden, 2017.
 \newblock ISBN 978-3-658-17582-5.
 \newblock URL \url{https://doi.org/10.1007/978-3-658-17582-5_1}.
+
+\bibitem[Marcel(2018)]{Linux1}
+Marcel.
+\newblock 12 critical linux log files you must be monitoring.
+\newblock
+  "\url{https://www.eurovps.com/blog/important-linux-log-files-you-must-be-monitoring/}",
+  2018.
+\newblock Last visited on 05.\,June.\,2018.
 
 \bibitem[Marty(2007)]{EP1}
 Raffael Marty.
@@ -171,6 +401,69 @@ McAffee.
   2016.
 \newblock Last visited on 20.\,May.\,2018.
 
+\bibitem[Microsoft(2011)]{MS3}
+Microsoft.
+\newblock Description of security events in windows 7 and in windows server
+  2008 r2.
+\newblock
+  "\url{https://support.microsoft.com/en-us/help/977519/description-of-security-events-in-windows-7-and-in-windows-server-2008}",
+  2011.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Microsoft(2013{\natexlab{a}})]{MS1}
+Microsoft.
+\newblock Event properties.
+\newblock
+  "\url{https://technet.microsoft.com/de-de/library/cc765981(v=ws.11).aspx}",
+  2013{\natexlab{a}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Microsoft(2013{\natexlab{b}})]{MS2}
+Microsoft.
+\newblock Event logs.
+\newblock
+  "\url{https://technet.microsoft.com/de-de/library/cc722404(v=ws.11).aspx}",
+  2013{\natexlab{b}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Microsoft(2018{\natexlab{a}})]{MS4}
+Microsoft.
+\newblock Windows filtering platform.
+\newblock
+  "\url{https://msdn.microsoft.com/de-de/library/windows/desktop/aa366510(v=vs.85).aspx}",
+  2018{\natexlab{a}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Microsoft(2018{\natexlab{b}})]{RDP1}
+Microsoft.
+\newblock Remote desktop protocol.
+\newblock "\url{https://msdn.microsoft.com/en-us/library/aa383015.aspx}",
+  2018{\natexlab{b}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Microsoft(2018{\natexlab{c}})]{RDP2}
+Microsoft.
+\newblock Remote desktop protocol: Basic connectivity and graphics remoting.
+\newblock "\url{https://msdn.microsoft.com/en-us/library/cc240445.aspx}",
+  2018{\natexlab{c}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[Microsoft(2018{\natexlab{d}})]{SQLProt1}
+Microsoft.
+\newblock [ms-ssso]: Sql server system overview.
+\newblock
+  "\url{https://msdn.microsoft.com/en-us/library/ff420673(v=sql.105).aspx}",
+  2018{\natexlab{d}}.
+\newblock Last visited on 05.\,June.\,2018.
+
+\bibitem[O'Reily(2002)]{SSH1}
+O'Reily.
+\newblock Ssh: The secure shell - inside ssh-2.
+\newblock
+  "\url{https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch03_05.htm}",
+  2002.
+\newblock Last visited on 05.\,June.\,2018.
+
 \bibitem[Partida and Andina(2010)]{Partida2010}
 Alberto Partida and Diego Andina.
 \newblock \emph{Vulnerabilities, Threats and Risks in IT}, pages 1--21.
@@ -184,6 +477,12 @@ Carlos~E. Pereira and Peter Neumann.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2009.
 \newblock ISBN 978-3-540-78831-7.
 \newblock URL \url{https://doi.org/10.1007/978-3-540-78831-7_56}.
+
+\bibitem[Rinaldi(2016)]{PROFINET2}
+John Rinaldi.
+\newblock Profinet i\&m.
+\newblock "\url{https://www.rtaautomation.com/blog/profinet-im/}", 2016.
+\newblock Last visited on 04.\,July.\,2018.
 
 \bibitem[Scarfone(2015{\natexlab{a}})]{SIEMVendors1}
 Karen Scarfone.

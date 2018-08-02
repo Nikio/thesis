@@ -13,48 +13,50 @@ A level-1 auxiliary file: Kapitel/Bewertung.aux
 A level-1 auxiliary file: Kapitel/Loesungsansatz.aux
 A level-1 auxiliary file: Kapitel/Fazit.aux
 The style file: plainnat.bst
+A level-1 auxiliary file: Kapitel/Abkuerzungsverzeichnis.aux
 Database file #1: MeineQuellen.bib
+Warning--I didn't find a database entry for "MS5"
 Warning--can't use both author and editor fields in Hoenle2017
 Warning--empty publisher in RM2
-You've used 33 entries,
+You've used 72 entries,
             2773 wiz_defined-function locations,
-            814 strings with 10857 characters,
-and the built_in function-call counts, 12583 in all, are:
-= -- 1189
-> -- 412
-< -- 42
-+ -- 158
-- -- 123
-* -- 698
-:= -- 1877
-add.period$ -- 137
-call.type$ -- 33
-change.case$ -- 131
-chr.to.int$ -- 31
-cite$ -- 68
-duplicate$ -- 657
-empty$ -- 1233
-format.name$ -- 162
-if$ -- 2791
-int.to.chr$ -- 3
+            1001 strings with 16702 characters,
+and the built_in function-call counts, 24755 in all, are:
+= -- 2301
+> -- 858
+< -- 80
++ -- 346
+- -- 258
+* -- 1288
+:= -- 3756
+add.period$ -- 293
+call.type$ -- 72
+change.case$ -- 293
+chr.to.int$ -- 56
+cite$ -- 146
+duplicate$ -- 1243
+empty$ -- 2482
+format.name$ -- 336
+if$ -- 5423
+int.to.chr$ -- 17
 int.to.str$ -- 1
 missing$ -- 21
-newline$ -- 211
-num.names$ -- 132
-pop$ -- 404
+newline$ -- 445
+num.names$ -- 288
+pop$ -- 883
 preamble$ -- 1
-purify$ -- 107
+purify$ -- 230
 quote$ -- 0
-skip$ -- 499
+skip$ -- 947
 stack$ -- 0
-substring$ -- 374
-swap$ -- 129
+substring$ -- 452
+swap$ -- 188
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 318
+type$ -- 747
 warning$ -- 2
-while$ -- 130
+while$ -- 247
 width$ -- 0
-write$ -- 498
-(There were 2 warnings)
+write$ -- 1044
+(There were 3 warnings)
